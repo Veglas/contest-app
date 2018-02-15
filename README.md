@@ -21,7 +21,3 @@ _Web development of Veglas Contest site_
 `npm run dev`
 
 #### Have fun! :)
-
-=
-
-Web development of Veglas Contest
