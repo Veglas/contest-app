@@ -4,7 +4,7 @@ _Web development of Veglas Contest site_
 
 ### Used
 
-[VueJS](https://vuejs.org) - modern javascript framework
+[VueJS](https://vuejs.org) - progressive javascript framework
 
 [VuetifyJS](https://vuetifyjs.com) - material component framework for [VueJS](https://vuejs.org)
 
