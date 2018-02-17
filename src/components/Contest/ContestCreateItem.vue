@@ -8,14 +8,14 @@
             <h1>Загрузить</h1>
 
             <form @submit.prevent="onCreateItem">
-              <!-- <v-text-field
+              <v-text-field
                 name="imageUrl"
                 label="Ссылка на картинку"
                 id="image-url"
                 v-model="imageUrl"
                 type="url"
                 autocomplete="imageUrl"
-                required></v-text-field> -->
+                required></v-text-field>
 
               <div>
                 <v-btn

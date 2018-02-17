@@ -13,29 +13,27 @@
 
         <br>
 
-        <v-tabs v-model="active">
-          <v-tabs-bar class="amber">
-            <v-tabs-item
-              v-for="tab in tabs"
-              :key="tab"
-              :href="'#' + tab"
-              ripple
-            >
-              Название {{ tab.slice(-1) }}
-            </v-tabs-item>
-            <v-tabs-slider color="black"></v-tabs-slider>
-          </v-tabs-bar>
-          <v-tabs-items>
-            <v-tabs-content
-              v-for="tab in tabs"
-              :key="tab"
-              :id="tab"
-            >
-              <v-card>
-                <v-card-text>{{ text }}</v-card-text>
-              </v-card>
-            </v-tabs-content>
-          </v-tabs-items>
+        <v-tabs
+          v-model="active"
+          color="cyan"
+          dark
+          slider-color="yellow"
+        >
+          <v-tab
+            v-for="n in 3"
+            :key="n"
+            ripple
+          >
+            Item {{ n }}
+          </v-tab>
+          <v-tab-item
+            v-for="n in 3"
+            :key="n"
+          >
+            <v-card flat>
+              <v-card-text>{{ text }}</v-card-text>
+            </v-card>
+          </v-tab-item>
         </v-tabs>
 
         <br>
@@ -72,7 +70,6 @@
   export default {
     data () {
       return {
-        tabs: ['tab-1', 'tab-2', 'tab-3'],
         active: null,
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
       }
