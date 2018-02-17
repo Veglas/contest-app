@@ -33,7 +33,7 @@
           {{ logoutBtn.title }}
         </v-btn>
 
-        <v-btn flat v-if="!userIsAuthentificated" v-for="i in menuUserNotAuthentificatedItems" :to="i.url">
+        <v-btn flat v-if="!userIsAuthentificated" v-for="i in menuUserNotAuthentificatedItems" :key="i.title" :to="i.url">
           <v-icon left>{{ i.icon }}</v-icon>
           {{ i.title }}
         </v-btn>
@@ -80,7 +80,7 @@
           </v-list-tile-content>
         </v-list-tile>
 
-        <v-list-tile v-if="!userIsAuthentificated" v-for="i in menuUserNotAuthentificatedItems" :to="i.url">
+        <v-list-tile v-if="!userIsAuthentificated" v-for="i in menuUserNotAuthentificatedItems" :key="i.title" :to="i.url">
           <v-list-tile-action>
             <v-icon>{{ i.icon }}</v-icon>
           </v-list-tile-action>
