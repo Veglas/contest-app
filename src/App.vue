@@ -8,18 +8,37 @@
           <v-toolbar-title>Веглас</v-toolbar-title>
         </v-btn>
       </v-toolbar-items>
+
       <v-spacer></v-spacer>
+
       <v-toolbar-side-icon @click.stop="sideNav = !sideNav" class="hidden-md-and-up"></v-toolbar-side-icon>
+
       <v-toolbar-items class="hidden-sm-and-down">
         <v-btn flat v-for="i in menuItems" :key="i.title" :to="i.url">
           <v-icon left>{{ i.icon }}</v-icon>
           {{ i.title }}
         </v-btn>
+
+        <v-btn flat v-if="userIsAuthentificated" :to="profileBtn.url">
+          <v-icon left>{{ profileBtn.icon }}</v-icon>
+          {{ profileBtn.title }}
+        </v-btn>
+      </v-toolbar-items>
+
+      <v-spacer class="hidden-sm-and-down"></v-spacer>
+
+      <v-toolbar-items class="hidden-sm-and-down">
         <v-btn flat v-if="userIsAuthentificated" @click="onLogout">
           <v-icon left>{{ logoutBtn.icon }}</v-icon>
           {{ logoutBtn.title }}
         </v-btn>
+
+        <v-btn flat v-if="!userIsAuthentificated" v-for="i in menuUserNotAuthentificatedItems" :key="i.title" :to="i.url">
+          <v-icon left>{{ i.icon }}</v-icon>
+          {{ i.title }}
+        </v-btn>
       </v-toolbar-items>
+
     </v-toolbar>
 
     <v-content>
@@ -31,14 +50,45 @@
     </v-footer>
 
     <v-navigation-drawer absolute temporary right v-model="sideNav">
-      <v-btn flat v-for="i in menuItems" :key="i.title" :to="i.url">
-        <v-icon left>{{ i.icon }}</v-icon>
-        {{ i.title }}
-      </v-btn>
-      <v-btn flat v-if="userIsAuthentificated" @click="onLogout">
-        <v-icon left>{{ logoutBtn.icon }}</v-icon>
-        {{ logoutBtn.title }}
-      </v-btn>
+      <v-list dense class="pt-0">
+        <v-list-tile v-for="i in menuItems" :key="i.title" :to="i.url">
+          <v-list-tile-action>
+            <v-icon>{{ i.icon }}</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>{{ i.title }}</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
+        <v-divider></v-divider>
+
+        <v-list-tile v-if="userIsAuthentificated" :to="profileBtn.url">
+          <v-list-tile-action>
+            <v-icon>{{ profileBtn.icon }}</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>{{ profileBtn.title }}</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
+        <v-list-tile v-if="userIsAuthentificated" @click="onLogout">
+          <v-list-tile-action>
+            <v-icon>{{ logoutBtn.icon }}</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>{{ logoutBtn.title }}</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
+        <v-list-tile v-if="!userIsAuthentificated" v-for="i in menuUserNotAuthentificatedItems" :key="i.title" :to="i.url">
+          <v-list-tile-action>
+            <v-icon>{{ i.icon }}</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>{{ i.title }}</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+      </v-list>
     </v-navigation-drawer>
 
   </v-app>
@@ -49,6 +99,7 @@
     data () {
       return {
         sideNav: null,
+        profileBtn: {title: 'Профиль', icon: 'face', url: '/user/profile'},
         logoutBtn: {title: 'Выйти', icon: 'exit_to_app'}
       }
     },
@@ -56,17 +107,16 @@
       menuItems () {
         let menuItems = [
           {title: 'Конкурс', url: '/contest', icon: 'monetization_on'},
-          {title: 'Участвовать', url: '/user/create-item', icon: 'file_upload'},
+          {title: 'Участвовать', url: '/user/create-item', icon: 'file_upload'}
+        ]
+        return menuItems
+      },
+      menuUserNotAuthentificatedItems () {
+        let menuUserNotAuthentificatedItems = [
           {title: 'Регистрация', url: '/user/register', icon: 'lock_open'},
           {title: 'Вход', url: '/user/login', icon: 'face'}
         ]
-        if (this.userIsAuthentificated) {
-          menuItems = [
-            {title: 'Конкурс', url: '/contest', icon: 'monetization_on'},
-            {title: 'Участвовать', url: '/user/create-item', icon: 'file_upload'}
-          ]
-        }
-        return menuItems
+        return menuUserNotAuthentificatedItems
       },
       userIsAuthentificated () {
         return this.$store.getters.user !== null && this.$store.getters.user !== undefined

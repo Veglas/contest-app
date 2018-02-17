@@ -6,9 +6,9 @@
         <v-card>
           <v-card-text class="px-4">
 
-            <h1>Регистрация</h1>
+            <h1>Вход</h1>
 
-            <form @submit.prevent="onSignup">
+            <form @submit.prevent="onSignin">
               <v-text-field
                 name="email"
                 label="Email"
@@ -27,16 +27,6 @@
                 autocomplete="password"
                 required></v-text-field>
 
-              <v-text-field
-                name="confirmPassword"
-                label="Подтвердите пароль"
-                id="confirmPassword"
-                v-model="confirmPassword"
-                type="password"
-                autocomplete="confirm-password"
-                :rules="[comparePasswords]"
-                required></v-text-field>
-
               <div>
                 <v-btn
                   class="ml-0"
@@ -44,7 +34,7 @@
                   large
                   :loading="loading"
                   :disabled="loading"
-                  type="submit">Зарегистрироваться</v-btn>
+                  type="submit">Войти</v-btn>
               </div>
             </form>
 
@@ -60,14 +50,10 @@
     data () {
       return {
         email: '',
-        password: '',
-        confirmPassword: ''
+        password: ''
       }
     },
     computed: {
-      comparePasswords () {
-        return this.password !== this.confirmPassword ? 'Пароль не совпадает' : ''
-      },
       user () {
         return this.$store.getters.user
       },
@@ -81,13 +67,13 @@
     watch: {
       user (value) {
         if (value !== null && value !== undefined) {
-          this.$router.push('/')
+          this.$router.push('/contest')
         }
       }
     },
     methods: {
-      onSignup () {
-        this.$store.dispatch('signUserUp', {email: this.email, password: this.password})
+      onSignin () {
+        this.$store.dispatch('signUserIn', {email: this.email, password: this.password})
       },
       onDismissed () {
         this.$store.dispatch('clearError')
