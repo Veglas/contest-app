@@ -29,15 +29,15 @@
                 autocomplete="password"
                 required></v-text-field>
 
-              <v-text-field
-                name="confirmPassword"
-                label="Подтвердите пароль"
-                id="confirmPassword"
-                v-model="confirmPassword"
-                type="password"
-                autocomplete="confirm-password"
-                :rules="[comparePasswords]"
-                required></v-text-field>
+              <!--<v-text-field-->
+                <!--name="confirmPassword"-->
+                <!--label="Подтвердите пароль"-->
+                <!--id="confirmPassword"-->
+                <!--v-model="confirmPassword"-->
+                <!--type="password"-->
+                <!--autocomplete="confirm-password"-->
+                <!--:rules="[comparePasswords]"-->
+                <!--required></v-text-field>-->
 
               <div>
                 <v-btn
@@ -68,9 +68,9 @@
       }
     },
     computed: {
-      comparePasswords () {
-        return this.password !== this.confirmPassword ? 'Пароль не совпадает' : ''
-      },
+//      comparePasswords () {
+//        return this.password !== this.confirmPassword ? 'Пароль не совпадает' : ''
+//      },
       user () {
         return this.$store.getters.user
       },
