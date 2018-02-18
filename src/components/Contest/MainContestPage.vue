@@ -33,10 +33,10 @@
                       v-ripple
                       :src="i.imageUrl">
 
-                      <v-spacer/>
+                      <v-spacer v-if="currentUserId === i.creatorId"/>
 
                       <v-btn
-                        v-if="$store.getters.user.id === i.creatorId"
+                        v-if="userIsAuthenticated && currentUserId === i.creatorId"
                         small
                         fab
                         class="btn-edit"
@@ -83,6 +83,15 @@
     computed: {
       items () {
         return this.$store.getters.loadedSortedByDateItems
+      },
+      userIsAuthenticated () {
+        return this.$store.getters.user !== null && this.$store.getters.user !== undefined
+      },
+      currentUserId () {
+        if (!this.userIsAuthenticated) {
+          return false
+        }
+        return this.$store.getters.user.id
       }
     },
     methods: {

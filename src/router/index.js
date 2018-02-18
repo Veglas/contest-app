@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home'
-import List from '@/components/Contest/List'
+import MainContestPage from '@/components/Contest/MainContestPage'
 import CreateItem from '@/components/Contest/CreateItem'
 import Item from '@/components/Contest/Item'
 import Register from '@/components/User/Register'
@@ -20,8 +20,8 @@ export default new Router({
     },
     {
       path: '/contest',
-      name: 'List',
-      component: List
+      name: 'MainContestPage',
+      component: MainContestPage
     },
     {
       path: '/contest/create-item',

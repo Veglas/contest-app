@@ -26,7 +26,7 @@
                   <h4>Ваши билеты</h4>
                 </v-flex>
 
-                <v-flex xs6 v-for="i in items" :key="i.id" v-if="$store.getters.user.id === i.creatorId">
+                <v-flex xs6 v-for="i in items" :key="i.id" v-if="user.id === i.creatorId">
                   <v-card class="mb-3">
                     <v-card-media
                       height="200"
@@ -38,7 +38,6 @@
                       <v-spacer/>
 
                       <v-btn
-                        v-if="$store.getters.user.id === i.creatorId"
                         small
                         fab
                         class="btn-edit"
@@ -55,7 +54,7 @@
                   </v-card>
                 </v-flex>
 
-                <v-flex xs12 class="text-md-right">
+                <v-flex xs12 class="text-xs-right">
                   <v-btn flat class="mx-0" @click="onLogout">
                     <v-icon left>{{ logoutBtn.icon }}</v-icon>
                     {{ logoutBtn.title }}
@@ -83,6 +82,9 @@
     computed: {
       items () {
         return this.$store.getters.userCreatedItems
+      },
+      user () {
+        return this.$store.getters.user
       }
     },
     methods: {
@@ -91,6 +93,7 @@
       },
       onLogout () {
         this.$store.dispatch('logout')
+        this.$router.push('/contest')
       }
     }
   }

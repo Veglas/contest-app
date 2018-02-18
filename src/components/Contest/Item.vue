@@ -8,11 +8,14 @@
             <span class="mr-3">ID билета:</span>
             <span class="title">{{ item.id }}</span>
           </v-card-title>
-            <v-card-media height="480" :src="item.imageUrl">
-            <v-spacer/>
+          <v-card-media height="480" :src="item.imageUrl">
+
+            <v-spacer v-if="userIsCreator"/>
+
             <v-btn fab v-if="userIsCreator">
               <v-icon>mode_edit</v-icon>
             </v-btn>
+
           </v-card-media>
           <v-card-text>
             ID участника: <b>{{ item.creatorId }}</b>
