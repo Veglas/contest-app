@@ -16,16 +16,25 @@
             :size="150"
             v-if="loading"
             color="amber"></v-progress-circular>
-          <v-carousel v-if="!loading">
-            <v-carousel-item
-              v-for="i in items"
-              style="cursor: pointer;"
-              lazy
-              light
-              :src="i.imageUrl"
-              @click="onLoadItem(i.id)"
-              :key="i.id"></v-carousel-item>
-          </v-carousel>
+          <v-card>
+            <v-card-media>
+              <v-carousel
+                v-if="!loading"
+                class="my-carousel">
+                  <v-carousel-item
+                    v-for="i in items"
+                    lazy
+                    light
+                    :src="i.imageUrl"
+                    :key="i.id">
+                      <div
+                        class="my-carousel-bg-link"
+                        v-ripple
+                        @click="onLoadItem(i.id)"></div>
+                  </v-carousel-item>
+              </v-carousel>
+            </v-card-media>
+          </v-card>
         </v-flex>
 
         <v-flex xs12 sm6 offset-sm3>
@@ -137,7 +146,7 @@
   export default {
     computed: {
       items () {
-        return this.$store.getters.featuredItems
+        return this.$store.getters.loadedLastFewItems
       },
       loading () {
         return this.$store.getters.loading
@@ -145,11 +154,22 @@
     },
     methods: {
       onLoadItem (id) {
-        this.$router.push('/contest/' + id)
+        this.$router.push('/contest/item/' + id)
       }
     }
   }
 </script>
 
-<style scoped>
+<style>
+  .my-carousel {
+    height: 220px;
+  }
+  .my-carousel-bg-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
 </style>

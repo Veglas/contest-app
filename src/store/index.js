@@ -172,13 +172,16 @@ export const store = new Vuex.Store({
     loadedItems (state) {
       return state.loadedItems
     },
-    loadedSortedItems (state, getters) {
+    loadedSortedByDateItems (state, getters) {
       return getters.loadedItems.sort((itemA, itemB) => {
-        return itemA.date < itemB.date
-      })
+        return new Date(itemA.date) - new Date(itemB.date)
+      }).reverse()
     },
-    featuredItems (state, getters) {
-      return getters.loadedSortedItems.slice(0, 3)
+    loadedLastFewItems (state, getters) {
+      return getters.loadedSortedByDateItems.slice(0, 6)
+    },
+    userCreatedItems (state, getters) {
+      return getters.loadedSortedByDateItems
     },
     loadedItem (state) {
       return (itemId) => {

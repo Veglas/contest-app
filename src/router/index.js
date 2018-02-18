@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home'
-import Contest from '@/components/Contest'
-import Item from '@/components/Item'
+import List from '@/components/Contest/List'
+import CreateItem from '@/components/Contest/CreateItem'
+import Item from '@/components/Contest/Item'
 import Register from '@/components/User/Register'
 import Login from '@/components/User/Login'
 import Profile from '@/components/User/Profile'
-import UserCreateItem from '@/components/UserCreateItem'
 import AuthGuard from './auth-guard'
 
 Vue.use(Router)
@@ -20,14 +20,20 @@ export default new Router({
     },
     {
       path: '/contest',
-      name: 'Contest',
-      component: Contest
+      name: 'List',
+      component: List
     },
     {
-      path: '/contest/:id',
+      path: '/contest/create-item',
+      name: 'CreateItem',
+      component: CreateItem,
+      beforeEnter: AuthGuard
+    },
+    {
+      path: '/contest/item/:id',
       name: 'Item',
-      props: true,
-      component: Item
+      component: Item,
+      props: true
     },
     {
       path: '/user/register',
@@ -42,12 +48,7 @@ export default new Router({
     {
       path: '/user/profile',
       name: 'Profile',
-      component: Profile
-    },
-    {
-      path: '/user/create-item',
-      name: 'UserCreateItem',
-      component: UserCreateItem,
+      component: Profile,
       beforeEnter: AuthGuard
     }
   ],

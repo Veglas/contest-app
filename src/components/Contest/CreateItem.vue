@@ -1,13 +1,22 @@
 <template>
   <v-container>
     <v-layout>
-      <v-flex xs12 sm6 offset-sm3 lg4 offset-lg4>
+      <v-flex xs12 sm8 offset-sm2 lg6 offset-lg3>
         <v-card>
-          <v-card-text class="px-4">
+          <v-card-text>
 
-            <h1>Загрузить</h1>
+            <h1>Участвовать</h1>
+
+            <p>
+              Для того чтобы участвовать в конкурсе, необходимо:<br>
+              1. Регистарция по реферальной ссылке<br>
+              2. Депозит 500руб<br>
+              3. Удвоить депозить<br>
+              4. Загрузить скриншот с баллансом и никнеймом
+            </p>
 
             <form @submit.prevent="onCreateItem">
+
               <!-- <v-text-field
                 name="imageUrl"
                 label="Ссылка на картинку"
@@ -22,7 +31,7 @@
                   @click="onPickFile"
                   class="ml-0">
                   <v-icon left>insert_photo</v-icon>
-                  Выбрать картинку
+                  Выбрать
                 </v-btn>
                 <input
                   type="file"
@@ -50,7 +59,12 @@
                   Загрузить
                 </v-btn>
               </div>
+
             </form>
+
+            <br>
+
+            <p>* Участвовать можно много раз</p>
 
           </v-card-text>
         </v-card>
