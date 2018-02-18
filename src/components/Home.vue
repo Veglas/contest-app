@@ -10,7 +10,7 @@
 
     <v-container>
       <v-layout row wrap>
-        <v-flex xs4 offset-xs4 class="text-xs-center">
+        <v-flex xs10 offset-xs1 sm4 offset-sm4 class="text-xs-center">
           <v-progress-circular
             indeterminate
             :size="150"
