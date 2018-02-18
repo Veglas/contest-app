@@ -23,6 +23,12 @@
       <v-spacer class="hidden-sm-and-down"/>
 
       <v-toolbar-items class="hidden-sm-and-down">
+
+        <v-btn flat v-if="currentUserId === 'toxjaps6DjgDKrju6hf6Iq2e9FR2'" :to="adminBtn.url">
+          <v-icon left>{{ adminBtn.icon }}</v-icon>
+          {{ adminBtn.title }}
+        </v-btn>
+
         <v-btn flat v-if="userIsAuthenticated" :to="profileBtn.url">
           <v-icon left>{{ profileBtn.icon }}</v-icon>
           {{ profileBtn.title }}
@@ -32,6 +38,7 @@
           <v-icon left>{{ i.icon }}</v-icon>
           {{ i.title }}
         </v-btn>
+
       </v-toolbar-items>
     </v-toolbar>
 
@@ -76,6 +83,15 @@
 
         <v-divider></v-divider>
 
+        <v-list-tile v-if="currentUserId === 'toxjaps6DjgDKrju6hf6Iq2e9FR2'" :to="adminBtn.url">
+          <v-list-tile-action>
+            <v-icon>{{ adminBtn.icon }}</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>{{ adminBtn.title }}</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
         <v-list-tile v-if="userIsAuthenticated" :to="profileBtn.url">
           <v-list-tile-action>
             <v-icon>{{ profileBtn.icon }}</v-icon>
@@ -106,7 +122,8 @@
       return {
         sideNav: null,
         homeBtn: {title: 'Веглас', icon: 'home', url: '/'},
-        profileBtn: {title: 'Профиль', icon: 'perm_identity', url: '/user/profile'}
+        profileBtn: {title: 'Профиль', icon: 'perm_identity', url: '/user/profile'},
+        adminBtn: {title: 'Админ', icon: 'vpn_key', url: '/admin'}
       }
     },
     computed: {
@@ -125,6 +142,12 @@
       },
       userIsAuthenticated () {
         return this.$store.getters.user !== null && this.$store.getters.user !== undefined
+      },
+      currentUserId () {
+        if (!this.userIsAuthenticated) {
+          return false
+        }
+        return this.$store.getters.user.id
       }
     }
   }

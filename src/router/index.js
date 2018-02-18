@@ -7,11 +7,14 @@ import Item from '@/components/Contest/Item'
 import Register from '@/components/User/Register'
 import Login from '@/components/User/Login'
 import Profile from '@/components/User/Profile'
+import MainAdmin from '@/components/Admin/MainAdmin'
 import AuthGuard from './auth-guard'
+// import AdminGuard from './admin-guard'
 
 Vue.use(Router)
 
 export default new Router({
+  // mode: 'history',
   routes: [
     {
       path: '/',
@@ -50,7 +53,13 @@ export default new Router({
       name: 'Profile',
       component: Profile,
       beforeEnter: AuthGuard
+    },
+    {
+      path: '/admin',
+      name: 'MainAdmin',
+      component: MainAdmin,
+      beforeEnter: AuthGuard
+      // beforeEnter: AdminGuard
     }
-  ],
-  mode: 'history'
+  ]
 })
