@@ -122,8 +122,8 @@
       return {
         sideNav: null,
         homeBtn: {title: 'Веглас', icon: 'home', url: '/'},
-        profileBtn: {title: 'Профиль', icon: 'perm_identity', url: '/user/profile'},
-        adminBtn: {title: 'Админ', icon: 'vpn_key', url: '/admin'}
+        profileBtn: {title: 'Профиль', icon: 'portrait', url: '/user/profile'},
+        adminBtn: {title: 'Админ', icon: 'security', url: '/admin'}
       }
     },
     computed: {
