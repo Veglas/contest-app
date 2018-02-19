@@ -4,13 +4,13 @@
       <v-flex xs12 sm8 offset-sm2>
 
         <v-card>
-          <v-card-title>
-            <span class="mr-3">ID билета:</span>
-            <span class="title">{{ item.id }}</span>
-          </v-card-title>
           <v-card-media height="480" :src="item.imageUrl">
 
-            <v-spacer v-if="userIsCreator"/>
+            <v-spacer/>
+
+            <v-btn fab v-if="currentUserId === 'toxjaps6DjgDKrju6hf6Iq2e9FR2'">
+              <v-icon>security</v-icon>
+            </v-btn>
 
             <v-btn fab v-if="userIsCreator">
               <v-icon>mode_edit</v-icon>
@@ -18,6 +18,8 @@
 
           </v-card-media>
           <v-card-text>
+            ID билета: <b>{{ item.id }}</b>
+            <br>
             ID участника: <b>{{ item.creatorId }}</b>
             <br>
             Время загрузки: <i>{{ item.date | date }}</i>
@@ -44,6 +46,12 @@
           return false
         }
         return this.$store.getters.user.id === this.item.creatorId
+      },
+      currentUserId () {
+        if (!this.userIsAuthenticated) {
+          return false
+        }
+        return this.$store.getters.user.id
       }
     }
   }
