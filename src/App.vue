@@ -58,7 +58,7 @@
       </v-card-text>
     </v-card>
 
-    <v-navigation-drawer absolute temporary right v-model="sideNav">
+    <v-navigation-drawer fixed temporary right v-model="sideNav">
       <v-list dense class="pt-0">
 
         <v-list-tile :to="homeBtn.url">
