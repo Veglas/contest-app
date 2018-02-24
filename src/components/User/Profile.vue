@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-layout>
-      <v-flex xs12 sm8 offset-sm2 lg6 offset-lg3>
+      <v-flex xs12 md8 offset-md2 lg6 offset-lg3>
         <v-card>
           <v-card-text>
 
@@ -26,7 +26,7 @@
                   <h4>Ваши билеты</h4>
                 </v-flex>
 
-                <v-flex xs6 v-for="i in items" :key="i.id" v-if="user.id === i.creatorId">
+                <v-flex xs12 sm6 v-for="i in items" :key="i.id" v-if="user.id === i.creatorId">
                   <v-card class="mb-3">
                     <v-card-media
                       height="200"
