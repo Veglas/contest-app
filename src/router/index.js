@@ -61,5 +61,8 @@ export default new Router({
       beforeEnter: AuthGuard
       // beforeEnter: AdminGuard
     }
-  ]
+  ],
+  scrollBehavior (to, from, savedPosition) {
+    return { x: 0, y: 0 }
+  }
 })
