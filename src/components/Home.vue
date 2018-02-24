@@ -11,11 +11,14 @@
     <v-container>
       <v-layout row wrap>
         <v-flex xs10 offset-xs1 sm4 offset-sm4 class="text-xs-center">
+
           <v-progress-circular
+            v-if="loading"
             indeterminate
             :size="150"
-            v-if="loading"
-            color="amber"></v-progress-circular>
+            color="amber"
+          />
+
           <v-card>
             <v-card-media>
               <v-carousel

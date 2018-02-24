@@ -49,6 +49,16 @@
               </div>
 
               <div>
+                <v-text-field
+                  name="isHidden"
+                  id="isHidden"
+                  label="Скрыть"
+                  v-model="isHidden"
+                  required
+                />
+              </div>
+
+              <div>
                 <v-btn
                   class="ml-0"
                   color="success"
@@ -78,12 +88,16 @@
     data () {
       return {
         imageUrl: '',
-        image: null
+        image: null,
+        isWinnerWeek: '',
+        isWinnerMonth: '',
+        isWinnerContest: '',
+        isHidden: ''
       }
     },
     computed: {
       formIsValid () {
-        return this.imageUrl !== ''
+        return this.imageUrl !== '' && this.isHidden !== ''
       }
     },
     methods: {
@@ -96,7 +110,11 @@
         }
         const itemData = {
           image: this.image,
-          date: new Date()
+          date: new Date(),
+          isWinnerWeek: this.isWinnerWeek,
+          isWinnerMonth: this.isWinnerMonth,
+          isWinnerContest: this.isWinnerContest,
+          isHidden: this.isHidden
         }
         this.$store.dispatch('createItem', itemData)
         this.$router.push('/contest')

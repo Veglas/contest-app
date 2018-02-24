@@ -1,5 +1,3 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
 import router from './router'
@@ -9,11 +7,16 @@ import { store } from './store'
 import DateFilter from './filters/date'
 import * as firebase from 'firebase'
 import AlertCmp from './components/Shared/Alert'
+import DialogByAdmin from './components/Edit/DialogByAdmin'
+import DialogByUser from './components/Edit/DialogByUser'
 
 Vue.use(Vuetify)
 Vue.config.productionTip = false
+
 Vue.filter('date', DateFilter)
 Vue.component('app-alert', AlertCmp)
+Vue.component('edit-dialog-by-admin', DialogByAdmin)
+Vue.component('edit-dialog-by-user', DialogByUser)
 
 /* eslint-disable no-new */
 new Vue({
