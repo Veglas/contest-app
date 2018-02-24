@@ -9,16 +9,16 @@
         </v-btn>
       </v-toolbar-items>
 
-      <v-spacer/>
-
-      <v-toolbar-side-icon @click.stop="sideNav = !sideNav" class="hidden-md-and-up"></v-toolbar-side-icon>
-
       <v-toolbar-items class="hidden-sm-and-down">
         <v-btn flat v-for="i in menuItems" :key="i.title" :to="i.url">
           <v-icon left>{{ i.icon }}</v-icon>
           {{ i.title }}
         </v-btn>
       </v-toolbar-items>
+
+      <v-spacer/>
+
+      <v-toolbar-side-icon @click.stop="sideNav = !sideNav" class="hidden-md-and-up"></v-toolbar-side-icon>
 
       <v-spacer class="hidden-sm-and-down"/>
 
