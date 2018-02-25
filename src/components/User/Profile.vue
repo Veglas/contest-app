@@ -33,17 +33,68 @@
                       style="cursor: pointer"
                       @click="onLoadItem(i.id)"
                       v-ripple
-                      :src="i.imageUrl">
+                      :src="i.imageUrl"
+                    >
+
+                      <div class="winners-group" v-if="i.isWinnerContest || i.isWinnerMonth || i.isWinnerWeek">
+                        <v-chip
+                          v-if="i.isWinnerContest"
+                          small
+                          fab
+                          slot="activator"
+                          class="btn-edit"
+                          color="teal darken-1 white--text"
+                          @click="onLoadItem(i.id)"
+                          style="cursor: pointer"
+                        >
+                          <v-icon left>mdi-crown</v-icon>
+                          {{ i.isWinnerContest }}
+                        </v-chip>
+
+                        <v-chip
+                          v-if="i.isWinnerMonth"
+                          small
+                          fab
+                          slot="activator"
+                          class="btn-edit"
+                          color="green darken-1 white--text"
+                          @click="onLoadItem(i.id)"
+                          style="cursor: pointer"
+                        >
+                          <v-icon left>mdi-crown</v-icon>
+                          {{ i.isWinnerMonth }}
+                        </v-chip>
+
+                        <v-chip
+                          v-if="i.isWinnerWeek"
+                          small
+                          ma-1
+                          fab
+                          slot="activator"
+                          class="btn-edit"
+                          color="light-green darken-1 white--text"
+                          @click="onLoadItem(i.id)"
+                          style="cursor: pointer"
+                        >
+                          <v-icon left>mdi-crown</v-icon>
+                          {{ i.isWinnerWeek }}
+                        </v-chip>
+                      </div>
 
                       <v-spacer/>
 
-                      <v-btn
-                        small
-                        fab
-                        class="btn-edit"
-                        @click="onLoadItem(i.id)">
-                        <v-icon>settings</v-icon>
-                      </v-btn>
+                      <v-tooltip top>
+                        <v-btn
+                          small
+                          fab
+                          slot="activator"
+                          class="btn-edit"
+                          color="warning"
+                          @click="onLoadItem(i.id)">
+                          <v-icon>mdi-settings</v-icon>
+                        </v-btn>
+                        <span>Редактировать</span>
+                      </v-tooltip>
 
                     </v-card-media>
                     <v-card-text class="pa-1">

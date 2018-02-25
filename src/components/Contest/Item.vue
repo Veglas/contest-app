@@ -38,16 +38,14 @@
                 </v-chip>
               </div>
               <div class="buttons-group">
-                <edit-item-dialog
-                  v-if="userIsCreator || currentUserId === 'toxjaps6DjgDKrju6hf6Iq2e9FR2'"
+                <edit-by-admin
+                  v-if="currentUserId === 'toxjaps6DjgDKrju6hf6Iq2e9FR2'"
                   :item="item"
                 />
-                <!--<v-btn fab v-if="currentUserId === 'toxjaps6DjgDKrju6hf6Iq2e9FR2'" color="warning">-->
-                  <!--<v-icon>security</v-icon>-->
-                <!--</v-btn>-->
-                <!--<v-btn fab v-if="userIsCreator">-->
-                  <!--<v-icon>mode_edit</v-icon>-->
-                <!--</v-btn>-->
+                <edit-by-user
+                  v-if="userIsCreator"
+                  :item="item"
+                />
               </div>
             </div>
 
@@ -58,14 +56,14 @@
             ID участника: <b>{{ item.creatorId }}</b>
             <br>
             Время загрузки: <i>{{ item.date | date }}</i>
-            <br>
-            isWinnerWeek: <i>{{ item.isWinnerWeek }}</i>
-            <br>
-            isWinnerMonth: <i>{{ item.isWinnerMonth }}</i>
-            <br>
-            isWinnerContest: <i>{{ item.isWinnerContest }}</i>
-            <br>
-            isHidden: <i>{{ item.isHidden }}</i>
+            <!--<br>-->
+            <!--isWinnerWeek: <i>{{ item.isWinnerWeek }}</i>-->
+            <!--<br>-->
+            <!--isWinnerMonth: <i>{{ item.isWinnerMonth }}</i>-->
+            <!--<br>-->
+            <!--isWinnerContest: <i>{{ item.isWinnerContest }}</i>-->
+            <!--<br>-->
+            <!--isHidden: <i>{{ item.isHidden }}</i>-->
           </v-card-text>
         </v-card>
 

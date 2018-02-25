@@ -5,18 +5,8 @@
       fab
       color="warning"
       slot="activator"
-      v-if="currentUserId === 'toxjaps6DjgDKrju6hf6Iq2e9FR2'"
     >
       <v-icon>mdi-security</v-icon>
-    </v-btn>
-
-    <v-btn
-      fab
-      color="warning"
-      slot="activator"
-      v-if="userIsCreator"
-    >
-      <v-icon>mdi-pencil</v-icon>
     </v-btn>
 
     <v-card>
@@ -69,30 +59,30 @@
           </v-flex>
         </v-layout>
 
-        <v-layout align-center wrap>
-          <v-flex xs12>
-            <v-switch
-              color="red darken-1"
-              name="isHidden"
-              id="isHidden"
-              :label="`Cкрыть: ${editedIsHidden.toString()}`"
-              v-model="editedIsHidden"
-            />
-          </v-flex>
-          <v-flex xs12>
-            <v-text-field
-              name="isHidden"
-              id="isHidden"
-              label="Скрыть"
-              v-model="editedIsHidden"
-            />
-          </v-flex>
-        </v-layout>
+        <!--<v-layout align-center wrap>-->
+          <!--<v-flex xs12>-->
+            <!--<v-switch-->
+              <!--color="red darken-1"-->
+              <!--name="isHidden"-->
+              <!--id="isHidden"-->
+              <!--:label="`Cкрыть: ${editedIsHidden.toString()}`"-->
+              <!--v-model="editedIsHidden"-->
+            <!--/>-->
+          <!--</v-flex>-->
+          <!--<v-flex xs12>-->
+            <!--<v-text-field-->
+              <!--name="isHidden"-->
+              <!--id="isHidden"-->
+              <!--label="Скрыть"-->
+              <!--v-model="editedIsHidden"-->
+            <!--/>-->
+          <!--</v-flex>-->
+        <!--</v-layout>-->
 
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn flat @click.stop="editDialogByAdmin=false">Отмена</v-btn>
+        <v-btn @click.stop="editDialogByAdmin=false">Отмена</v-btn>
         <v-btn color="error" @click="onRemove">Удалить</v-btn>
         <v-btn color="warning" @click="onSaveChanges">Сохранить</v-btn>
       </v-card-actions>

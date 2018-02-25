@@ -7,14 +7,16 @@ import { store } from './store'
 import DateFilter from './filters/date'
 import * as firebase from 'firebase'
 import AlertCmp from './components/Shared/Alert'
-import EditItemDialog from './components/Shared/EditItemDialog'
+import EditByAdmin from './components/Edit/EditByAdmin'
+import EditByUser from './components/Edit/EditByUser'
 
 Vue.use(Vuetify)
 Vue.config.productionTip = false
 
 Vue.filter('date', DateFilter)
 Vue.component('app-alert', AlertCmp)
-Vue.component('edit-item-dialog', EditItemDialog)
+Vue.component('edit-by-admin', EditByAdmin)
+Vue.component('edit-by-user', EditByUser)
 
 /* eslint-disable no-new */
 new Vue({

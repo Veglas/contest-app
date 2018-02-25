@@ -1,5 +1,4 @@
 <template>
-
   <v-container>
     <v-layout>
       <v-flex xs12>
@@ -10,7 +9,7 @@
               <v-layout row wrap>
 
                 <v-flex xs12 sm6>
-                  <h1>Конкурс</h1>
+                  <h1>Все билеты</h1>
                 </v-flex>
 
                 <v-flex xs12 sm6 class="text-sm-right">
@@ -21,7 +20,7 @@
                 </v-flex>
 
                 <v-flex xs12>
-                  <span>Недавно загруженные билеты, учавствующие в розыгрыше</span>
+                  <span>Список билетов, учавствующих в розыгрыше</span>
                 </v-flex>
 
                 <v-progress-circular
@@ -38,18 +37,70 @@
                       style="cursor: pointer"
                       @click="onLoadItem(i.id)"
                       v-ripple
-                      :src="i.imageUrl">
+                      :src="i.imageUrl"
+                    >
 
-                      <v-spacer v-if="currentUserId === i.creatorId"/>
+                      <div class="winners-group" v-if="i.isWinnerContest || i.isWinnerMonth || i.isWinnerWeek">
+                        <v-chip
+                          v-if="i.isWinnerContest"
+                          small
+                          fab
+                          slot="activator"
+                          class="btn-edit"
+                          color="teal darken-1 white--text"
+                          @click="onLoadItem(i.id)"
+                          style="cursor: pointer"
+                        >
+                          <v-icon left>mdi-crown</v-icon>
+                          {{ i.isWinnerContest }}
+                        </v-chip>
 
-                      <v-btn
-                        v-if="userIsAuthenticated && currentUserId === i.creatorId"
-                        small
-                        fab
-                        class="btn-edit"
-                        @click="onLoadItem(i.id)">
-                        <v-icon>settings</v-icon>
-                      </v-btn>
+                        <v-chip
+                          v-if="i.isWinnerMonth"
+                          small
+                          fab
+                          slot="activator"
+                          class="btn-edit"
+                          color="green darken-1 white--text"
+                          @click="onLoadItem(i.id)"
+                          style="cursor: pointer"
+                        >
+                          <v-icon left>mdi-crown</v-icon>
+                          {{ i.isWinnerMonth }}
+                        </v-chip>
+
+                        <v-chip
+                          v-if="i.isWinnerWeek"
+                          small
+                          ma-1
+                          fab
+                          slot="activator"
+                          class="btn-edit"
+                          color="light-green darken-1 white--text"
+                          @click="onLoadItem(i.id)"
+                          style="cursor: pointer"
+                        >
+                          <v-icon left>mdi-crown</v-icon>
+                          {{ i.isWinnerWeek }}
+                        </v-chip>
+                      </div>
+
+                      <v-spacer/>
+
+                      <v-tooltip top>
+                        <v-btn
+                          v-if="currentUserId === i.creatorId"
+                          small
+                          fab
+                          slot="activator"
+                          class="btn-edit"
+                          color="warning"
+                          @click="onLoadItem(i.id)">
+                          <v-icon>mdi-settings</v-icon>
+                        </v-btn>
+                        <span>Редактировать</span>
+                      </v-tooltip>
+
                     </v-card-media>
                     <v-card-text class="pa-2">
                       <b>{{ i.id }}</b>
@@ -76,14 +127,13 @@
       </v-flex>
     </v-layout>
   </v-container>
-
 </template>
 
 <script>
   export default {
     data () {
       return {
-        page: 1,
+//        page: 1,
         createItemBtn: {title: 'Участвовать', url: '/contest/create-item', icon: 'file_upload'}
       }
     },
