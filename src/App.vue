@@ -10,9 +10,9 @@
       </v-toolbar-items>
 
       <v-toolbar-items class="hidden-xs-only">
-        <v-btn flat v-for="i in menuItems" :key="i.title" :to="i.url">
-          <v-icon left>{{ i.icon }}</v-icon>
-          {{ i.title }}
+        <v-btn flat :to="contestBtn.url">
+          <v-icon left>{{ contestBtn.icon }}</v-icon>
+          {{ contestBtn.title }}
         </v-btn>
       </v-toolbar-items>
 
@@ -32,9 +32,14 @@
           {{ profileBtn.title }}
         </v-btn>
 
-        <v-btn flat v-if="!userIsAuthenticated" v-for="i in menuUserNotAuthenticatedItems" :key="i.title" :to="i.url">
-          <v-icon left>{{ i.icon }}</v-icon>
-          {{ i.title }}
+        <v-btn flat v-if="!userIsAuthenticated" :to="loginBtn.url">
+          <v-icon left>{{ loginBtn.icon }}</v-icon>
+          {{ loginBtn.title }}
+        </v-btn>
+
+        <v-btn flat v-if="!userIsAuthenticated" :to="registerBtn.url">
+          <v-icon left>{{ registerBtn.icon }}</v-icon>
+          {{ registerBtn.title }}
         </v-btn>
 
       </v-toolbar-items>
@@ -49,7 +54,7 @@
         <v-container>
           <v-layout row wrap>
             <v-flex xs12>
-                  <span>&copy; {{ new Date().getFullYear() }} Все права защищены | 18+ | Веглас Casino Streams</span>
+              <span>&copy; {{ new Date().getFullYear() }} Все права защищены | 18+ | Веглас Casino Streams</span>
             </v-flex>
           </v-layout>
         </v-container>
@@ -68,18 +73,14 @@
           </v-list-tile-content>
         </v-list-tile>
 
-        <v-divider></v-divider>
-
-        <v-list-tile v-for="i in menuItems" :key="i.title" :to="i.url">
+        <v-list-tile :to="contestBtn.url">
           <v-list-tile-action>
-            <v-icon>{{ i.icon }}</v-icon>
+            <v-icon>{{ contestBtn.icon }}</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title>{{ i.title }}</v-list-tile-title>
+            <v-list-tile-title>{{ contestBtn.title }}</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-
-        <v-divider></v-divider>
 
         <v-list-tile v-if="currentUserId === 'toxjaps6DjgDKrju6hf6Iq2e9FR2'" :to="adminBtn.url">
           <v-list-tile-action>
@@ -99,12 +100,21 @@
           </v-list-tile-content>
         </v-list-tile>
 
-        <v-list-tile v-if="!userIsAuthenticated" v-for="i in menuUserNotAuthenticatedItems" :key="i.title" :to="i.url">
+        <v-list-tile v-if="!userIsAuthenticated" :to="loginBtn.url">
           <v-list-tile-action>
-            <v-icon>{{ i.icon }}</v-icon>
+            <v-icon>{{ loginBtn.icon }}</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title>{{ i.title }}</v-list-tile-title>
+            <v-list-tile-title>{{ loginBtn.title }}</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
+        <v-list-tile v-if="!userIsAuthenticated" :to="registerBtn.url">
+          <v-list-tile-action>
+            <v-icon>{{ registerBtn.icon }}</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>{{ registerBtn.title }}</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
 
@@ -119,25 +129,15 @@
     data () {
       return {
         sideNav: null,
-        homeBtn: {title: 'Веглас', icon: 'home', url: '/'},
-        profileBtn: {title: 'Профиль', icon: 'portrait', url: '/user/profile'},
-        adminBtn: {title: 'Админ', icon: 'security', url: '/admin'}
+        homeBtn: {title: 'Лотерея', icon: 'mdi-crown', url: '/'},
+        profileBtn: {title: 'Профиль', icon: 'mdi-account', url: '/user/profile'},
+        adminBtn: {title: 'Админ', icon: 'mdi-security', url: '/admin'},
+        contestBtn: {title: 'Все билеты', icon: 'mdi-clover', url: '/contest'},
+        loginBtn: {title: 'Вход', icon: 'lock_open', url: '/user/login'},
+        registerBtn: {title: 'Регистрация', icon: 'face', url: '/user/register'}
       }
     },
     computed: {
-      menuItems () {
-        let menuItems = [
-          {title: 'Конкурс', url: '/contest', icon: 'monetization_on'}
-        ]
-        return menuItems
-      },
-      menuUserNotAuthenticatedItems () {
-        let menuUserNotAuthenticatedItems = [
-          {title: 'Регистрация', url: '/user/register', icon: 'lock_open'},
-          {title: 'Вход', url: '/user/login', icon: 'face'}
-        ]
-        return menuUserNotAuthenticatedItems
-      },
       userIsAuthenticated () {
         return this.$store.getters.user !== null && this.$store.getters.user !== undefined
       },
