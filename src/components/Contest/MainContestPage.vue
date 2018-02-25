@@ -24,7 +24,14 @@
                   <span>Недавно загруженные билеты, учавствующие в розыгрыше</span>
                 </v-flex>
 
-                <v-flex xs12 sm6 md3 v-for="i in items" :key="i.id">
+                <v-progress-circular
+                  v-if="loading"
+                  indeterminate
+                  :size="150"
+                  color="amber"
+                />
+
+                <v-flex v-else xs12 sm6 md3 v-for="i in items" :key="i.id">
                   <v-card class="mb-3">
                     <v-card-media
                       height="200"
@@ -55,14 +62,14 @@
               </v-layout>
             </v-container>
 
-            <div class="text-xs-center">
-              <v-pagination
-                :length="15"
-                v-model="page"
-                :total-visible="7"
-                color="success"
-              />
-            </div>
+            <!--<div class="text-xs-center">-->
+              <!--<v-pagination-->
+                <!--:length="15"-->
+                <!--v-model="page"-->
+                <!--:total-visible="7"-->
+                <!--color="success"-->
+              <!--/>-->
+            <!--</div>-->
 
           </v-card-text>
         </v-card>
@@ -92,6 +99,9 @@
           return false
         }
         return this.$store.getters.user.id
+      },
+      loading () {
+        return this.$store.getters.loading
       }
     },
     methods: {

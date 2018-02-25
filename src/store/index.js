@@ -59,9 +59,9 @@ export const store = new Vuex.Store({
       if (payload.isHidden) {
         item.isHidden = payload.isHidden
       }
-      if (payload.date) {
-        item.date = payload.date
-      }
+    },
+    removeTicket (state, payload) {
+      state.loadedItems.push(payload)
     }
   },
 
@@ -146,13 +146,22 @@ export const store = new Vuex.Store({
       if (payload.isHidden) {
         updateObj.isHidden = payload.isHidden
       }
-      if (payload.date) {
-        updateObj.date = payload.date
-      }
       firebase.database().ref('items').child(payload.id).update(updateObj)
         .then(() => {
-          commit('setLoading', false)
           commit('updateTicket', payload)
+          commit('setLoading', false)
+        })
+        .catch((error) => {
+          console.log(error)
+          commit('setLoading', false)
+        })
+    },
+    removeTicketData ({commit}, payload) {
+      commit('setLoading', true)
+      firebase.database().ref('items').child(payload.id).remove()
+        .then(() => {
+          // commit('removeTicket', payload)
+          commit('setLoading', false)
         })
         .catch((error) => {
           console.log(error)

@@ -38,17 +38,13 @@
                 </v-chip>
               </div>
               <div class="buttons-group">
-                <edit-dialog-by-admin
+                <edit-item-dialog
+                  v-if="userIsCreator || currentUserId === 'toxjaps6DjgDKrju6hf6Iq2e9FR2'"
                   :item="item"
-                  v-if="currentUserId === 'toxjaps6DjgDKrju6hf6Iq2e9FR2'"
                 />
                 <!--<v-btn fab v-if="currentUserId === 'toxjaps6DjgDKrju6hf6Iq2e9FR2'" color="warning">-->
                   <!--<v-icon>security</v-icon>-->
                 <!--</v-btn>-->
-                <edit-dialog-by-user
-                  :item="item"
-                  v-if="userIsCreator"
-                />
                 <!--<v-btn fab v-if="userIsCreator">-->
                   <!--<v-icon>mode_edit</v-icon>-->
                 <!--</v-btn>-->
@@ -112,16 +108,9 @@
     position: absolute;
     top: 0;
     right: 0;
-    /*text-align: right;*/
   }
   .buttons-group {
-    /*position: absolute;*/
-    /*top: 0;*/
-    /*right: 0;*/
   }
   .winners-group {
-    /*position: absolute;*/
-    /*top: 60px;*/
-    /*right: 0;*/
   }
 </style>

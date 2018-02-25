@@ -48,15 +48,14 @@
                   width="150">
               </div>
 
-              <div>
-                <v-text-field
-                  name="isHidden"
-                  id="isHidden"
-                  label="Скрыть"
-                  v-model="isHidden"
-                  required
-                />
-              </div>
+              <!--<div>-->
+                <!--<v-text-field-->
+                  <!--name="isHidden"-->
+                  <!--id="isHidden"-->
+                  <!--label="Скрыть"-->
+                  <!--v-model="isHidden"-->
+                <!--/>-->
+              <!--</div>-->
 
               <div>
                 <v-btn
@@ -97,7 +96,7 @@
     },
     computed: {
       formIsValid () {
-        return this.imageUrl !== '' && this.isHidden !== ''
+        return this.imageUrl !== ''
       }
     },
     methods: {

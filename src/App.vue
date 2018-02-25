@@ -9,7 +9,7 @@
         </v-btn>
       </v-toolbar-items>
 
-      <v-toolbar-items class="hidden-sm-and-down">
+      <v-toolbar-items class="hidden-xs-only">
         <v-btn flat v-for="i in menuItems" :key="i.title" :to="i.url">
           <v-icon left>{{ i.icon }}</v-icon>
           {{ i.title }}
