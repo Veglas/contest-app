@@ -18,11 +18,9 @@
 
       <v-spacer/>
 
-      <v-toolbar-side-icon @click.stop="sideNav = !sideNav" class="hidden-md-and-up"></v-toolbar-side-icon>
+      <v-toolbar-side-icon @click.stop="sideNav = !sideNav" class="hidden-sm-and-up"></v-toolbar-side-icon>
 
-      <v-spacer class="hidden-sm-and-down"/>
-
-      <v-toolbar-items class="hidden-sm-and-down">
+      <v-toolbar-items class="hidden-xs-only">
 
         <v-btn flat v-if="currentUserId === 'toxjaps6DjgDKrju6hf6Iq2e9FR2'" :to="adminBtn.url">
           <v-icon left>{{ adminBtn.icon }}</v-icon>
