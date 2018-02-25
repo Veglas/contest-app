@@ -127,7 +127,7 @@
     data () {
       return {
 //        page: 1,
-        createItemBtn: {title: 'Участвовать', url: '/contest/create-item', icon: 'file_upload'}
+        createItemBtn: {title: 'Участвовать', icon: 'mdi-upload', url: '/contest/create-item'}
       }
     },
     computed: {

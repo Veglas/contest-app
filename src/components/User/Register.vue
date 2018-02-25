@@ -39,6 +39,8 @@
                 <!--:rules="[comparePasswords]"-->
                 <!--required></v-text-field>-->
 
+              <p>За попытку наебать - бан!</p>
+
               <div>
                 <v-btn
                   class="ml-0"

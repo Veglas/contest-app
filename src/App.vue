@@ -148,8 +148,8 @@
         profileBtn: {title: 'Профиль', icon: 'mdi-account', url: '/user/profile'},
         adminBtn: {title: 'Админ', icon: 'mdi-security', url: '/admin'},
         contestBtn: {title: 'Все билеты', icon: 'mdi-clover', url: '/contest'},
-        loginBtn: {title: 'Вход', icon: 'lock_open', url: '/user/login'},
-        registerBtn: {title: 'Регистрация', icon: 'face', url: '/user/register'}
+        loginBtn: {title: 'Вход', icon: 'mdi-key', url: '/user/login'},
+        registerBtn: {title: 'Регистрация', icon: 'mdi-account-plus', url: '/user/register'}
       }
     },
     computed: {

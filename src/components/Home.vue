@@ -104,40 +104,42 @@
 
               </v-layout>
             </v-container>
-            <v-container>
-              <v-layout>
 
-                <v-flex xs10 offset-xs1 sm4 offset-sm4 class="text-xs-center">
-                  <h1>Новые билеты</h1>
-                  <v-card>
-                    <v-progress-circular
-                      v-if="loading"
-                      indeterminate
-                      :size="170"
-                      color="amber"
-                    />
-                    <v-card-media v-else>
-                      <v-carousel class="my-carousel">
-                        <v-carousel-item
-                          v-for="i in items2"
-                          lazy
-                          light
-                          :src="i.imageUrl"
-                          :key="i.id"
-                        >
-                          <div
-                            class="my-carousel-bg-link"
-                            v-ripple
-                            @click="onLoadItem(i.id)"
-                          />
-                        </v-carousel-item>
-                      </v-carousel>
-                    </v-card-media>
-                  </v-card>
-                </v-flex>
+            <!--<v-container>-->
+              <!--<v-layout>-->
 
-              </v-layout>
-            </v-container>
+                <!--<v-flex xs10 offset-xs1 sm4 offset-sm4 class="text-xs-center">-->
+                  <!--<h1>Новые билеты</h1>-->
+                  <!--<v-card>-->
+                    <!--<v-progress-circular-->
+                      <!--v-if="loading"-->
+                      <!--indeterminate-->
+                      <!--:size="170"-->
+                      <!--color="amber"-->
+                    <!--/>-->
+                    <!--<v-card-media v-else>-->
+                      <!--<v-carousel class="my-carousel">-->
+                        <!--<v-carousel-item-->
+                          <!--v-for="i in items2"-->
+                          <!--lazy-->
+                          <!--light-->
+                          <!--:src="i.imageUrl"-->
+                          <!--:key="i.id"-->
+                        <!--&gt;-->
+                          <!--<div-->
+                            <!--class="my-carousel-bg-link"-->
+                            <!--v-ripple-->
+                            <!--@click="onLoadItem(i.id)"-->
+                          <!--/>-->
+                        <!--</v-carousel-item>-->
+                      <!--</v-carousel>-->
+                    <!--</v-card-media>-->
+                  <!--</v-card>-->
+                <!--</v-flex>-->
+
+              <!--</v-layout>-->
+            <!--</v-container>-->
+
           </v-card-text>
         </v-card>
       </v-flex>
@@ -149,16 +151,16 @@
   export default {
     data () {
       return {
-        createItemBtn: {title: 'Участвовать', url: '/contest/create-item', icon: 'file_upload'}
+        createItemBtn: {title: 'Участвовать', icon: 'mdi-upload', url: '/contest/create-item'}
       }
     },
     computed: {
       items () {
         return this.$store.getters.loadedSortedByDateItems
       },
-      items2 () {
-        return this.$store.getters.loadedLastFewItems
-      },
+//      items2 () {
+//        return this.$store.getters.loadedLastFewItems
+//      },
       userIsAuthenticated () {
         return this.$store.getters.user !== null && this.$store.getters.user !== undefined
       },

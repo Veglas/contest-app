@@ -120,8 +120,8 @@
   export default {
     data () {
       return {
-        createItemBtn: {title: 'Участвовать', url: '/contest/create-item', icon: 'file_upload'},
-        logoutBtn: {title: 'Выйти', icon: 'exit_to_app'}
+        createItemBtn: {title: 'Участвовать', icon: 'mdi-upload', url: '/contest/create-item'},
+        logoutBtn: {title: 'Выйти', icon: 'mdi-exit-to-app'}
       }
     },
     computed: {
