@@ -1,152 +1,182 @@
 <template>
-  <div>
+  <v-container>
+    <v-layout>
+      <v-flex xs12>
+        <v-card>
+          <v-card-text>
+            <v-container grid-list-md>
+              <v-layout row wrap>
 
-    <v-parallax height="300" src="http://veglas.org/img/hero_bg_bw_1.jpg">
-      <v-layout column align-center justify-center>
-        <h1 class="white--text">Влад Гаситес</h1>
-        <h4 class="white--text">Casino Streams</h4>
-      </v-layout>
-    </v-parallax>
+                <v-flex xs12 sm6>
+                  <h1>Победители</h1>
+                </v-flex>
 
-    <v-container>
-      <v-layout row wrap>
-        <v-flex xs10 offset-xs1 sm4 offset-sm4 class="text-xs-center">
-          <v-progress-circular
-            indeterminate
-            :size="150"
-            v-if="loading"
-            color="amber"></v-progress-circular>
-          <v-card>
-            <v-card-media>
-              <v-carousel
-                v-if="!loading"
-                class="my-carousel">
-                  <v-carousel-item
-                    v-for="i in items"
-                    lazy
-                    light
-                    :src="i.imageUrl"
-                    :key="i.id">
-                      <div
-                        class="my-carousel-bg-link"
-                        v-ripple
-                        @click="onLoadItem(i.id)"></div>
-                  </v-carousel-item>
-              </v-carousel>
-            </v-card-media>
-          </v-card>
-        </v-flex>
+                <v-flex xs12 sm6 class="text-sm-right">
+                  <v-btn large color="success" class="mx-0" :to="createItemBtn.url">
+                    <v-icon left>{{ createItemBtn.icon }}</v-icon>
+                    {{ createItemBtn.title }}
+                  </v-btn>
+                </v-flex>
 
-        <v-flex xs12 sm6 offset-sm3>
-          ВЛАД ГАСИТЕС<br>
-          <br>
-          ЕЖЕДНЕВНЫЕ СТРИМЫ<br>
-          Ежедневные стримы на канале Веглас Casino Streams в 20.00<br>
+                <v-flex xs12>
+                  <span>Список билетов, победивших в розыгрыше</span>
+                </v-flex>
 
-          Смотреть<br>
+                <v-progress-circular
+                  v-if="loading"
+                  indeterminate
+                  :size="150"
+                  color="amber"
+                />
 
-          РЕАЛЬНЫЕ РОЗЫГРЫШИ<br>
-          Разыгрываються ежедневные конкурсы<br>
+                <v-flex v-else xs12 sm6 md3 v-for="i in items" :key="i.id" v-if="i.isWinnerContest || i.isWinnerMonth || i.isWinnerWeek">
+                  <v-card class="mb-3">
+                    <v-card-media
+                      height="200"
+                      style="cursor: pointer"
+                      @click="onLoadItem(i.id)"
+                      v-ripple
+                      :src="i.imageUrl"
+                    >
 
-          Узнать<br>
+                      <div class="winners-group" v-if="i.isWinnerContest || i.isWinnerMonth || i.isWinnerWeek">
+                        <v-chip
+                          v-if="i.isWinnerContest"
+                          small
+                          fab
+                          slot="activator"
+                          class="btn-edit"
+                          color="teal darken-1 white--text"
+                          @click="onLoadItem(i.id)"
+                          style="cursor: pointer"
+                        >
+                          <v-icon left>mdi-crown</v-icon>
+                          {{ i.isWinnerContest }}
+                        </v-chip>
 
-          ТОЛЬКО ЛУЧШИЕ КАЗИНО<br>
-          Топовые казино с мощной отдачей<br>
+                        <v-chip
+                          v-if="i.isWinnerMonth"
+                          small
+                          fab
+                          slot="activator"
+                          class="btn-edit"
+                          color="green darken-1 white--text"
+                          @click="onLoadItem(i.id)"
+                          style="cursor: pointer"
+                        >
+                          <v-icon left>mdi-crown</v-icon>
+                          {{ i.isWinnerMonth }}
+                        </v-chip>
 
-          Смотреть<br>
+                        <v-chip
+                          v-if="i.isWinnerWeek"
+                          small
+                          ma-1
+                          fab
+                          slot="activator"
+                          class="btn-edit"
+                          color="light-green darken-1 white--text"
+                          @click="onLoadItem(i.id)"
+                          style="cursor: pointer"
+                        >
+                          <v-icon left>mdi-crown</v-icon>
+                          {{ i.isWinnerWeek }}
+                        </v-chip>
+                      </div>
 
-          ТОП ЛУЧШИХ КАЗИНО ОНЛАЙН<br>
-          Подборка лучших онлайн казино от Влада Гаситес с кучей бонусов и фриспинов<br>
+                      <v-spacer/>
 
-          JoyCasino<br>
-          100%<br>
-          РЕЙТИНГ<br>
-          100%<br>
-          ВАЛЮТА<br>
-          Ք $ €<br>
-          💰 JoyCasino<br>
-          🎁 Бонус 100% до 100000 RUB. Бонус 150% до 15000 RUB. Бонус 200% до 2500 RUB. Ставки на спорт, большой выбор живых дилеров, конкурсы с поддержкой производителей слотов, внутренние конкурсы для игроков разного уровня. Начисление компоинтов с обменом на деньги. Быстрые выводы. При пополнении дополнительные фриспины в любимых слотах - запрашиваем у менеджеров в чате.<br>
+                      <v-tooltip top>
+                        <v-btn
+                          v-if="currentUserId === i.creatorId"
+                          small
+                          fab
+                          slot="activator"
+                          class="btn-edit"
+                          color="warning"
+                          @click="onLoadItem(i.id)">
+                          <v-icon>mdi-settings</v-icon>
+                        </v-btn>
+                        <span>Редактировать</span>
+                      </v-tooltip>
 
-          Free Bootstrap Template by ProBootstrap.com<br>
-          100%<br>
-          РЕЙТИНГ<br>
-          100%<br>
-          ВАЛЮТА<br>
-          Ք $ €<br>
-          💰 Columbus<br>
-          🎁 Внеси первый депозит и получи +105% от этой суммы на свой счет wager x35. Постоянные конкурсы, внутренние розыгрыши для игроков разного уровня, большая коллекция слотов, хороший выбор живых дилеров. Быстрый вывод, интересные акции и бонусы.<br>
+                    </v-card-media>
+                    <v-card-text class="pa-2">
+                      <b>{{ i.id }}</b>
+                      <br>
+                      <i>{{ i.date | date }}</i>
+                    </v-card-text>
+                  </v-card>
+                </v-flex>
 
-          Pobeda<br>
-          99%<br>
-          РЕЙТИНГ<br>
-          100%<br>
-          ВАЛЮТА<br>
-          Ք $ €<br>
-          💰 Pobeda<br>
-          🎁 Бонус 125% на первый депозит, с очень низким wager х25, который распространяется только на бонус. Особенность этого бонуса, что не начисляют его сразу на счет, но зато никаких ограничений по времени отыгрыша, сроку действия. Каждого первого числа кэшбэк 10%. Космическая скорость вывода денег, хорошая поддержка. Отрицательных моментов не заметил<br>
+              </v-layout>
+            </v-container>
+            <v-container>
+              <v-layout>
 
-          Cadoola<br>
-          98%<br>
-          РЕЙТИНГ<br>
-          100%<br>
-          ВАЛЮТА<br>
-          Ք $ €<br>
-          💰 Cadoola<br>
-          🎁 Бонус 100% и 200, вращений wager х40 предоставляют бонусы выходного дня, разыгрывают денежные призы, большой выбор слотов, хорошая поддержка быстрый вывод денег. Рекомендую для игроков мелкого и среднего уровня ставок. Отрицательные моменты - не во всех играх можно откручивать бонус, и нет диванной фортуны)))<br>
+                <v-flex xs10 offset-xs1 sm4 offset-sm4 class="text-xs-center">
+                  <h1>Новые билеты</h1>
+                  <v-card>
+                    <v-progress-circular
+                      v-if="loading"
+                      indeterminate
+                      :size="170"
+                      color="amber"
+                    />
+                    <v-card-media v-else>
+                      <v-carousel class="my-carousel">
+                        <v-carousel-item
+                          v-for="i in items2"
+                          lazy
+                          light
+                          :src="i.imageUrl"
+                          :key="i.id"
+                        >
+                          <div
+                            class="my-carousel-bg-link"
+                            v-ripple
+                            @click="onLoadItem(i.id)"
+                          />
+                        </v-carousel-item>
+                      </v-carousel>
+                    </v-card-media>
+                  </v-card>
+                </v-flex>
 
-          МЕГАРОЗЫГРЫШ!<br>
-          СКОРО КРУТОЙ МЕГАРОЗЫГРЫШ!<br>
-
-          Новости<br>
-          ЯНВАРЬ, 2018<br>
-          Конкурс года!!!<br>
-          Скоро состоиться МЕГАРОЗЫГРЫШ!!!<br>
-
-          ЯНВАРЬ, 2018<br>
-          Конкурс на стриме<br>
-          Ежедневные конкурсы на стриме<br>
-
-          Подробнее<br>
-
-          Веглас Casino Streams<br>
-          Стримы от проверенных онлайн казино популярным стримером Влад Гаситес на канале Веглас Casino Streams<br>
-
-          Заносы больше x100 выкладываем в коротких видеороликах и удобно размещаем в плейлистах<br>
-
-          Влад Гаситес: "Я благодарен всем азартным людям, которые смотрят мои видео и разделяют со мной эмоции от выигрышей и проигрышей и которые искренне желают увидеть здесь самые большие заносы в слоты."<br>
-
-          Заносы<br>
-
-          Влад Гаситес<br>
-          Популярный стример онлайн казино<br>
-
-          18+<br>
-          Просмотр сайта разрешается только лицам старше 18 лет.<br>
-
-          Контакты<br>
-          VK Личные сообщения<br>
-          VK Сообщество<br>
-          Youtube канал<br>
-          Веглас Casino Streams<br>
-          Стримы от проверенных онлайн казино популярным стримером Влад Гаситес на канале Веглас Casino Streams<br>
-
-          Заносы больше x100 выкладываем в коротких видеороликах и удобно размещаем в плейлистах<br>
-
-          © 2018 Все права защищены | 18+ | Веглас Casino Streams<br>
-
-          Вверх сайта <br>
-        </v-flex>
-      </v-layout>
-    </v-container>
-
-  </div>
+              </v-layout>
+            </v-container>
+          </v-card-text>
+        </v-card>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
   export default {
+    data () {
+      return {
+        createItemBtn: {title: 'Участвовать', url: '/contest/create-item', icon: 'file_upload'}
+      }
+    },
     computed: {
       items () {
+        return this.$store.getters.loadedSortedByDateItems
+      },
+      items2 () {
         return this.$store.getters.loadedLastFewItems
+      },
+      loading () {
+        return this.$store.getters.loading
+      },
+      userIsAuthenticated () {
+        return this.$store.getters.user !== null && this.$store.getters.user !== undefined
+      },
+      currentUserId () {
+        if (!this.userIsAuthenticated) {
+          return false
+        }
+        return this.$store.getters.user.id
       },
       loading () {
         return this.$store.getters.loading

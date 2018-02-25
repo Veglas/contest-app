@@ -1,9 +1,7 @@
 <template>
-  <div>
-    <v-alert error dismissible @input="onClose" :value="true">
-      {{ text }}
-    </v-alert>
-  </div>
+  <v-alert error dismissible @input="onClose" :value="true">
+    {{ text }}
+  </v-alert>
 </template>
 
 <script>
