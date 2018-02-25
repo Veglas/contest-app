@@ -1,6 +1,6 @@
 {
-  "name": "vuetify-pwa",
-  "short_name": "vuetify-pwa",
+  "name": "Veglas App",
+  "short_name": "Veglas App",
   "icons": [
     {
       "src": "/static/img/icons/android-chrome-192x192.png",
