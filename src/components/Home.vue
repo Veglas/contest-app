@@ -40,64 +40,57 @@
                     >
 
                       <div class="winners-group" v-if="i.isWinnerContest || i.isWinnerMonth || i.isWinnerWeek">
-                        <v-chip
-                          v-if="i.isWinnerContest"
-                          small
-                          fab
-                          slot="activator"
-                          class="btn-edit"
-                          color="teal darken-1 white--text"
-                          @click="onLoadItem(i.id)"
-                          style="cursor: pointer"
-                        >
-                          <v-icon left>mdi-crown</v-icon>
-                          {{ i.isWinnerContest }}
-                        </v-chip>
 
-                        <v-chip
-                          v-if="i.isWinnerMonth"
-                          small
-                          fab
-                          slot="activator"
-                          class="btn-edit"
-                          color="green darken-1 white--text"
-                          @click="onLoadItem(i.id)"
-                          style="cursor: pointer"
-                        >
-                          <v-icon left>mdi-crown</v-icon>
-                          {{ i.isWinnerMonth }}
-                        </v-chip>
+                        <div v-if="i.isWinnerContest">
+                          <v-chip
+                            small
+                            color="teal darken-1 white--text"
+                            @click="onLoadItem(i.id)"
+                            style="cursor: pointer"
+                          >
+                            <v-icon left>mdi-crown</v-icon>
+                            <span>{{ i.isWinnerContest }}</span>
+                          </v-chip>
+                        </div>
 
-                        <v-chip
-                          v-if="i.isWinnerWeek"
-                          small
-                          ma-1
-                          fab
-                          slot="activator"
-                          class="btn-edit"
-                          color="light-green darken-1 white--text"
-                          @click="onLoadItem(i.id)"
-                          style="cursor: pointer"
-                        >
-                          <v-icon left>mdi-crown</v-icon>
-                          {{ i.isWinnerWeek }}
-                        </v-chip>
+                        <div v-if="i.isWinnerMonth">
+                          <v-chip
+                            small
+                            color="green darken-1 white--text"
+                            @click="onLoadItem(i.id)"
+                            style="cursor: pointer"
+                          >
+                            <v-icon left>mdi-crown</v-icon>
+                            <span>{{ i.isWinnerMonth }}</span>
+                          </v-chip>
+                        </div>
+
+                        <div v-if="i.isWinnerWeek">
+                          <v-chip
+                            small
+                            color="light-green darken-1 white--text"
+                            @click="onLoadItem(i.id)"
+                            style="cursor: pointer"
+                          >
+                            <v-icon left>mdi-crown</v-icon>
+                            <span>{{ i.isWinnerWeek }}</span>
+                          </v-chip>
+                        </div>
+
                       </div>
 
                       <v-spacer/>
 
-                      <v-tooltip top>
+                      <v-tooltip top v-if="currentUserId === i.creatorId">
                         <v-btn
-                          v-if="currentUserId === i.creatorId"
                           small
                           fab
                           slot="activator"
-                          class="btn-edit"
-                          color="warning"
+                          color="info"
                           @click="onLoadItem(i.id)">
-                          <v-icon>mdi-settings</v-icon>
+                          <v-icon>mdi-account</v-icon>
                         </v-btn>
-                        <span>Редактировать</span>
+                        <span>Ваш билет</span>
                       </v-tooltip>
 
                     </v-card-media>
@@ -165,9 +158,6 @@
       },
       items2 () {
         return this.$store.getters.loadedLastFewItems
-      },
-      loading () {
-        return this.$store.getters.loading
       },
       userIsAuthenticated () {
         return this.$store.getters.user !== null && this.$store.getters.user !== undefined

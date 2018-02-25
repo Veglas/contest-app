@@ -3,15 +3,15 @@
 
     <v-btn
       fab
-      color="warning"
+      color="info"
       slot="activator"
     >
       <v-icon>mdi-security</v-icon>
     </v-btn>
 
     <v-card>
-      <v-container pa-1>
-      <v-card-title class="headline">Редактировать</v-card-title>
+      <v-container>
+      <!--<v-card-title class="headline">Редактировать</v-card-title>-->
       <v-card-text v-if="currentUserId === 'toxjaps6DjgDKrju6hf6Iq2e9FR2'">
 
         <v-layout align-center row>
@@ -83,7 +83,6 @@
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn @click.stop="editDialogByAdmin=false">Отмена</v-btn>
-        <v-btn color="error" @click="onRemove">Удалить</v-btn>
         <v-btn color="warning" @click="onSaveChanges">Сохранить</v-btn>
       </v-card-actions>
       </v-container>
@@ -124,12 +123,6 @@
           isWinnerContest: this.editedIsWinnerContest,
           isHidden: this.editedIsHidden
         })
-      },
-      onRemove () {
-        this.$store.dispatch('removeTicketData', {
-          id: this.item.id
-        })
-        this.$router.push('/contest')
       }
     },
     computed: {

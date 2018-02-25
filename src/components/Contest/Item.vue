@@ -13,40 +13,40 @@
         <v-card v-else>
           <v-card-text>
 
-            <div class="extra-slot text-xs-right">
-              <div class="winners-group">
-                <v-chip
-                  v-if="item.isWinnerContest"
-                  color="teal darken-1 white--text"
-                >
+            <div class="winners-group">
+
+              <div v-if="item.isWinnerContest">
+                <v-chip color="teal darken-1 white--text">
                   <v-icon left>mdi-crown</v-icon>
                   <span>{{ item.isWinnerContest }}</span>
                 </v-chip>
-                <v-chip
-                  v-if="item.isWinnerMonth"
-                  color="green darken-1 white--text"
-                >
+              </div>
+
+              <div v-if="item.isWinnerMonth">
+                <v-chip color="green darken-1 white--text">
                   <v-icon left>mdi-crown</v-icon>
                   <span>{{ item.isWinnerMonth }}</span>
                 </v-chip>
-                <v-chip
-                  v-if="item.isWinnerWeek"
-                  color="light-green darken-1 white--text"
-                >
+              </div>
+
+              <div v-if="item.isWinnerWeek">
+                <v-chip color="light-green darken-1 white--text">
                   <v-icon left>mdi-crown</v-icon>
                   <span>{{ item.isWinnerWeek }}</span>
                 </v-chip>
               </div>
-              <div class="buttons-group">
-                <edit-by-admin
-                  v-if="currentUserId === 'toxjaps6DjgDKrju6hf6Iq2e9FR2'"
-                  :item="item"
-                />
-                <edit-by-user
-                  v-if="userIsCreator"
-                  :item="item"
-                />
-              </div>
+
+            </div>
+
+            <div class="buttons-group text-xs-right">
+              <edit-by-admin
+                v-if="currentUserId === 'toxjaps6DjgDKrju6hf6Iq2e9FR2'"
+                :item="item"
+              />
+              <edit-by-user
+                v-if="userIsCreator || currentUserId === 'toxjaps6DjgDKrju6hf6Iq2e9FR2'"
+                :item="item"
+              />
             </div>
 
             <img :src="item.imageUrl" style="max-width: 100%">
@@ -103,12 +103,15 @@
 
 <style scoped>
   .extra-slot {
+  }
+  .winners-group {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .buttons-group {
     position: absolute;
     top: 0;
     right: 0;
-  }
-  .buttons-group {
-  }
-  .winners-group {
   }
 </style>

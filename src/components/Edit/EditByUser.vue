@@ -3,17 +3,18 @@
 
     <v-btn
       fab
-      color="warning"
+      color="error"
       slot="activator"
     >
-      <v-icon>mdi-pencil</v-icon>
+      <v-icon>mdi-delete</v-icon>
     </v-btn>
 
     <v-card>
-      <v-container pa-1>
-      <v-card-title class="headline">Редактировать</v-card-title>
+      <v-container>
+      <!--<v-card-title class="headline">Удаление</v-card-title>-->
 
       <v-card-text>
+        Вы уверены, что хотите удалить этот билет?
       </v-card-text>
 
       <v-card-actions>

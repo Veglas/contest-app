@@ -3,16 +3,21 @@
 
     <v-toolbar dark class="black">
       <v-toolbar-items>
-        <v-btn flat :to="homeBtn.url" exact>
-          <v-icon>{{ homeBtn.icon }}</v-icon>
-          <v-toolbar-title>{{ homeBtn.title }}</v-toolbar-title>
+        <v-btn flat :href="veglasBtn.url">
+          <v-icon style="color: #00b535">{{ veglasBtn.icon }}</v-icon>
+          <v-toolbar-title style="color: #d89924">{{ veglasBtn.title }}</v-toolbar-title>
         </v-btn>
       </v-toolbar-items>
 
       <v-toolbar-items class="hidden-xs-only">
+        <v-btn flat :to="homeBtn.url" exact>
+          <v-icon>{{ homeBtn.icon }}</v-icon>
+          <v-toolbar-title>{{ homeBtn.title }}</v-toolbar-title>
+        </v-btn>
+
         <v-btn flat :to="contestBtn.url">
           <v-icon left>{{ contestBtn.icon }}</v-icon>
-          {{ contestBtn.title }}
+          <span>{{ contestBtn.title }}</span>
         </v-btn>
       </v-toolbar-items>
 
@@ -24,22 +29,22 @@
 
         <v-btn flat v-if="currentUserId === 'toxjaps6DjgDKrju6hf6Iq2e9FR2'" :to="adminBtn.url">
           <v-icon left>{{ adminBtn.icon }}</v-icon>
-          {{ adminBtn.title }}
+          <span>{{ adminBtn.title }}</span>
         </v-btn>
 
         <v-btn flat v-if="userIsAuthenticated" :to="profileBtn.url">
           <v-icon left>{{ profileBtn.icon }}</v-icon>
-          {{ profileBtn.title }}
+          <span>{{ profileBtn.title }}</span>
         </v-btn>
 
         <v-btn flat v-if="!userIsAuthenticated" :to="loginBtn.url">
           <v-icon left>{{ loginBtn.icon }}</v-icon>
-          {{ loginBtn.title }}
+          <span>{{ loginBtn.title }}</span>
         </v-btn>
 
         <v-btn flat v-if="!userIsAuthenticated" :to="registerBtn.url">
           <v-icon left>{{ registerBtn.icon }}</v-icon>
-          {{ registerBtn.title }}
+          <span>{{ registerBtn.title }}</span>
         </v-btn>
 
       </v-toolbar-items>
@@ -63,6 +68,15 @@
 
     <v-navigation-drawer fixed temporary right v-model="sideNav">
       <v-list dense class="pt-0">
+
+        <v-list-tile :to="veglasBtn.url">
+          <v-list-tile-action>
+            <v-icon>{{ veglasBtn.icon }}</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>{{ veglasBtn.title }}</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
 
         <v-list-tile :to="homeBtn.url">
           <v-list-tile-action>
@@ -129,6 +143,7 @@
     data () {
       return {
         sideNav: null,
+        veglasBtn: {title: 'Веглас', icon: 'mdi-bitcoin', url: 'https://veglas.org'},
         homeBtn: {title: 'Лотерея', icon: 'mdi-crown', url: '/'},
         profileBtn: {title: 'Профиль', icon: 'mdi-account', url: '/user/profile'},
         adminBtn: {title: 'Админ', icon: 'mdi-security', url: '/admin'},
