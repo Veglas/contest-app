@@ -19,21 +19,21 @@
                   v-if="item.isWinnerContest"
                   color="teal darken-1 white--text"
                 >
-                  <v-icon left>flag</v-icon>
+                  <v-icon left>mdi-crown</v-icon>
                   <span>{{ item.isWinnerContest }}</span>
                 </v-chip>
                 <v-chip
                   v-if="item.isWinnerMonth"
                   color="green darken-1 white--text"
                 >
-                  <v-icon left>flag</v-icon>
+                  <v-icon left>mdi-crown</v-icon>
                   <span>{{ item.isWinnerMonth }}</span>
                 </v-chip>
                 <v-chip
                   v-if="item.isWinnerWeek"
                   color="light-green darken-1 white--text"
                 >
-                  <v-icon left>flag</v-icon>
+                  <v-icon left>mdi-crown</v-icon>
                   <span>{{ item.isWinnerWeek }}</span>
                 </v-chip>
               </div>

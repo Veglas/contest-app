@@ -34,7 +34,7 @@
               <v-flex xs12 md1>
                 <div><b>Победитель</b></div>
                 <div v-for="i in items" :key="i.id">
-                  <v-icon style="font-size: 20px">monetization_on</v-icon>
+                  <v-icon style="font-size: 20px">mdi-crown</v-icon>
                 </div>
               </v-flex>
 

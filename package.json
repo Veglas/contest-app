@@ -1,7 +1,6 @@
 {
   "dependencies": {
     "firebase": "^4.9.1",
-    "mdi": "^2.1.19",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
     "vuetify": "^1.0.1",
