@@ -47,21 +47,18 @@ export const store = new Vuex.Store({
       const item = state.loadedItems.find(item => {
         return item.id === payload.id
       })
-      if (payload.isWinnerWeek) {
-        item.isWinnerWeek = payload.isWinnerWeek
-      }
-      if (payload.isWinnerMonth) {
-        item.isWinnerMonth = payload.isWinnerMonth
-      }
-      if (payload.isWinnerContest) {
-        item.isWinnerContest = payload.isWinnerContest
-      }
-      if (payload.isHidden) {
-        item.isHidden = payload.isHidden
-      }
+      item.isWinnerWeek = payload.isWinnerWeek
+      item.isWinnerMonth = payload.isWinnerMonth
+      item.isWinnerContest = payload.isWinnerContest
+      item.isHidden = payload.isHidden
     },
     removeTicket (state, payload) {
-      state.loadedItems.push(payload)
+      const index = state.loadedItems.findIndex(item => {
+        return item.id === payload
+      })
+      if (index !== -1) {
+        state.loadedItems.splice(index, 1)
+      }
     }
   },
 
@@ -134,18 +131,10 @@ export const store = new Vuex.Store({
     updateTicketData ({commit}, payload) {
       commit('setLoading', true)
       const updateObj = {}
-      if (payload.isWinnerWeek) {
-        updateObj.isWinnerWeek = payload.isWinnerWeek
-      }
-      if (payload.isWinnerMonth) {
-        updateObj.isWinnerMonth = payload.isWinnerMonth
-      }
-      if (payload.isWinnerContest) {
-        updateObj.isWinnerContest = payload.isWinnerContest
-      }
-      if (payload.isHidden) {
-        updateObj.isHidden = payload.isHidden
-      }
+      updateObj.isWinnerWeek = payload.isWinnerWeek
+      updateObj.isWinnerMonth = payload.isWinnerMonth
+      updateObj.isWinnerContest = payload.isWinnerContest
+      updateObj.isHidden = payload.isHidden
       firebase.database().ref('items').child(payload.id).update(updateObj)
         .then(() => {
           commit('updateTicket', payload)
@@ -160,7 +149,7 @@ export const store = new Vuex.Store({
       commit('setLoading', true)
       firebase.database().ref('items').child(payload.id).remove()
         .then(() => {
-          // commit('removeTicket', payload)
+          commit('removeTicket', payload.id)
           commit('setLoading', false)
         })
         .catch((error) => {
