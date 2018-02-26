@@ -7,7 +7,14 @@
 
             <h1>Профиль</h1>
 
-            <v-container grid-list-md>
+            <v-progress-circular
+              v-if="loading"
+              indeterminate
+              :size="150"
+              color="amber"
+            />
+
+            <v-container grid-list-md v-else>
               <v-layout row wrap>
 
                 <v-flex xs12>
@@ -26,14 +33,7 @@
                   <h4>Ваши билеты</h4>
                 </v-flex>
 
-                <v-progress-circular
-                  v-if="loading"
-                  indeterminate
-                  :size="150"
-                  color="amber"
-                />
-
-                <v-layout wrap v-else>
+                <v-layout wrap>
                   <v-flex xs12 sm6 v-for="i in items" :key="i.id" v-if="user.id === i.creatorId">
                     <v-card class="mb-3">
                       <v-card-media

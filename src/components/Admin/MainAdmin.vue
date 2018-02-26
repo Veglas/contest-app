@@ -3,16 +3,17 @@
     <v-layout>
       <v-flex xs12>
 
-        <v-progress-circular
-          v-if="loading"
-          indeterminate
-          :size="150"
-          color="amber"
-        />
-
-        <v-card v-else>
+        <v-card>
           <v-card-text>
-            <v-layout wrap>
+
+            <v-progress-circular
+              v-if="loading"
+              indeterminate
+              :size="150"
+              color="amber"
+            />
+
+            <v-layout wrap v-else>
 
               <v-flex xs12>
                 <h1>Админ</h1>
