@@ -1,21 +1,23 @@
-# vuetify-pwa
+# veglas
 
-> A Vue.js project
+_Web development of Veglas Contest site_
 
-## Build Setup
+### Used
 
-``` bash
-# install dependencies
-npm install
+[VueJS](https://vuejs.org) - progressive javascript framework
 
-# serve with hot reload at localhost:8080
-npm run dev
+[VuetifyJS](https://vuetifyjs.com) - material component framework for [VueJS](https://vuejs.org)
 
-# build for production with minification
-npm run build
+[Firebase](https://firebase.google.com) - realtime database by [Google Developers](https://developers.google.com)
 
-# build for production and view the bundle analyzer report
-npm run build --report
-```
+### Content
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+[https://veglas-db.firebaseio.com/.json](https://veglas-db.firebaseio.com/.json)
+
+### Run
+
+`npm i`
+
+`npm run dev`
+
+#### Have fun! :)
