@@ -21,8 +21,8 @@ Vue.component('delete-item-dialog', DeleteItemDialog)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  router,
   store,
+  router,
   components: { App },
   template: '<App/>',
   created () {

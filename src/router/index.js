@@ -24,7 +24,13 @@ export default new Router({
     {
       path: '/contest',
       name: 'MainContestPage',
-      component: MainContestPage
+      component: MainContestPage,
+      beforeEnter: function (to, from, next) {
+        if (to.name === 'MainContestPage') {
+          this.a.app.$store.dispatch('loadItems')
+        }
+        next()
+      }.bind(this)
     },
     {
       path: '/contest/create-item',
