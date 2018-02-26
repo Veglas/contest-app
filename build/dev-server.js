@@ -2,7 +2,7 @@
 
 require('./check-versions')()
 
-const config = require('../config')
+const config = require('../config/index')
 if (!process.env.NODE_ENV) {
   process.env.NODE_ENV = JSON.parse(config.dev.env.NODE_ENV)
 }
@@ -12,7 +12,7 @@ const path = require('path')
 const express = require('express')
 const webpack = require('webpack')
 const proxyMiddleware = require('http-proxy-middleware')
-const webpackConfig = require('./webpack.dev.conf')
+const webpackConfig = require('./webpack.dev.conf.js')
 
 // default port where dev server listens for incoming traffic
 const port = process.env.PORT || config.dev.port
