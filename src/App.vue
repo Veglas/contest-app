@@ -58,8 +58,9 @@
       <v-card-text>
         <v-container>
           <v-layout row wrap>
-            <v-flex xs12>
-              <span>&copy; {{ new Date().getFullYear() }} Все права защищены | 18+ | Веглас Casino Streams</span>
+            <v-flex xs12 sm6>
+              <div>&copy; {{ new Date().getFullYear() }} Все права защищены | 18+ | Веглас Casino Streams</div>
+              <Network/>
             </v-flex>
           </v-layout>
         </v-container>
@@ -139,7 +140,12 @@
 </template>
 
 <script>
+  import Network from './components/Network.vue'
+
   export default {
+    components: {
+      Network
+    },
     data () {
       return {
         sideNav: null,
