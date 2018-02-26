@@ -51,8 +51,8 @@ export default new Router({
     {
       path: '/user/profile',
       name: 'Profile',
-      component: Profile,
-      beforeEnter: AuthGuard
+      component: Profile
+      // beforeEnter: AuthGuard
     },
     {
       path: '/admin',

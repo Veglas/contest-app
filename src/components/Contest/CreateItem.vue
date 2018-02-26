@@ -30,7 +30,7 @@
                 <v-btn
                   @click="onPickFile"
                   class="ml-0">
-                  <v-icon left>insert_photo</v-icon>
+                  <v-icon left>mdi-image</v-icon>
                   Выбрать
                 </v-btn>
                 <input
@@ -64,7 +64,7 @@
                   large
                   :disabled="!formIsValid"
                   type="submit">
-                  <v-icon left>file_upload</v-icon>
+                  <v-icon left>mdi-upload</v-icon>
                   Загрузить
                 </v-btn>
               </div>

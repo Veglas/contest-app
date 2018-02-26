@@ -74,9 +74,6 @@
       }
     },
     computed: {
-//      comparePasswords () {
-//        return this.password !== this.confirmPassword ? 'Пароль не совпадает' : ''
-//      },
       user () {
         return this.$store.getters.user
       },

@@ -1,13 +1,24 @@
 <template>
   <v-dialog v-model="editDialogByAdmin" max-width="330">
 
-    <v-btn
-      fab
-      color="error"
-      slot="activator"
-    >
-      <v-icon>mdi-delete</v-icon>
-    </v-btn>
+    <!--<v-btn-->
+      <!--fab-->
+      <!--color="error"-->
+      <!--slot="activator"-->
+    <!--&gt;-->
+      <!--<v-icon>mdi-delete</v-icon>-->
+    <!--</v-btn>-->
+
+    <v-tooltip top slot="activator" color="error" open-delay="0">
+      <v-btn
+        fab
+        color="error"
+        slot="activator"
+      >
+        <v-icon>mdi-delete</v-icon>
+      </v-btn>
+      <span>Удалить</span>
+    </v-tooltip>
 
     <v-card>
       <v-container>
@@ -41,17 +52,7 @@
       }
     },
     methods: {
-//      toggleIsHidden () {
-//        this.editedIsHidden = !this.editedIsHidden
-//        return this.editedIsHidden
-//      },
       onSaveChanges () {
-//        if (this.editedIsWinnerWeek.trim() === '' || this.editedIsWinnerMonth.trim() === '' || this.editedIsWinnerContest.trim() === '' || this.editedIsHidden.trim() === '') {
-//          return
-//        }
-//        if (this.editedIsHidden === true || this.editedIsHidden === false) {
-//          return
-//        }
         this.editDialogByAdmin = false
         this.$store.dispatch('updateTicketData', {
           id: this.item.id,

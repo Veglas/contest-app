@@ -23,7 +23,9 @@
 
       <v-spacer/>
 
-      <v-toolbar-side-icon @click.stop="sideNav = !sideNav" class="hidden-sm-and-up"></v-toolbar-side-icon>
+      <v-toolbar-side-icon @click.stop="sideNav = !sideNav" class="hidden-sm-and-up">
+        <v-icon>mdi-menu</v-icon>
+      </v-toolbar-side-icon>
 
       <v-toolbar-items class="hidden-xs-only">
 
@@ -54,22 +56,10 @@
       <router-view/>
     </v-content>
 
-    <v-card flat tile dark class="grey darken-4">
-      <v-card-text>
-        <v-container>
-          <v-layout row wrap>
-            <v-flex xs12>
-              <span>&copy; {{ new Date().getFullYear() }} Все права защищены | 18+ | Веглас Casino Streams</span>
-            </v-flex>
-          </v-layout>
-        </v-container>
-      </v-card-text>
-    </v-card>
-
     <v-navigation-drawer fixed temporary right v-model="sideNav">
       <v-list dense class="pt-0">
 
-        <v-list-tile :to="veglasBtn.url">
+        <v-list-tile :href="veglasBtn.url">
           <v-list-tile-action>
             <v-icon>{{ veglasBtn.icon }}</v-icon>
           </v-list-tile-action>
@@ -135,11 +125,29 @@
       </v-list>
     </v-navigation-drawer>
 
+    <v-card flat tile dark class="grey darken-4">
+      <v-card-text>
+        <v-container>
+          <v-layout row wrap>
+            <v-flex xs12 sm6>
+              <div>&copy; {{ new Date().getFullYear() }} Все права защищены | 18+ | Веглас Casino Streams</div>
+              <Network/>
+            </v-flex>
+          </v-layout>
+        </v-container>
+      </v-card-text>
+    </v-card>
+
   </v-app>
 </template>
 
 <script>
+  import Network from './components/Network.vue'
+
   export default {
+    components: {
+      Network
+    },
     data () {
       return {
         sideNav: null,
