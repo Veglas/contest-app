@@ -29,7 +29,7 @@
                   color="amber"
                 />
 
-                <v-flex v-else xs12 sm6 md3 v-for="i in items" :key="i.id" v-if="i.isWinnerContest || i.isWinnerMonth || i.isWinnerWeek">
+                <v-flex xs12 sm6 md3 v-for="i in items" :key="i.id" v-if="!loading || i.isWinnerContest || i.isWinnerMonth || i.isWinnerWeek">
                   <v-card class="mb-3">
                     <v-card-media
                       height="200"
@@ -94,51 +94,18 @@
                       </v-tooltip>
 
                     </v-card-media>
+
                     <v-card-text class="pa-2">
                       <b>{{ i.id }}</b>
                       <br>
                       <i>{{ i.date | date }}</i>
                     </v-card-text>
+
                   </v-card>
                 </v-flex>
 
               </v-layout>
             </v-container>
-
-            <!--<v-container>-->
-              <!--<v-layout>-->
-
-                <!--<v-flex xs10 offset-xs1 sm4 offset-sm4 class="text-xs-center">-->
-                  <!--<h1>Новые билеты</h1>-->
-                  <!--<v-card>-->
-                    <!--<v-progress-circular-->
-                      <!--v-if="loading"-->
-                      <!--indeterminate-->
-                      <!--:size="170"-->
-                      <!--color="amber"-->
-                    <!--/>-->
-                    <!--<v-card-media v-else>-->
-                      <!--<v-carousel class="my-carousel">-->
-                        <!--<v-carousel-item-->
-                          <!--v-for="i in items2"-->
-                          <!--lazy-->
-                          <!--light-->
-                          <!--:src="i.imageUrl"-->
-                          <!--:key="i.id"-->
-                        <!--&gt;-->
-                          <!--<div-->
-                            <!--class="my-carousel-bg-link"-->
-                            <!--v-ripple-->
-                            <!--@click="onLoadItem(i.id)"-->
-                          <!--/>-->
-                        <!--</v-carousel-item>-->
-                      <!--</v-carousel>-->
-                    <!--</v-card-media>-->
-                  <!--</v-card>-->
-                <!--</v-flex>-->
-
-              <!--</v-layout>-->
-            <!--</v-container>-->
 
           </v-card-text>
         </v-card>
