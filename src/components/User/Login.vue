@@ -4,7 +4,7 @@
       <v-flex xs12 sm6 offset-sm3 lg4 offset-lg4>
         <app-alert v-if="error" @dismissed="onDismissed" :text="error.message"></app-alert>
         <v-card>
-          <v-card-text class="px-4">
+          <v-card-text>
 
             <h1>Вход</h1>
 
@@ -16,7 +16,7 @@
                 v-model="email"
                 type="email"
                 autocomplete="email"
-                required></v-text-field>
+                required/>
 
               <v-text-field
                 name="password"
@@ -25,7 +25,7 @@
                 v-model="password"
                 type="password"
                 autocomplete="password"
-                required></v-text-field>
+                required/>
 
               <div>
                 <v-btn
@@ -34,9 +34,13 @@
                   large
                   :loading="loading"
                   :disabled="loading"
-                  type="submit">Войти</v-btn>
+                  type="submit"
+                >Войти</v-btn>
               </div>
             </form>
+
+            <br>
+            <router-link to="/user/register">Еще нет аккаунта?</router-link>
 
           </v-card-text>
         </v-card>
@@ -67,7 +71,7 @@
     watch: {
       user (value) {
         if (value !== null && value !== undefined) {
-          this.$router.push('/')
+          this.$router.push('/contest')
         }
       }
     },

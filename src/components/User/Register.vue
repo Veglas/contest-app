@@ -2,9 +2,11 @@
   <v-container>
     <v-layout>
       <v-flex xs12 sm6 offset-sm3 lg4 offset-lg4>
+
         <app-alert v-if="error" @dismissed="onDismissed" :text="error.message"></app-alert>
+
         <v-card>
-          <v-card-text class="px-4">
+          <v-card-text>
 
             <h1>Регистрация</h1>
 
@@ -16,7 +18,7 @@
                 v-model="email"
                 type="email"
                 autocomplete="email"
-                required></v-text-field>
+                required/>
 
               <v-text-field
                 name="password"
@@ -25,17 +27,19 @@
                 v-model="password"
                 type="password"
                 autocomplete="password"
-                required></v-text-field>
+                required/>
 
-              <v-text-field
-                name="confirmPassword"
-                label="Подтвердите пароль"
-                id="confirmPassword"
-                v-model="confirmPassword"
-                type="password"
-                autocomplete="confirm-password"
-                :rules="[comparePasswords]"
-                required></v-text-field>
+              <!--<v-text-field-->
+                <!--name="confirmPassword"-->
+                <!--label="Подтвердите пароль"-->
+                <!--id="confirmPassword"-->
+                <!--v-model="confirmPassword"-->
+                <!--type="password"-->
+                <!--autocomplete="confirm-password"-->
+                <!--:rules="[comparePasswords]"-->
+                <!--required></v-text-field>-->
+
+              <p>За попытку наебать - бан!</p>
 
               <div>
                 <v-btn
@@ -44,12 +48,17 @@
                   large
                   :loading="loading"
                   :disabled="loading"
-                  type="submit">Зарегистрироваться</v-btn>
+                  type="submit"
+                >Зарегистрироваться</v-btn>
               </div>
             </form>
 
+            <br>
+            <router-link to="/user/login">Уже есть аккаунт?</router-link>
+
           </v-card-text>
         </v-card>
+
       </v-flex>
     </v-layout>
   </v-container>
@@ -65,9 +74,9 @@
       }
     },
     computed: {
-      comparePasswords () {
-        return this.password !== this.confirmPassword ? 'Пароль не совпадает' : ''
-      },
+//      comparePasswords () {
+//        return this.password !== this.confirmPassword ? 'Пароль не совпадает' : ''
+//      },
       user () {
         return this.$store.getters.user
       },
@@ -81,7 +90,7 @@
     watch: {
       user (value) {
         if (value !== null && value !== undefined) {
-          this.$router.push('/')
+          this.$router.push('/contest')
         }
       }
     },

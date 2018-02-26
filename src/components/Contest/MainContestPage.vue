@@ -1,21 +1,18 @@
 <template>
   <v-container>
     <v-layout>
-      <v-flex xs12 md8 offset-md2 lg6 offset-lg3>
+      <v-flex xs12>
         <v-card>
           <v-card-text>
-
-            <h1>Профиль</h1>
 
             <v-container grid-list-md>
               <v-layout row wrap>
 
-                <v-flex xs12>
-                  <h4>Ваш ID</h4>
-                  <p><i>{{ $store.getters.user.id }}</i></p>
+                <v-flex xs12 sm6>
+                  <h1>Все билеты</h1>
                 </v-flex>
 
-                <v-flex xs12>
+                <v-flex xs12 sm6 class="text-sm-right">
                   <v-btn large color="success" class="mx-0" :to="createItemBtn.url">
                     <v-icon left>{{ createItemBtn.icon }}</v-icon>
                     {{ createItemBtn.title }}
@@ -23,10 +20,17 @@
                 </v-flex>
 
                 <v-flex xs12>
-                  <h4>Ваши билеты</h4>
+                  <span>Список билетов, учавствующих в розыгрыше</span>
                 </v-flex>
 
-                <v-flex xs12 sm6 v-for="i in items" :key="i.id" v-if="user.id === i.creatorId">
+                <v-progress-circular
+                  v-if="loading"
+                  indeterminate
+                  :size="150"
+                  color="amber"
+                />
+
+                <v-flex v-else xs12 sm6 md3 v-for="i in items" :key="i.id">
                   <v-card class="mb-3">
                     <v-card-media
                       height="200"
@@ -78,7 +82,7 @@
 
                       <v-spacer/>
 
-                      <v-tooltip top>
+                      <v-tooltip top v-if="currentUserId === i.creatorId">
                         <v-btn
                           small
                           fab
@@ -91,7 +95,7 @@
                       </v-tooltip>
 
                     </v-card-media>
-                    <v-card-text class="pa-1">
+                    <v-card-text class="pa-2">
                       <b>{{ i.id }}</b>
                       <br>
                       <i>{{ i.date | date }}</i>
@@ -99,15 +103,17 @@
                   </v-card>
                 </v-flex>
 
-                <v-flex xs12 class="text-xs-right">
-                  <v-btn flat class="mx-0" @click="onLogout">
-                    <v-icon left>{{ logoutBtn.icon }}</v-icon>
-                    {{ logoutBtn.title }}
-                  </v-btn>
-                </v-flex>
-
               </v-layout>
             </v-container>
+
+            <!--<div class="text-xs-center">-->
+              <!--<v-pagination-->
+                <!--:length="15"-->
+                <!--v-model="page"-->
+                <!--:total-visible="7"-->
+                <!--color="success"-->
+              <!--/>-->
+            <!--</div>-->
 
           </v-card-text>
         </v-card>
@@ -120,25 +126,30 @@
   export default {
     data () {
       return {
-        createItemBtn: {title: 'Участвовать', icon: 'mdi-upload', url: '/contest/create-item'},
-        logoutBtn: {title: 'Выйти', icon: 'mdi-exit-to-app'}
+//        page: 1,
+        createItemBtn: {title: 'Участвовать', icon: 'mdi-upload', url: '/contest/create-item'}
       }
     },
     computed: {
       items () {
-        return this.$store.getters.userCreatedItems
+        return this.$store.getters.loadedSortedByDateItems
       },
-      user () {
-        return this.$store.getters.user
+      userIsAuthenticated () {
+        return this.$store.getters.user !== null && this.$store.getters.user !== undefined
+      },
+      currentUserId () {
+        if (!this.userIsAuthenticated) {
+          return false
+        }
+        return this.$store.getters.user.id
+      },
+      loading () {
+        return this.$store.getters.loading
       }
     },
     methods: {
       onLoadItem (id) {
         this.$router.push('/contest/item/' + id)
-      },
-      onLogout () {
-        this.$store.dispatch('logout')
-        this.$router.push('/contest')
       }
     }
   }

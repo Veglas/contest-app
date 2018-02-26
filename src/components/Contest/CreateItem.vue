@@ -1,28 +1,37 @@
 <template>
   <v-container>
     <v-layout>
-      <v-flex xs12 sm6 offset-sm3 lg4 offset-lg4>
+      <v-flex xs12 sm8 offset-sm2 lg6 offset-lg3>
         <v-card>
-          <v-card-text class="px-4">
+          <v-card-text>
 
-            <h1>Загрузить</h1>
+            <h1>Участвовать</h1>
+
+            <p>
+              Для того чтобы участвовать в конкурсе, необходимо:<br>
+              1. Регистарция по реферальной ссылке<br>
+              2. Депозит 500руб<br>
+              3. Удвоить депозить<br>
+              4. Загрузить скриншот с баллансом и никнеймом
+            </p>
 
             <form @submit.prevent="onCreateItem">
-              <v-text-field
+
+              <!-- <v-text-field
                 name="imageUrl"
                 label="Ссылка на картинку"
                 id="image-url"
                 v-model="imageUrl"
                 type="url"
                 autocomplete="imageUrl"
-                required></v-text-field>
+                required></v-text-field> -->
 
               <div>
                 <v-btn
                   @click="onPickFile"
                   class="ml-0">
                   <v-icon left>insert_photo</v-icon>
-                  Выбрать картинку
+                  Выбрать
                 </v-btn>
                 <input
                   type="file"
@@ -39,6 +48,15 @@
                   width="150">
               </div>
 
+              <!--<div>-->
+                <!--<v-text-field-->
+                  <!--name="isHidden"-->
+                  <!--id="isHidden"-->
+                  <!--label="Скрыть"-->
+                  <!--v-model="isHidden"-->
+                <!--/>-->
+              <!--</div>-->
+
               <div>
                 <v-btn
                   class="ml-0"
@@ -50,7 +68,12 @@
                   Загрузить
                 </v-btn>
               </div>
+
             </form>
+
+            <br>
+
+            <p>* Участвовать можно много раз</p>
 
           </v-card-text>
         </v-card>
@@ -64,7 +87,11 @@
     data () {
       return {
         imageUrl: '',
-        image: null
+        image: null,
+        isWinnerWeek: '',
+        isWinnerMonth: '',
+        isWinnerContest: '',
+        isHidden: ''
       }
     },
     computed: {
@@ -82,7 +109,11 @@
         }
         const itemData = {
           image: this.image,
-          date: new Date()
+          date: new Date(),
+          isWinnerWeek: this.isWinnerWeek,
+          isWinnerMonth: this.isWinnerMonth,
+          isWinnerContest: this.isWinnerContest,
+          isHidden: this.isHidden
         }
         this.$store.dispatch('createItem', itemData)
         this.$router.push('/contest')
