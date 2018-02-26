@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="editDialogByAdmin" max-width="330">
+  <v-dialog v-model="editDialogByAdmin" max-width="330" @keydown.enter="onSaveChanges">
 
     <!--<v-btn-->
       <!--fab-->
