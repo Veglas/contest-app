@@ -30,7 +30,7 @@
                 <v-btn
                   @click="onPickFile"
                   class="ml-0">
-                  <v-icon left>insert_photo</v-icon>
+                  <v-icon left>mdi-image</v-icon>
                   Выбрать
                 </v-btn>
                 <input
@@ -48,6 +48,15 @@
                   width="150">
               </div>
 
+              <!--<div>-->
+                <!--<v-text-field-->
+                  <!--name="isHidden"-->
+                  <!--id="isHidden"-->
+                  <!--label="Скрыть"-->
+                  <!--v-model="isHidden"-->
+                <!--/>-->
+              <!--</div>-->
+
               <div>
                 <v-btn
                   class="ml-0"
@@ -55,7 +64,7 @@
                   large
                   :disabled="!formIsValid"
                   type="submit">
-                  <v-icon left>file_upload</v-icon>
+                  <v-icon left>mdi-upload</v-icon>
                   Загрузить
                 </v-btn>
               </div>
@@ -78,7 +87,11 @@
     data () {
       return {
         imageUrl: '',
-        image: null
+        image: null,
+        isWinnerWeek: '',
+        isWinnerMonth: '',
+        isWinnerContest: '',
+        isHidden: ''
       }
     },
     computed: {
@@ -96,7 +109,11 @@
         }
         const itemData = {
           image: this.image,
-          date: new Date()
+          date: new Date(),
+          isWinnerWeek: this.isWinnerWeek,
+          isWinnerMonth: this.isWinnerMonth,
+          isWinnerContest: this.isWinnerContest,
+          isHidden: this.isHidden
         }
         this.$store.dispatch('createItem', itemData)
         this.$router.push('/contest')

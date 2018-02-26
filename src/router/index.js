@@ -57,9 +57,12 @@ export default new Router({
     {
       path: '/admin',
       name: 'MainAdmin',
-      component: MainAdmin,
-      beforeEnter: AuthGuard
+      component: MainAdmin
+      // beforeEnter: AuthGuard
       // beforeEnter: AdminGuard
     }
-  ]
+  ],
+  scrollBehavior (to, from, savedPosition) {
+    return { x: 0, y: 0 }
+  }
 })

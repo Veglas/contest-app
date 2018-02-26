@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-layout>
-      <v-flex xs12 sm8 offset-sm2 lg6 offset-lg3>
+      <v-flex xs12 md8 offset-md2 lg6 offset-lg3>
         <v-card>
           <v-card-text>
 
@@ -26,24 +26,69 @@
                   <h4>Ваши билеты</h4>
                 </v-flex>
 
-                <v-flex xs6 v-for="i in items" :key="i.id" v-if="user.id === i.creatorId">
+                <v-flex xs12 sm6 v-for="i in items" :key="i.id" v-if="user.id === i.creatorId">
                   <v-card class="mb-3">
                     <v-card-media
                       height="200"
                       style="cursor: pointer"
                       @click="onLoadItem(i.id)"
                       v-ripple
-                      :src="i.imageUrl">
+                      :src="i.imageUrl"
+                    >
+
+                      <div class="winners-group" v-if="i.isWinnerContest || i.isWinnerMonth || i.isWinnerWeek">
+
+                        <div v-if="i.isWinnerContest">
+                          <v-chip
+                            small
+                            color="teal darken-1 white--text"
+                            @click="onLoadItem(i.id)"
+                            style="cursor: pointer"
+                          >
+                            <v-icon left>mdi-crown</v-icon>
+                            <span>{{ i.isWinnerContest }}</span>
+                          </v-chip>
+                        </div>
+
+                        <div v-if="i.isWinnerMonth">
+                          <v-chip
+                            small
+                            color="green darken-1 white--text"
+                            @click="onLoadItem(i.id)"
+                            style="cursor: pointer"
+                          >
+                            <v-icon left>mdi-crown</v-icon>
+                            <span>{{ i.isWinnerMonth }}</span>
+                          </v-chip>
+                        </div>
+
+                        <div v-if="i.isWinnerWeek">
+                          <v-chip
+                            small
+                            color="light-green darken-1 white--text"
+                            @click="onLoadItem(i.id)"
+                            style="cursor: pointer"
+                          >
+                            <v-icon left>mdi-crown</v-icon>
+                            <span>{{ i.isWinnerWeek }}</span>
+                          </v-chip>
+                        </div>
+
+                      </div>
 
                       <v-spacer/>
 
-                      <v-btn
-                        small
-                        fab
-                        class="btn-edit"
-                        @click="onLoadItem(i.id)">
-                        <v-icon>settings</v-icon>
-                      </v-btn>
+                      <v-tooltip top>
+                        <v-btn
+                          small
+                          fab
+                          slot="activator"
+                          color="info"
+                          @click="onLoadItem(i.id)">
+                          <v-icon>mdi-account</v-icon>
+                        </v-btn>
+                        <span>Ваш билет</span>
+                      </v-tooltip>
 
                     </v-card-media>
                     <v-card-text class="pa-1">
@@ -75,8 +120,8 @@
   export default {
     data () {
       return {
-        createItemBtn: {title: 'Участвовать', url: '/contest/create-item', icon: 'file_upload'},
-        logoutBtn: {title: 'Выйти', icon: 'exit_to_app'}
+        createItemBtn: {title: 'Участвовать', icon: 'mdi-upload', url: '/contest/create-item'},
+        logoutBtn: {title: 'Выйти', icon: 'mdi-exit-to-app'}
       }
     },
     computed: {

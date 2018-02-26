@@ -16,7 +16,7 @@
                 v-model="email"
                 type="email"
                 autocomplete="email"
-                required></v-text-field>
+                required/>
 
               <v-text-field
                 name="password"
@@ -25,7 +25,7 @@
                 v-model="password"
                 type="password"
                 autocomplete="password"
-                required></v-text-field>
+                required/>
 
               <div>
                 <v-btn
@@ -34,9 +34,13 @@
                   large
                   :loading="loading"
                   :disabled="loading"
-                  type="submit">Войти</v-btn>
+                  type="submit"
+                >Войти</v-btn>
               </div>
             </form>
+
+            <br>
+            <router-link to="/user/register">Еще нет аккаунта?</router-link>
 
           </v-card-text>
         </v-card>

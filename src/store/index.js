@@ -12,22 +12,14 @@ export const store = new Vuex.Store({
     error: null,
     loadedItems: [
       {
-        id: '00000001',
-        imageUrl: 'https://content.sentimony.com/assets/img/releases/large/sencd028/omnisound-destiny.jpg',
-        creatorId: 'user1111',
-        date: '2018-02-11'
-      },
-      {
-        id: '00000002',
-        imageUrl: 'https://content.sentimony.com/assets/img/releases/large/sencd026/overdream-beautiful-thinking.jpg',
-        creatorId: 'user2222',
-        date: '2018-02-10'
-      },
-      {
         id: '00000003',
         imageUrl: 'https://content.sentimony.com/assets/img/releases/large/sencd025/zymosis-insight.jpg',
         creatorId: 'user3333',
-        date: '2018-02-09'
+        date: '2018-02-09',
+        isWinnerWeek: false,
+        isWinnerMonth: false,
+        isWinnerContest: false,
+        isHidden: false
       }
     ]
   },
@@ -50,6 +42,26 @@ export const store = new Vuex.Store({
     },
     createItem (state, payload) {
       state.loadedItems.push(payload)
+    },
+    updateTicket (state, payload) {
+      const item = state.loadedItems.find(item => {
+        return item.id === payload.id
+      })
+      if (payload.isWinnerWeek) {
+        item.isWinnerWeek = payload.isWinnerWeek
+      }
+      if (payload.isWinnerMonth) {
+        item.isWinnerMonth = payload.isWinnerMonth
+      }
+      if (payload.isWinnerContest) {
+        item.isWinnerContest = payload.isWinnerContest
+      }
+      if (payload.isHidden) {
+        item.isHidden = payload.isHidden
+      }
+    },
+    removeTicket (state, payload) {
+      state.loadedItems.push(payload)
     }
   },
 
@@ -66,7 +78,11 @@ export const store = new Vuex.Store({
               creatorId: obj[key].creatorId,
               imageUrl: obj[key].imageUrl,
               byUser: obj[key].byUser,
-              date: obj[key].date
+              date: obj[key].date,
+              isWinnerWeek: obj[key].isWinnerWeek,
+              isWinnerMonth: obj[key].isWinnerMonth,
+              isWinnerContest: obj[key].isWinnerContest,
+              isHidden: obj[key].isHidden
             })
           }
           commit('setLoadedItems', items)
@@ -83,7 +99,10 @@ export const store = new Vuex.Store({
       const item = {
         creatorId: getters.user.id,
         date: payload.date.toISOString(),
-        id: 'asdjlkas98asd9a'
+        isWinnerWeek: payload.isWinnerWeek,
+        isWinnerMonth: payload.isWinnerMonth,
+        isWinnerContest: payload.isWinnerContest,
+        isHidden: payload.isHidden
       }
       let imageUrl
       let key
@@ -110,6 +129,43 @@ export const store = new Vuex.Store({
         })
         .catch((error) => {
           console.log(error)
+        })
+    },
+    updateTicketData ({commit}, payload) {
+      commit('setLoading', true)
+      const updateObj = {}
+      if (payload.isWinnerWeek) {
+        updateObj.isWinnerWeek = payload.isWinnerWeek
+      }
+      if (payload.isWinnerMonth) {
+        updateObj.isWinnerMonth = payload.isWinnerMonth
+      }
+      if (payload.isWinnerContest) {
+        updateObj.isWinnerContest = payload.isWinnerContest
+      }
+      if (payload.isHidden) {
+        updateObj.isHidden = payload.isHidden
+      }
+      firebase.database().ref('items').child(payload.id).update(updateObj)
+        .then(() => {
+          commit('updateTicket', payload)
+          commit('setLoading', false)
+        })
+        .catch((error) => {
+          console.log(error)
+          commit('setLoading', false)
+        })
+    },
+    removeTicketData ({commit}, payload) {
+      commit('setLoading', true)
+      firebase.database().ref('items').child(payload.id).remove()
+        .then(() => {
+          // commit('removeTicket', payload)
+          commit('setLoading', false)
+        })
+        .catch((error) => {
+          console.log(error)
+          commit('setLoading', false)
         })
     },
     signUserUp ({commit}, payload) {
