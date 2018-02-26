@@ -39,11 +39,11 @@
             </div>
 
             <div class="buttons-group text-xs-right">
-              <edit-by-admin
+              <edit-winner-dialog
                 v-if="currentUserId === 'toxjaps6DjgDKrju6hf6Iq2e9FR2'"
                 :item="item"
               />
-              <edit-by-user
+              <delete-item-dialog
                 v-if="userIsCreator || currentUserId === 'toxjaps6DjgDKrju6hf6Iq2e9FR2'"
                 :item="item"
               />
@@ -102,8 +102,6 @@
 </script>
 
 <style scoped>
-  .extra-slot {
-  }
   .winners-group {
     position: absolute;
     top: 0;

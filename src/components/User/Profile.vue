@@ -86,7 +86,7 @@
 
                         <v-spacer/>
 
-                        <v-tooltip top>
+                        <v-tooltip top color="info" open-delay="0">
                           <v-btn
                             small
                             fab

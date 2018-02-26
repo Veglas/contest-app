@@ -1,13 +1,24 @@
 <template>
   <v-dialog v-model="editDialogByAdmin" max-width="330">
 
-    <v-btn
-      fab
-      color="info"
-      slot="activator"
-    >
-      <v-icon>mdi-security</v-icon>
-    </v-btn>
+    <!--<v-btn-->
+      <!--fab-->
+      <!--color="info"-->
+      <!--slot="activator"-->
+    <!--&gt;-->
+      <!--<v-icon>mdi-security</v-icon>-->
+    <!--</v-btn>-->
+
+    <v-tooltip top slot="activator" color="warning" open-delay="0">
+      <v-btn
+        fab
+        color="warning"
+        slot="activator"
+      >
+        <v-icon>mdi-security</v-icon>
+      </v-btn>
+      <span>Победитель</span>
+    </v-tooltip>
 
     <v-card>
       <v-container>

@@ -82,7 +82,7 @@
 
                         <v-spacer/>
 
-                        <v-tooltip top v-if="currentUserId === i.creatorId">
+                        <v-tooltip top v-if="currentUserId === i.creatorId" color="info" open-delay="0">
                           <v-btn
                             small
                             fab

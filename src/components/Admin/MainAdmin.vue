@@ -45,19 +45,19 @@
 
                   <span>
 
-                    <v-tooltip top v-if="i.isWinnerWeek">
+                    <v-tooltip top v-if="i.isWinnerWeek" color="light-green darken-1" open-delay="0">
                       <v-icon style="font-size: 20px" color="light-green darken-1" slot="activator">mdi-crown</v-icon>
                       <span>{{ i.isWinnerWeek }}</span>
                     </v-tooltip>
                     <v-icon v-else style="font-size: 20px" color="grey lighten-2">mdi-crown</v-icon>
 
-                    <v-tooltip top v-if="i.isWinnerMonth">
+                    <v-tooltip top v-if="i.isWinnerMonth" color="green darken-1" open-delay="0">
                       <v-icon style="font-size: 20px" color="green darken-1" slot="activator">mdi-crown</v-icon>
                       <span>{{ i.isWinnerMonth }}</span>
                     </v-tooltip>
                     <v-icon v-else style="font-size: 20px" color="grey lighten-2">mdi-crown</v-icon>
 
-                    <v-tooltip top v-if="i.isWinnerContest">
+                    <v-tooltip top v-if="i.isWinnerContest" color="teal darken-1" open-delay="0">
                       <v-icon style="font-size: 20px" color="teal darken-1" slot="activator">mdi-crown</v-icon>
                       <span>{{ i.isWinnerContest }}</span>
                     </v-tooltip>
