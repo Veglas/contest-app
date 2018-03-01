@@ -152,7 +152,7 @@
       return {
         sideNav: null,
         veglasBtn: {title: 'Веглас', icon: 'mdi-bitcoin', url: 'https://veglas.org'},
-        homeBtn: {title: 'Лотерея', icon: 'mdi-clover', url: '/'},
+        homeBtn: {title: 'Розыгрыш', icon: 'mdi-clover', url: '/'},
         profileBtn: {title: 'Профиль', icon: 'mdi-account', url: '/user/profile'},
         adminBtn: {title: 'Админ', icon: 'mdi-security', url: '/admin'},
         contestBtn: {title: 'Победители', icon: 'mdi-crown', url: '/winners'},
