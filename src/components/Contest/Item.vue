@@ -36,6 +36,20 @@
                 </v-chip>
               </div>
 
+              <div v-if="!item.isHidden">
+                <v-chip color="warning white--text">
+                  <v-icon left>mdi-eye-off</v-icon>
+                  <span>Ожидает модерации</span>
+                </v-chip>
+              </div>
+
+              <div v-else>
+                <v-chip color="success white--text">
+                  <v-icon left>mdi-eye</v-icon>
+                  <span>Билет участвует</span>
+                </v-chip>
+              </div>
+
             </div>
 
             <div class="buttons-group text-xs-right">
@@ -106,10 +120,12 @@
     position: absolute;
     top: 0;
     left: 0;
+    z-index: 10;
   }
   .buttons-group {
     position: absolute;
     top: 0;
     right: 0;
+    z-index: 20;
   }
 </style>

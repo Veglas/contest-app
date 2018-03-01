@@ -44,7 +44,14 @@
                         :src="i.imageUrl"
                       >
 
-                        <div class="winners-group" v-if="i.isWinnerContest || i.isWinnerMonth || i.isWinnerWeek">
+                        <div class="winners-group">
+
+                          <div v-if="!i.isHidden">
+                            <v-chip small color="warning white--text">
+                              <v-icon left>mdi-eye-off</v-icon>
+                              <span>Ожидает модерации</span>
+                            </v-chip>
+                          </div>
 
                           <div v-if="i.isWinnerContest">
                             <v-chip
@@ -150,7 +157,7 @@
       },
       onLogout () {
         this.$store.dispatch('logout')
-        this.$router.push('/contest')
+        this.$router.push('/')
       }
     }
   }

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home'
-import MainContestPage from '@/components/Contest/MainContestPage'
+import Winners from '@/components/Contest/Winners'
 import CreateItem from '@/components/Contest/CreateItem'
 import Item from '@/components/Contest/Item'
 import Register from '@/components/User/Register'
@@ -20,17 +20,17 @@ export default new Router({
       path: '/',
       name: 'Home',
       component: Home
+      // beforeEnter: function (to, from, next) {
+      //   if (to.name === 'Home') {
+      //     this.a.app.$store.dispatch('loadItems')
+      //   }
+      //   next()
+      // }.bind(this)
     },
     {
-      path: '/contest',
-      name: 'MainContestPage',
-      component: MainContestPage,
-      beforeEnter: function (to, from, next) {
-        if (to.name === 'MainContestPage') {
-          this.a.app.$store.dispatch('loadItems')
-        }
-        next()
-      }.bind(this)
+      path: '/winners',
+      name: 'Winners',
+      component: Winners
     },
     {
       path: '/contest/create-item',

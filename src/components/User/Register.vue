@@ -87,7 +87,7 @@
     watch: {
       user (value) {
         if (value !== null && value !== undefined) {
-          this.$router.push('/contest')
+          this.$router.push('/')
         }
       }
     },

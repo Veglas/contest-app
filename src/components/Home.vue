@@ -4,11 +4,12 @@
       <v-flex xs12>
         <v-card>
           <v-card-text>
+
             <v-container grid-list-md>
               <v-layout row wrap>
 
                 <v-flex xs12 sm6>
-                  <h1>Победители</h1>
+                  <h1>Все билеты</h1>
                 </v-flex>
 
                 <v-flex xs12 sm6 class="text-sm-right">
@@ -19,7 +20,7 @@
                 </v-flex>
 
                 <v-flex xs12>
-                  <span>Список билетов, победивших в розыгрыше</span>
+                  <span>Список билетов, участвующих в розыгрыше</span>
                 </v-flex>
 
                 <v-progress-circular
@@ -30,7 +31,8 @@
                 />
 
                 <v-layout wrap v-else>
-                  <v-flex xs12 sm6 md3 v-for="i in items" :key="i.id" v-if="i.isWinnerContest || i.isWinnerMonth || i.isWinnerWeek">
+                  <v-flex xs12 sm6 md3 v-for="i in items" :key="i.id"
+                          v-if="i.isHidden || i.creatorId == currentUserId || currentUserId == 'toxjaps6DjgDKrju6hf6Iq2e9FR2'">
                     <v-card class="mb-3">
                       <v-card-media
                         height="200"
@@ -40,7 +42,14 @@
                         :src="i.imageUrl"
                       >
 
-                        <div class="winners-group" v-if="i.isWinnerContest || i.isWinnerMonth || i.isWinnerWeek">
+                        <div class="winners-group">
+
+                          <div v-if="!i.isHidden">
+                            <v-chip small color="warning white--text">
+                              <v-icon left>mdi-eye-off</v-icon>
+                              <span>Ожидает модерации</span>
+                            </v-chip>
+                          </div>
 
                           <div v-if="i.isWinnerContest">
                             <v-chip
@@ -95,19 +104,26 @@
                         </v-tooltip>
 
                       </v-card-media>
-
                       <v-card-text class="pa-2">
                         <b>{{ i.id }}</b>
                         <br>
                         <i>{{ i.date | date }}</i>
                       </v-card-text>
-
                     </v-card>
                   </v-flex>
-                </v-layout>
 
+                </v-layout>
               </v-layout>
             </v-container>
+
+            <!--<div class="text-xs-center">-->
+            <!--<v-pagination-->
+            <!--:length="15"-->
+            <!--v-model="page"-->
+            <!--:total-visible="7"-->
+            <!--color="success"-->
+            <!--/>-->
+            <!--</div>-->
 
           </v-card-text>
         </v-card>
@@ -148,16 +164,5 @@
   }
 </script>
 
-<style>
-  .my-carousel {
-    height: 220px;
-  }
-  .my-carousel-bg-link {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-  }
+<style scoped>
 </style>

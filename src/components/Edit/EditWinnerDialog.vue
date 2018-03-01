@@ -70,25 +70,18 @@
           </v-flex>
         </v-layout>
 
-        <!--<v-layout align-center wrap>-->
-          <!--<v-flex xs12>-->
-            <!--<v-switch-->
-              <!--color="red darken-1"-->
-              <!--name="isHidden"-->
-              <!--id="isHidden"-->
-              <!--:label="`Cкрыть: ${editedIsHidden.toString()}`"-->
-              <!--v-model="editedIsHidden"-->
-            <!--/>-->
-          <!--</v-flex>-->
-          <!--<v-flex xs12>-->
-            <!--<v-text-field-->
-              <!--name="isHidden"-->
-              <!--id="isHidden"-->
-              <!--label="Скрыть"-->
-              <!--v-model="editedIsHidden"-->
-            <!--/>-->
-          <!--</v-flex>-->
-        <!--</v-layout>-->
+        <v-layout align-center wrap>
+          <v-flex xs12>
+            <br>
+            <v-switch
+              color="success"
+              name="isHidden"
+              id="isHidden"
+              :label="`Модерация: ${editedIsHidden.toString()}`"
+              v-model="editedIsHidden"
+            />
+          </v-flex>
+        </v-layout>
 
       </v-card-text>
       <v-card-actions>

@@ -116,7 +116,7 @@
           isHidden: this.isHidden
         }
         this.$store.dispatch('createItem', itemData)
-        this.$router.push('/contest')
+        this.$router.push('/')
       },
       onPickFile () {
         this.$refs.fileInput.click()
