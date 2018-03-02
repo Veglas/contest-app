@@ -13,10 +13,7 @@
                 </v-flex>
 
                 <v-flex xs12 sm6 class="text-sm-right">
-                  <v-btn large color="success" class="mx-0" :to="createItemBtn.url">
-                    <v-icon left>{{ createItemBtn.icon }}</v-icon>
-                    {{ createItemBtn.title }}
-                  </v-btn>
+                  <btn-create-item/>
                 </v-flex>
 
                 <v-flex xs12>
@@ -31,88 +28,14 @@
                 />
 
                 <v-layout wrap v-else>
-                  <v-flex xs12 sm6 md3 v-for="i in items" :key="i.id"
-                          v-if="i.isHidden || i.creatorId == currentUserId || currentUserId == 'toxjaps6DjgDKrju6hf6Iq2e9FR2'">
-                    <v-card class="mb-3">
-                      <v-card-media
-                        height="200"
-                        style="cursor: pointer"
-                        @click="onLoadItem(i.id)"
-                        v-ripple
-                        :src="i.imageUrl"
-                      >
-
-                        <div class="winners-group">
-
-                          <div v-if="!i.isHidden">
-                            <v-chip small color="warning white--text">
-                              <v-icon left>mdi-eye-off</v-icon>
-                              <span>Ожидает модерации</span>
-                            </v-chip>
-                          </div>
-
-                          <div v-if="i.isWinnerContest">
-                            <v-chip
-                              small
-                              color="teal darken-1 white--text"
-                              @click="onLoadItem(i.id)"
-                              style="cursor: pointer"
-                            >
-                              <v-icon left>mdi-crown</v-icon>
-                              <span>{{ i.isWinnerContest }}</span>
-                            </v-chip>
-                          </div>
-
-                          <div v-if="i.isWinnerMonth">
-                            <v-chip
-                              small
-                              color="green darken-1 white--text"
-                              @click="onLoadItem(i.id)"
-                              style="cursor: pointer"
-                            >
-                              <v-icon left>mdi-crown</v-icon>
-                              <span>{{ i.isWinnerMonth }}</span>
-                            </v-chip>
-                          </div>
-
-                          <div v-if="i.isWinnerWeek">
-                            <v-chip
-                              small
-                              color="light-green darken-1 white--text"
-                              @click="onLoadItem(i.id)"
-                              style="cursor: pointer"
-                            >
-                              <v-icon left>mdi-crown</v-icon>
-                              <span>{{ i.isWinnerWeek }}</span>
-                            </v-chip>
-                          </div>
-
-                        </div>
-
-                        <v-spacer/>
-
-                        <v-tooltip top v-if="currentUserId === i.creatorId" color="info" open-delay="0">
-                          <v-btn
-                            small
-                            fab
-                            slot="activator"
-                            color="info"
-                            @click="onLoadItem(i.id)">
-                            <v-icon>mdi-account</v-icon>
-                          </v-btn>
-                          <span>Ваш билет</span>
-                        </v-tooltip>
-
-                      </v-card-media>
-                      <v-card-text class="pa-2">
-                        <b>{{ i.id }}</b>
-                        <br>
-                        <i>{{ i.date | date }}</i>
-                      </v-card-text>
-                    </v-card>
-                  </v-flex>
-
+                  <list-item
+                    v-for="i in items"
+                    :i="i"
+                    :key="i.id"
+                    v-if="i.isHidden || i.creatorId == currentUserId || currentUserId == 'toxjaps6DjgDKrju6hf6Iq2e9FR2'"
+                  />
                 </v-layout>
+
               </v-layout>
             </v-container>
 
@@ -134,11 +57,6 @@
 
 <script>
   export default {
-    data () {
-      return {
-        createItemBtn: {title: 'Участвовать', icon: 'mdi-upload', url: '/contest/create-item'}
-      }
-    },
     computed: {
       items () {
         return this.$store.getters.loadedSortedByDateItems
@@ -154,11 +72,6 @@
       },
       loading () {
         return this.$store.getters.loading
-      }
-    },
-    methods: {
-      onLoadItem (id) {
-        this.$router.push('/contest/item/' + id)
       }
     }
   }

@@ -9,6 +9,8 @@ import * as firebase from 'firebase'
 import AlertCmp from './components/Shared/Alert'
 import EditWinnerDialog from './components/Edit/EditWinnerDialog'
 import DeleteItemDialog from './components/Edit/DeleteItemDialog'
+import ListItem from './components/contest/ListItem'
+import BtnCreateItem from './components/Shared/BtnCreateItem'
 
 Vue.use(Vuetify)
 Vue.config.productionTip = false
@@ -17,6 +19,8 @@ Vue.filter('date', DateFilter)
 Vue.component('app-alert', AlertCmp)
 Vue.component('edit-winner-dialog', EditWinnerDialog)
 Vue.component('delete-item-dialog', DeleteItemDialog)
+Vue.component('list-item', ListItem)
+Vue.component('btn-create-item', BtnCreateItem)
 
 /* eslint-disable no-new */
 new Vue({

@@ -13,107 +13,52 @@
                 </v-flex>
 
                 <v-flex xs12 sm6 class="text-sm-right">
-                  <v-btn large color="success" class="mx-0" :to="createItemBtn.url">
-                    <v-icon left>{{ createItemBtn.icon }}</v-icon>
-                    {{ createItemBtn.title }}
-                  </v-btn>
+                  <btn-create-item/>
                 </v-flex>
 
-                <v-flex xs12>
-                  <span>Список билетов, победивших в розыгрыше</span>
+                <v-flex xs12 v-if="loading">
+
+                  <v-progress-circular
+                    indeterminate
+                    :size="150"
+                    color="amber"
+                  />
+
                 </v-flex>
 
-                <v-progress-circular
-                  v-if="loading"
-                  indeterminate
-                  :size="150"
-                  color="amber"
-                />
+                <v-flex xs12 v-else>
 
-                <v-layout wrap v-else>
-                  <v-flex xs12 sm6 md3 v-for="i in items" :key="i.id"
-                          v-if="i.isHidden && i.isWinnerContest || i.isHidden && i.isWinnerMonth || i.isHidden && i.isWinnerWeek">
-                    <v-card class="mb-3">
-                      <v-card-media
-                        height="200"
-                        style="cursor: pointer"
-                        @click="onLoadItem(i.id)"
-                        v-ripple
-                        :src="i.imageUrl"
-                      >
+                  <h2>Победитель конкурса</h2>
+                  <v-layout wrap>
+                    <list-item
+                      v-for="i in items"
+                      v-if="i.isHidden && i.isWinnerContest"
+                      :key="i.id"
+                      :i="i"
+                    />
+                  </v-layout>
 
-                        <div class="winners-group">
+                  <h2>Победители месяца</h2>
+                  <v-layout wrap>
+                    <list-item
+                      v-for="i in items"
+                      v-if="i.isHidden && i.isWinnerMonth"
+                      :key="i.id"
+                      :i="i"
+                    />
+                  </v-layout>
 
-                          <div v-if="!i.isHidden">
-                            <v-chip small color="warning white--text">
-                              <v-icon left>mdi-eye-off</v-icon>
-                              <span>Ожидает модерации</span>
-                            </v-chip>
-                          </div>
+                  <h2>Победители недели</h2>
+                  <v-layout wrap>
+                    <list-item
+                      v-for="i in items"
+                      v-if="i.isHidden && i.isWinnerWeek"
+                      :key="i.id"
+                      :i="i"
+                    />
+                  </v-layout>
 
-                          <div v-if="i.isWinnerContest">
-                            <v-chip
-                              small
-                              color="teal darken-1 white--text"
-                              @click="onLoadItem(i.id)"
-                              style="cursor: pointer"
-                            >
-                              <v-icon left>mdi-crown</v-icon>
-                              <span>{{ i.isWinnerContest }}</span>
-                            </v-chip>
-                          </div>
-
-                          <div v-if="i.isWinnerMonth">
-                            <v-chip
-                              small
-                              color="green darken-1 white--text"
-                              @click="onLoadItem(i.id)"
-                              style="cursor: pointer"
-                            >
-                              <v-icon left>mdi-crown</v-icon>
-                              <span>{{ i.isWinnerMonth }}</span>
-                            </v-chip>
-                          </div>
-
-                          <div v-if="i.isWinnerWeek">
-                            <v-chip
-                              small
-                              color="light-green darken-1 white--text"
-                              @click="onLoadItem(i.id)"
-                              style="cursor: pointer"
-                            >
-                              <v-icon left>mdi-crown</v-icon>
-                              <span>{{ i.isWinnerWeek }}</span>
-                            </v-chip>
-                          </div>
-
-                        </div>
-
-                        <v-spacer/>
-
-                        <v-tooltip top v-if="currentUserId === i.creatorId" color="info" open-delay="0">
-                          <v-btn
-                            small
-                            fab
-                            slot="activator"
-                            color="info"
-                            @click="onLoadItem(i.id)">
-                            <v-icon>mdi-account</v-icon>
-                          </v-btn>
-                          <span>Ваш билет</span>
-                        </v-tooltip>
-
-                      </v-card-media>
-
-                      <v-card-text class="pa-2">
-                        <b>{{ i.id }}</b>
-                        <br>
-                        <i>{{ i.date | date }}</i>
-                      </v-card-text>
-
-                    </v-card>
-                  </v-flex>
-                </v-layout>
+                </v-flex>
 
               </v-layout>
             </v-container>
@@ -127,11 +72,6 @@
 
 <script>
   export default {
-    data () {
-      return {
-        createItemBtn: {title: 'Участвовать', icon: 'mdi-upload', url: '/contest/create-item'}
-      }
-    },
     computed: {
       items () {
         return this.$store.getters.loadedSortedByDateItems
@@ -147,11 +87,6 @@
       },
       loading () {
         return this.$store.getters.loading
-      }
-    },
-    methods: {
-      onLoadItem (id) {
-        this.$router.push('/contest/item/' + id)
       }
     }
   }

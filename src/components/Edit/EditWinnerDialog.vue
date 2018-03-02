@@ -17,7 +17,7 @@
       >
         <v-icon>mdi-security</v-icon>
       </v-btn>
-      <span>Победитель</span>
+      <span>Редактировать</span>
     </v-tooltip>
 
     <v-card>
