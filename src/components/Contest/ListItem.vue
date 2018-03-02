@@ -116,7 +116,7 @@
         </v-tooltip>
 
       </v-card-media>
-      <v-card-text class="pa-2" style="font-size: 10px">
+      <v-card-text class="pa-2" style="font-size: 12px">
         <b>{{ i.id }}</b>
         <br>
         <i>{{ i.date | date }}</i>

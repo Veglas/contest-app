@@ -56,7 +56,12 @@
       <router-view/>
     </v-content>
 
-    <v-navigation-drawer fixed temporary right v-model="sideNav">
+    <v-navigation-drawer
+      fixed
+      temporary
+      right
+      v-model="sideNav"
+    >
       <v-list dense class="pt-0">
 
         <v-list-tile :href="veglasBtn.url">

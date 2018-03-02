@@ -15,40 +15,84 @@
 
             <div class="winners-group">
 
-              <div v-if="item.isWinnerContest">
-                <v-chip color="teal darken-1 white--text">
-                  <v-icon left>mdi-crown</v-icon>
-                  <span>{{ item.isWinnerContest }}</span>
-                </v-chip>
-              </div>
+              <v-tooltip
+                v-if="item.isWinnerContest"
+                top
+                color="teal darken-1 white--text"
+                open-delay="0"
+              >
+                <div slot="activator">
+                  <v-chip color="teal darken-1 white--text">
+                    <v-icon left>mdi-crown</v-icon>
+                    <span>{{ item.isWinnerContest }}</span>
+                  </v-chip>
+                </div>
+                <span>Победитель розыгрыша</span>
+              </v-tooltip>
 
-              <div v-if="item.isWinnerMonth">
-                <v-chip color="green darken-1 white--text">
-                  <v-icon left>mdi-crown</v-icon>
-                  <span>{{ item.isWinnerMonth }}</span>
-                </v-chip>
-              </div>
+              <v-tooltip
+                v-if="item.isWinnerMonth"
+                top
+                color="green darken-1 white--text"
+                open-delay="0"
+              >
+                <div slot="activator">
+                  <v-chip color="green darken-1 white--text">
+                    <v-icon left>mdi-crown</v-icon>
+                    <span>{{ item.isWinnerMonth }}</span>
+                  </v-chip>
+                </div>
+                <span>Победитель месяца</span>
+              </v-tooltip>
 
-              <div v-if="item.isWinnerWeek">
-                <v-chip color="light-green darken-1 white--text">
-                  <v-icon left>mdi-crown</v-icon>
-                  <span>{{ item.isWinnerWeek }}</span>
-                </v-chip>
-              </div>
+              <v-tooltip
+                v-if="item.isWinnerWeek"
+                top
+                color="light-green darken-1 white--text"
+                open-delay="0"
+              >
+                <div slot="activator">
+                  <v-chip color="light-green darken-1 white--text">
+                    <v-icon left>mdi-crown</v-icon>
+                    <span>{{ item.isWinnerWeek }}</span>
+                  </v-chip>
+                </div>
+                <span>Победитель недели</span>
+              </v-tooltip>
 
-              <div v-if="!item.isHidden">
-                <v-chip color="warning white--text">
-                  <v-icon left>mdi-eye-off</v-icon>
-                  <span>Ожидает модерации</span>
-                </v-chip>
-              </div>
+              <v-tooltip
+                v-if="!item.isHidden"
+                top
+                color="warning white--text"
+                open-delay="0"
+              >
+                <div slot="activator">
+                  <v-chip
+                    small
+                    color="warning white--text"
+                  >
+                    <v-icon>mdi-eye-off</v-icon>
+                  </v-chip>
+                </div>
+                <span>Билет ожидает модерации</span>
+              </v-tooltip>
 
-              <div v-else>
-                <v-chip color="success white--text">
-                  <v-icon left>mdi-eye</v-icon>
-                  <span>Билет участвует</span>
-                </v-chip>
-              </div>
+              <v-tooltip
+                v-else
+                top
+                color="success white--text"
+                open-delay="0"
+              >
+                <div slot="activator">
+                  <v-chip
+                    small
+                    color="success white--text"
+                  >
+                    <v-icon>mdi-eye</v-icon>
+                  </v-chip>
+                </div>
+                <span>Билет прошел модерацию</span>
+              </v-tooltip>
 
             </div>
 
@@ -64,20 +108,23 @@
             </div>
 
             <img :src="item.imageUrl" style="max-width: 100%">
+
             <br>
-            ID билета: <b>{{ item.id }}</b>
-            <br>
-            ID участника: <b>{{ item.creatorId }}</b>
-            <br>
-            Время загрузки: <i>{{ item.date | date }}</i>
-            <!--<br>-->
-            <!--isWinnerWeek: <i>{{ item.isWinnerWeek }}</i>-->
-            <!--<br>-->
-            <!--isWinnerMonth: <i>{{ item.isWinnerMonth }}</i>-->
-            <!--<br>-->
-            <!--isWinnerContest: <i>{{ item.isWinnerContest }}</i>-->
-            <!--<br>-->
-            <!--isHidden: <i>{{ item.isHidden }}</i>-->
+            <div style="font-size: 12px">
+              ID билета: <b>{{ item.id }}</b>
+              <br>
+              ID участника: <b>{{ item.creatorId }}</b>
+              <br>
+              Время загрузки: <i>{{ item.date | date }}</i>
+              <!--<br>-->
+              <!--isWinnerWeek: <i>{{ item.isWinnerWeek }}</i>-->
+              <!--<br>-->
+              <!--isWinnerMonth: <i>{{ item.isWinnerMonth }}</i>-->
+              <!--<br>-->
+              <!--isWinnerContest: <i>{{ item.isWinnerContest }}</i>-->
+              <!--<br>-->
+              <!--isHidden: <i>{{ item.isHidden }}</i>-->
+            </div>
           </v-card-text>
         </v-card>
 
@@ -120,12 +167,10 @@
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 10;
   }
   .buttons-group {
     position: absolute;
     top: 0;
     right: 0;
-    z-index: 20;
   }
 </style>
