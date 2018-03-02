@@ -9,7 +9,7 @@ import * as firebase from 'firebase'
 import AlertCmp from './components/Shared/Alert'
 import EditWinnerDialog from './components/Edit/EditWinnerDialog'
 import DeleteItemDialog from './components/Edit/DeleteItemDialog'
-import ListItem from './components/contest/ListItem'
+import ListItem from './components/Contest/ListItem'
 import BtnCreateItem from './components/Shared/BtnCreateItem'
 
 Vue.use(Vuetify)
