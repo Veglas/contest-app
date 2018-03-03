@@ -39,6 +39,13 @@
                   />
                 </v-layout>
 
+                <v-flex xs12 class="text-xs-right">
+                  <v-btn flat class="mx-0" @click="onLogout">
+                    <v-icon left>{{ logoutBtn.icon }}</v-icon>
+                    {{ logoutBtn.title }}
+                  </v-btn>
+                </v-flex>
+
               </v-layout>
             </v-container>
 
