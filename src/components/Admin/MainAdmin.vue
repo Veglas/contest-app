@@ -86,11 +86,11 @@
       }
     },
     computed: {
-      items () {
-        return this.$store.getters.loadedSortedByDateItems
-      },
       loading () {
         return this.$store.getters.loading
+      },
+      items () {
+        return this.$store.getters.loadedSortedByDateItems
       }
     },
     methods: {

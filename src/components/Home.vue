@@ -30,9 +30,9 @@
                 <v-layout wrap v-else>
                   <list-item
                     v-for="i in items"
+                    v-if="i.isHidden || currentUserId === i.creatorId || userIsAdmin"
                     :i="i"
                     :key="i.id"
-                    v-if="i.isHidden || i.creatorId == currentUserId || currentUserId == 'toxjaps6DjgDKrju6hf6Iq2e9FR2'"
                   />
                 </v-layout>
 
@@ -58,6 +58,9 @@
 <script>
   export default {
     computed: {
+      loading () {
+        return this.$store.getters.loading
+      },
       items () {
         return this.$store.getters.loadedSortedByDateItems
       },
@@ -70,8 +73,10 @@
         }
         return this.$store.getters.user.id
       },
-      loading () {
-        return this.$store.getters.loading
+      userIsAdmin () {
+        if (this.currentUserId === 'toxjaps6DjgDKrju6hf6Iq2e9FR2' || this.currentUserId === 'Ba1ck1rpfbUjXA6oWmdm1LreTmr1') {
+          return true
+        }
       }
     }
   }

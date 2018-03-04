@@ -1,13 +1,5 @@
 <template>
-  <v-dialog v-model="editDialogByAdmin" max-width="330" @keydown.enter="onSaveChanges">
-
-    <!--<v-btn-->
-      <!--fab-->
-      <!--color="info"-->
-      <!--slot="activator"-->
-    <!--&gt;-->
-      <!--<v-icon>mdi-security</v-icon>-->
-    <!--</v-btn>-->
+  <v-dialog v-model="editTicketDialog" max-width="330" @keydown.enter="onSaveChanges">
 
     <v-tooltip top slot="activator" color="warning" open-delay="0">
       <v-btn
@@ -22,8 +14,8 @@
 
     <v-card>
       <v-container>
-      <!--<v-card-title class="headline">Редактировать</v-card-title>-->
-      <v-card-text v-if="currentUserId === 'toxjaps6DjgDKrju6hf6Iq2e9FR2'">
+
+      <v-card-text">
 
         <v-layout align-center row>
           <v-flex xs1 mr-2>
@@ -86,7 +78,7 @@
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn @click.stop="editDialogByAdmin=false">Отмена</v-btn>
+        <v-btn @click.stop="editTicketDialog=false">Отмена</v-btn>
         <v-btn color="warning" @click="onSaveChanges">Сохранить</v-btn>
       </v-card-actions>
       </v-container>
@@ -100,7 +92,7 @@
     props: ['item'],
     data () {
       return {
-        editDialogByAdmin: false,
+        editTicketDialog: false,
         editedIsWinnerWeek: this.item.isWinnerWeek,
         editedIsWinnerMonth: this.item.isWinnerMonth,
         editedIsWinnerContest: this.item.isWinnerContest,
@@ -109,7 +101,7 @@
     },
     methods: {
       onSaveChanges () {
-        this.editDialogByAdmin = false
+        this.editTicketDialog = false
         this.$store.dispatch('updateTicketData', {
           id: this.item.id,
           isWinnerWeek: this.editedIsWinnerWeek,
@@ -117,23 +109,6 @@
           isWinnerContest: this.editedIsWinnerContest,
           isHidden: this.editedIsHidden
         })
-      }
-    },
-    computed: {
-      userIsAuthenticated () {
-        return this.$store.getters.user !== null && this.$store.getters.user !== undefined
-      },
-      userIsCreator () {
-        if (!this.userIsAuthenticated) {
-          return false
-        }
-        return this.$store.getters.user.id === this.item.creatorId
-      },
-      currentUserId () {
-        if (!this.userIsAuthenticated) {
-          return false
-        }
-        return this.$store.getters.user.id
       }
     }
   }

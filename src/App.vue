@@ -29,7 +29,7 @@
 
       <v-toolbar-items class="hidden-xs-only">
 
-        <v-btn flat v-if="currentUserId === 'toxjaps6DjgDKrju6hf6Iq2e9FR2'" :to="adminBtn.url">
+        <v-btn flat v-if="userIsAdmin" :to="adminBtn.url">
           <v-icon left>{{ adminBtn.icon }}</v-icon>
           <span>{{ adminBtn.title }}</span>
         </v-btn>
@@ -91,7 +91,7 @@
           </v-list-tile-content>
         </v-list-tile>
 
-        <v-list-tile v-if="currentUserId === 'toxjaps6DjgDKrju6hf6Iq2e9FR2'" :to="adminBtn.url">
+        <v-list-tile v-if="userIsAdmin" :to="adminBtn.url">
           <v-list-tile-action>
             <v-icon>{{ adminBtn.icon }}</v-icon>
           </v-list-tile-action>
@@ -147,7 +147,7 @@
 </template>
 
 <script>
-  import Network from './components/Network.vue'
+  import Network from './components/Shared/Network.vue'
 
   export default {
     components: {
@@ -174,7 +174,15 @@
           return false
         }
         return this.$store.getters.user.id
+      },
+      userIsAdmin () {
+        if (this.currentUserId === 'toxjaps6DjgDKrju6hf6Iq2e9FR2' || this.currentUserId === 'Ba1ck1rpfbUjXA6oWmdm1LreTmr1') {
+          return true
+        }
       }
     }
   }
 </script>
+
+<style scoped>
+</style>

@@ -23,7 +23,7 @@
               >
                 <div slot="activator">
                   <v-chip color="teal darken-1 white--text">
-                    <v-icon left>mdi-crown</v-icon>
+                    <v-icon left v-for="n in 3" :key="n">mdi-crown</v-icon>
                     <span>{{ item.isWinnerContest }}</span>
                   </v-chip>
                 </div>
@@ -38,7 +38,7 @@
               >
                 <div slot="activator">
                   <v-chip color="green darken-1 white--text">
-                    <v-icon left>mdi-crown</v-icon>
+                    <v-icon left v-for="n in 2" :key="n">mdi-crown</v-icon>
                     <span>{{ item.isWinnerMonth }}</span>
                   </v-chip>
                 </div>
@@ -60,51 +60,56 @@
                 <span>Победитель недели</span>
               </v-tooltip>
 
-              <v-tooltip
-                v-if="!item.isHidden"
-                top
-                color="warning white--text"
-                open-delay="0"
-              >
-                <div slot="activator">
-                  <v-chip
-                    small
-                    color="warning white--text"
-                  >
-                    <v-icon>mdi-eye-off</v-icon>
-                  </v-chip>
-                </div>
-                <span>Билет ожидает модерации</span>
-              </v-tooltip>
-
-              <v-tooltip
-                v-else
-                top
-                color="success white--text"
-                open-delay="0"
-              >
-                <div slot="activator">
-                  <v-chip
-                    small
-                    color="success white--text"
-                  >
-                    <v-icon>mdi-eye</v-icon>
-                  </v-chip>
-                </div>
-                <span>Билет прошел модерацию</span>
-              </v-tooltip>
-
             </div>
 
-            <div class="buttons-group text-xs-right">
-              <edit-winner-dialog
-                v-if="currentUserId === 'toxjaps6DjgDKrju6hf6Iq2e9FR2'"
+            <div class="buttons-group text-xs-right" v-if="userIsCreator || userIsAdmin">
+
+              <div v-if="!item.isHidden">
+                <v-tooltip
+                  top
+                  color="warning white--text"
+                  open-delay="0"
+                >
+                  <div slot="activator">
+                    <v-chip
+                      color="warning white--text"
+                    >
+                      <v-icon>mdi-eye-off</v-icon>
+                    </v-chip>
+                  </div>
+                  <span v-if="userIsCreator">Ваш билет ожидает модерации</span>
+                  <span v-else>Билет ожидает модерации</span>
+                </v-tooltip>
+              </div>
+
+              <div v-else>
+                <v-tooltip
+                  top
+                  color="success white--text"
+                  open-delay="0"
+                >
+                  <div slot="activator">
+                    <v-chip
+                      color="success white--text"
+                    >
+                      <v-icon>mdi-eye</v-icon>
+                    </v-chip>
+                  </div>
+                  <span v-if="userIsCreator">Ваш билет прошел модерацию</span>
+                  <span v-else>Билет прошел модерацию</span>
+                </v-tooltip>
+              </div>
+
+              <edit-ticket-dialog
+                v-if="userIsAdmin"
                 :item="item"
               />
-              <delete-item-dialog
-                v-if="userIsCreator || currentUserId === 'toxjaps6DjgDKrju6hf6Iq2e9FR2'"
+
+              <delete-ticket-dialog
+                v-if="userIsCreator || userIsAdmin"
                 :item="item"
               />
+
             </div>
 
             <img :src="item.imageUrl" style="max-width: 100%">
@@ -137,17 +142,14 @@
   export default {
     props: ['id'],
     computed: {
+      loading () {
+        return this.$store.getters.loading
+      },
       item () {
         return this.$store.getters.loadedItem(this.id)
       },
       userIsAuthenticated () {
         return this.$store.getters.user !== null && this.$store.getters.user !== undefined
-      },
-      userIsCreator () {
-        if (!this.userIsAuthenticated) {
-          return false
-        }
-        return this.$store.getters.user.id === this.item.creatorId
       },
       currentUserId () {
         if (!this.userIsAuthenticated) {
@@ -155,8 +157,13 @@
         }
         return this.$store.getters.user.id
       },
-      loading () {
-        return this.$store.getters.loading
+      userIsCreator () {
+        return this.currentUserId === this.item.creatorId
+      },
+      userIsAdmin () {
+        if (this.currentUserId === 'toxjaps6DjgDKrju6hf6Iq2e9FR2' || this.currentUserId === 'Ba1ck1rpfbUjXA6oWmdm1LreTmr1') {
+          return true
+        }
       }
     }
   }

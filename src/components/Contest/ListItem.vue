@@ -11,25 +11,6 @@
 
         <div class="winners-group">
 
-          <div v-if="!i.isHidden">
-            <v-tooltip
-              top
-              color="warning white--text"
-              open-delay="0"
-            >
-              <div slot="activator">
-                <v-chip
-                  small
-                  slot="activator"
-                  color="warning white--text"
-                >
-                  <v-icon>mdi-eye-off</v-icon>
-                </v-chip>
-              </div>
-              <span>Ожидает модерации</span>
-            </v-tooltip>
-          </div>
-
           <div v-if="i.isWinnerContest">
             <v-tooltip
               top
@@ -43,7 +24,7 @@
                   @click="onLoadItem(i.id)"
                   style="cursor: pointer"
                 >
-                  <v-icon left v-for="n in 3" :key="n">mdi-crown</v-icon>
+                  <v-icon v-for="n in 3" :key="n">mdi-crown</v-icon>
                   <span>{{ i.isWinnerContest }}</span>
                 </v-chip>
               </div>
@@ -64,7 +45,7 @@
                   @click="onLoadItem(i.id)"
                   style="cursor: pointer"
                 >
-                  <v-icon left v-for="n in 2" :key="n">mdi-crown</v-icon>
+                  <v-icon v-for="n in 2" :key="n">mdi-crown</v-icon>
                   <span>{{ i.isWinnerMonth }}</span>
                 </v-chip>
               </div>
@@ -85,7 +66,7 @@
                   @click="onLoadItem(i.id)"
                   style="cursor: pointer"
                 >
-                  <v-icon left>mdi-crown</v-icon>
+                  <v-icon>mdi-crown</v-icon>
                   <span>{{ i.isWinnerWeek }}</span>
                 </v-chip>
               </div>
@@ -97,23 +78,67 @@
 
         <v-spacer/>
 
-        <v-tooltip
-          top
-          v-if="currentUserId === i.creatorId"
-          color="info"
-          open-delay="0"
-        >
-          <v-btn
-            small
-            fab
-            slot="activator"
-            color="info"
-            @click="onLoadItem(i.id)"
-          >
-            <v-icon>mdi-account</v-icon>
-          </v-btn>
-          <span>Ваш билет</span>
-        </v-tooltip>
+        <div class="status-group" v-if="userIsCreator || userIsAdmin">
+
+          <div v-if="!i.isHidden">
+            <v-tooltip
+              top
+              color="warning white--text"
+              open-delay="0"
+            >
+              <div slot="activator">
+                <v-chip
+                  small
+                  slot="activator"
+                  color="warning white--text"
+                >
+                  <v-icon>mdi-eye-off</v-icon>
+                </v-chip>
+              </div>
+              <span v-if="userIsCreator">Ваш билет ожидает модерации</span>
+              <span v-else>Билет ожидает модерации</span>
+            </v-tooltip>
+          </div>
+
+          <div v-else>
+            <v-tooltip
+              top
+              color="success white--text"
+              open-delay="0"
+            >
+              <div slot="activator">
+                <v-chip
+                  small
+                  slot="activator"
+                  color="success white--text"
+                >
+                  <v-icon>mdi-eye</v-icon>
+                </v-chip>
+              </div>
+              <span v-if="userIsCreator">Ваш билет прошел модерацию</span>
+              <span v-else>Билет прошел модерацию</span>
+            </v-tooltip>
+          </div>
+
+          <!--<div v-if="userIsCreator">-->
+            <!--<v-tooltip-->
+              <!--top-->
+              <!--color="info"-->
+              <!--open-delay="0"-->
+            <!--&gt;-->
+              <!--<v-btn-->
+                <!--small-->
+                <!--fab-->
+                <!--slot="activator"-->
+                <!--color="info"-->
+                <!--@click="onLoadItem(i.id)"-->
+              <!--&gt;-->
+                <!--<v-icon>mdi-account</v-icon>-->
+              <!--</v-btn>-->
+              <!--<span>Ваш билет</span>-->
+            <!--</v-tooltip>-->
+          <!--</div>-->
+        </div>
 
       </v-card-media>
       <v-card-text class="pa-2" style="font-size: 12px">
@@ -146,8 +171,13 @@
         }
         return this.$store.getters.user.id
       },
-      loading () {
-        return this.$store.getters.loading
+      userIsCreator () {
+        return this.currentUserId === this.i.creatorId
+      },
+      userIsAdmin () {
+        if (this.currentUserId === 'toxjaps6DjgDKrju6hf6Iq2e9FR2' || this.currentUserId === 'Ba1ck1rpfbUjXA6oWmdm1LreTmr1') {
+          return true
+        }
       }
     },
     methods: {

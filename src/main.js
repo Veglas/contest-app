@@ -7,8 +7,8 @@ import { store } from './store'
 import DateFilter from './filters/date'
 import * as firebase from 'firebase'
 import AlertCmp from './components/Shared/Alert'
-import EditWinnerDialog from './components/Edit/EditWinnerDialog'
-import DeleteItemDialog from './components/Edit/DeleteItemDialog'
+import EditTicketDialog from './components/Edit/EditTicketDialog'
+import DeleteTicketDialog from './components/Edit/DeleteTicketDialog'
 import ListItem from './components/Contest/ListItem'
 import BtnCreateItem from './components/Shared/BtnCreateItem'
 
@@ -17,8 +17,8 @@ Vue.config.productionTip = false
 
 Vue.filter('date', DateFilter)
 Vue.component('app-alert', AlertCmp)
-Vue.component('edit-winner-dialog', EditWinnerDialog)
-Vue.component('delete-item-dialog', DeleteItemDialog)
+Vue.component('edit-ticket-dialog', EditTicketDialog)
+Vue.component('delete-ticket-dialog', DeleteTicketDialog)
 Vue.component('list-item', ListItem)
 Vue.component('btn-create-item', BtnCreateItem)
 

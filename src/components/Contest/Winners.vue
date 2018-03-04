@@ -73,20 +73,11 @@
 <script>
   export default {
     computed: {
-      items () {
-        return this.$store.getters.loadedSortedByDateItems
-      },
-      userIsAuthenticated () {
-        return this.$store.getters.user !== null && this.$store.getters.user !== undefined
-      },
-      currentUserId () {
-        if (!this.userIsAuthenticated) {
-          return false
-        }
-        return this.$store.getters.user.id
-      },
       loading () {
         return this.$store.getters.loading
+      },
+      items () {
+        return this.$store.getters.loadedSortedByDateItems
       }
     }
   }

@@ -5,7 +5,17 @@
         <v-card>
           <v-card-text>
 
-            <h1>Профиль</h1>
+            <v-layout>
+
+              <v-flex xs12 sm6>
+                <h1>Профиль</h1>
+              </v-flex>
+
+              <v-flex xs12 sm6 class="text-sm-right">
+                <btn-create-item/>
+              </v-flex>
+
+            </v-layout>
 
             <v-progress-circular
               v-if="loading"
@@ -22,9 +32,10 @@
                   <p><i>{{ $store.getters.user.id }}</i></p>
                 </v-flex>
 
-                <v-flex xs12>
-                  <btn-create-item/>
-                </v-flex>
+                <!--<v-flex xs12>-->
+                  <!--<h4>Ваш email</h4>-->
+                  <!--<p><i>{{ $store.getters.user.id }}</i></p>-->
+                <!--</v-flex>-->
 
                 <v-flex xs12>
                   <h4>Ваши билеты</h4>
@@ -33,9 +44,9 @@
                 <v-layout wrap>
                   <list-item
                     v-for="i in items"
+                    v-if="user.id === i.creatorId"
                     :i="i"
                     :key="i.id"
-                    v-if="user.id === i.creatorId"
                   />
                 </v-layout>
 

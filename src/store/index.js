@@ -10,18 +10,7 @@ export const store = new Vuex.Store({
     user: null,
     loading: false,
     error: null,
-    loadedItems: [
-      {
-        id: '00000003',
-        imageUrl: 'https://content.sentimony.com/assets/img/releases/large/sencd025/zymosis-insight.jpg',
-        creatorId: 'user3333',
-        date: '2018-02-09',
-        isWinnerWeek: false,
-        isWinnerMonth: false,
-        isWinnerContest: false,
-        isHidden: false
-      }
-    ]
+    loadedItems: []
   },
 
   mutations: {
@@ -202,7 +191,10 @@ export const store = new Vuex.Store({
         )
     },
     autoLogin ({commit}, payload) {
-      commit('setUser', {id: payload.uid, registeredItems: []})
+      commit('setUser', {
+        id: payload.uid,
+        registeredItems: []
+      })
     },
     logout ({commit}) {
       firebase.auth().signOut()
