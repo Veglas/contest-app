@@ -133,7 +133,7 @@
     <v-card flat tile dark class="grey darken-4">
       <v-card-text>
         <v-container>
-          <v-layout row wrap>
+          <v-layout wrap>
             <v-flex xs12 sm6>
               <div>&copy; {{ new Date().getFullYear() }} Все права защищены | 18+ | Веглас Casino Streams</div>
               <Network/>

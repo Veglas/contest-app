@@ -6,7 +6,7 @@
           <v-card-text>
 
             <v-container grid-list-md>
-              <v-layout row wrap>
+              <v-layout wrap>
 
                 <v-flex xs12 sm6>
                   <h1>Все билеты</h1>

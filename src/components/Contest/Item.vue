@@ -112,8 +112,16 @@
 
             </div>
 
-            <div class="text-xs-center">
-              <img :src="item.imageUrl" style="max-width: 100%">
+            <div class="ticket__thumd text-xs-center">
+              <img
+                v-if="item.imageUrl"
+                class="ticket__img-yes"
+                :src="item.imageUrl"
+              />
+              <div v-else class="ticket__img-no">
+                Похоже, у билета нет картинки<br>
+                Создайте новый билет, а этот удалите
+              </div>
             </div>
 
             <div style="font-size: 12px">
@@ -180,5 +188,19 @@
     position: absolute;
     top: 0;
     right: 0;
+  }
+  .ticket__thumd {
+    background-color: gainsboro;
+  }
+  .ticket__img-yes {
+    max-width: 100%;
+    margin: 0 auto 8px;
+    display: block;
+  }
+  .ticket__img-no {
+    width: 100%;
+    height: 400px;
+    margin: 0 auto 8px;
+    padding: 16px;
   }
 </style>

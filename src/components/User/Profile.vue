@@ -6,7 +6,7 @@
           <v-card-text>
 
             <v-container grid-list-md>
-              <v-layout>
+              <v-layout wrap>
 
                 <v-flex xs12 sm6>
                   <h1>Профиль</h1>
@@ -27,7 +27,7 @@
             />
 
             <v-container grid-list-md v-else>
-              <v-layout row wrap>
+              <v-layout wrap>
 
                 <v-flex xs12>
                   <h4>Ваш ID</h4>

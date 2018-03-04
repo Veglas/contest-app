@@ -13,11 +13,11 @@
     </v-tooltip>
 
     <v-card>
-      <v-container>
+      <v-container pa-1>
 
-      <v-card-text">
+      <v-card-text pa-1>
 
-        <v-layout align-center row>
+        <v-layout align-center>
           <v-flex xs1 mr-2>
             <v-icon color="light-green darken-1">mdi-crown</v-icon>
           </v-flex>
@@ -32,7 +32,7 @@
           </v-flex>
         </v-layout>
 
-        <v-layout align-center row>
+        <v-layout align-center>
           <v-flex xs1 mr-2>
             <v-icon color="green darken-1">mdi-crown</v-icon>
           </v-flex>
@@ -47,7 +47,7 @@
           </v-flex>
         </v-layout>
 
-        <v-layout align-center row>
+        <v-layout align-center>
           <v-flex xs1 mr-2>
             <v-icon color="teal darken-1">mdi-crown</v-icon>
           </v-flex>

@@ -18,9 +18,9 @@
     </v-tooltip>
 
     <v-card>
-      <v-container>
+      <v-container pa-1>
 
-        <v-card-text>
+        <v-card-text pa-1>
           Билет будет удален безвозвратно.<br>
           Вы уверены, что хотите удалить этот билет?
         </v-card-text>
