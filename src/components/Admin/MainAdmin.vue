@@ -6,6 +6,12 @@
         <v-card>
           <v-card-text>
 
+            <v-layout wrap>
+              <v-flex xs12>
+                <h1>Админ</h1>
+              </v-flex>
+            </v-layout>
+
             <v-progress-circular
               v-if="loading"
               indeterminate
@@ -15,11 +21,7 @@
 
             <v-layout wrap v-else>
 
-              <v-flex xs12>
-                <h1>Админ</h1>
-              </v-flex>
-
-              <v-flex xs12>
+              <v-flex xs12 class="text-xs-center">
                 <br>
                 <h2>
                   <v-chip small color="success white--text">
@@ -76,7 +78,7 @@
                 </div>
               </v-flex>
 
-              <v-flex xs12>
+              <v-flex xs12 class="text-xs-center">
                 <br>
                 <h2>
                   <v-chip small color="warning white--text">

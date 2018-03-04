@@ -13,7 +13,7 @@
         <v-card v-else>
           <v-card-text>
 
-            <div class="winners-group">
+            <div class="ticket__winners">
 
               <v-tooltip
                 v-if="item.isWinnerContest"
@@ -62,7 +62,7 @@
 
             </div>
 
-            <div class="buttons-group text-xs-right" v-if="userIsCreator || userIsAdmin">
+            <div class="ticket__edit text-xs-right" v-if="userIsCreator || userIsAdmin">
 
               <div v-if="!item.isModerated">
                 <v-tooltip
@@ -112,9 +112,10 @@
 
             </div>
 
-            <img :src="item.imageUrl" style="max-width: 100%">
+            <div class="text-xs-center">
+              <img :src="item.imageUrl" style="max-width: 100%">
+            </div>
 
-            <br>
             <div style="font-size: 12px">
               ID билета: <b>{{ item.id }}</b>
               <br>
@@ -170,12 +171,12 @@
 </script>
 
 <style scoped>
-  .winners-group {
+  .ticket__winners {
     position: absolute;
     top: 0;
     left: 0;
   }
-  .buttons-group {
+  .ticket__edit {
     position: absolute;
     top: 0;
     right: 0;

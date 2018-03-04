@@ -17,7 +17,7 @@
                 </v-flex>
 
                 <v-flex xs12>
-                  <span>Список билетов, участвующих в розыгрыше</span>
+                  <span>Билеты, участвующие в розыгрыше</span>
                 </v-flex>
 
                 <v-progress-circular

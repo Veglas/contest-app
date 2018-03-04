@@ -1,6 +1,6 @@
 <template>
   <v-flex xs12 sm6 md3>
-    <v-card class="mb-3">
+    <v-card tile>
       <v-card-media
         height="200"
         style="cursor: pointer"
@@ -8,8 +8,9 @@
         v-ripple
         :src="i.imageUrl"
       >
+        <!--<img class="list-item__img" :src="i.imageUrl">-->
 
-        <div class="winners-group">
+        <div class="list-item__winners">
 
           <div v-if="i.isWinnerContest">
             <v-tooltip
@@ -76,9 +77,9 @@
 
         </div>
 
-        <v-spacer/>
+        <v-spacer v-if="userIsCreator || userIsAdmin"/>
 
-        <div class="status-group" v-if="userIsCreator || userIsAdmin">
+        <div class="list-item__status" v-if="userIsCreator || userIsAdmin">
 
           <div v-if="!i.isModerated">
             <v-tooltip
@@ -189,4 +190,25 @@
 </script>
 
 <style scoped>
+  /*.list-item__winners {*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*left: 0;*/
+  /*}*/
+  /*.list-item__status {*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*right: 0;*/
+  /*}*/
+  /*.list-item__img {*/
+    /*width: 120%;*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*left: 50%;*/
+    /*transform: translateX(-50%);*/
+  /*}*/
+
+  .card__media__background {
+    background-position: top center !important;
+  }
 </style>
