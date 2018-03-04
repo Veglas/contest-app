@@ -64,7 +64,7 @@
 
             <div class="buttons-group text-xs-right" v-if="userIsCreator || userIsAdmin">
 
-              <div v-if="!item.isHidden">
+              <div v-if="!item.isModerated">
                 <v-tooltip
                   top
                   color="warning white--text"
@@ -128,7 +128,7 @@
               <!--<br>-->
               <!--isWinnerContest: <i>{{ item.isWinnerContest }}</i>-->
               <!--<br>-->
-              <!--isHidden: <i>{{ item.isHidden }}</i>-->
+              <!--isModerated: <i>{{ item.isModerated }}</i>-->
             </div>
           </v-card-text>
         </v-card>

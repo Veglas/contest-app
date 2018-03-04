@@ -28,31 +28,40 @@
 
                 <v-flex xs12 v-else>
 
-                  <h2>Победитель конкурса</h2>
+                  <h2>
+                    <v-icon left v-for="n in 3" :key="n">mdi-crown</v-icon>
+                    Победитель конкурса
+                  </h2>
                   <v-layout wrap>
                     <list-item
                       v-for="i in items"
-                      v-if="i.isHidden && i.isWinnerContest"
+                      v-if="i.isModerated && i.isWinnerContest"
                       :key="i.id"
                       :i="i"
                     />
                   </v-layout>
 
-                  <h2>Победители месяца</h2>
+                  <h2>
+                    <v-icon left v-for="n in 2" :key="n">mdi-crown</v-icon>
+                    Победители месяца
+                  </h2>
                   <v-layout wrap>
                     <list-item
                       v-for="i in items"
-                      v-if="i.isHidden && i.isWinnerMonth"
+                      v-if="i.isModerated && i.isWinnerMonth"
                       :key="i.id"
                       :i="i"
                     />
                   </v-layout>
 
-                  <h2>Победители недели</h2>
+                  <h2>
+                    <v-icon left>mdi-crown</v-icon>
+                    Победители недели
+                  </h2>
                   <v-layout wrap>
                     <list-item
                       v-for="i in items"
-                      v-if="i.isHidden && i.isWinnerWeek"
+                      v-if="i.isModerated && i.isWinnerWeek"
                       :key="i.id"
                       :i="i"
                     />

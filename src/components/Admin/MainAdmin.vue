@@ -25,24 +25,24 @@
 
               <v-flex xs12 md3>
                 <div><b>Дата</b></div>
-                <div v-for="i in items" :key="i.id" v-if="i.isHidden">{{ i.date | date }}</div>
+                <div v-for="i in items" :key="i.id" v-if="i.isModerated">{{ i.date | date }}</div>
               </v-flex>
 
               <v-flex xs12 md3>
                 <div><b>ID билета</b></div>
-                <div v-for="i in items" :key="i.id" v-if="i.isHidden">
+                <div v-for="i in items" :key="i.id" v-if="i.isModerated">
                   <a @click="onLoadItem(i.id)">{{ i.id }}</a>
                 </div>
               </v-flex>
 
               <v-flex xs12 md4>
                 <div><b>ID юзера</b></div>
-                <div v-for="i in items" :key="i.id" v-if="i.isHidden">{{ i.creatorId }}</div>
+                <div v-for="i in items" :key="i.id" v-if="i.isModerated">{{ i.creatorId }}</div>
               </v-flex>
 
               <v-flex xs12 md2>
                 <div><b>Победитель</b></div>
-                <div v-for="i in items" :key="i.id" v-if="i.isHidden">
+                <div v-for="i in items" :key="i.id" v-if="i.isModerated">
 
                   <span>
 

@@ -39,7 +39,7 @@ export const store = new Vuex.Store({
       item.isWinnerWeek = payload.isWinnerWeek
       item.isWinnerMonth = payload.isWinnerMonth
       item.isWinnerContest = payload.isWinnerContest
-      item.isHidden = payload.isHidden
+      item.isModerated = payload.isModerated
     },
     removeTicket (state, payload) {
       const index = state.loadedItems.findIndex(item => {
@@ -68,7 +68,7 @@ export const store = new Vuex.Store({
               isWinnerWeek: obj[key].isWinnerWeek,
               isWinnerMonth: obj[key].isWinnerMonth,
               isWinnerContest: obj[key].isWinnerContest,
-              isHidden: obj[key].isHidden
+              isModerated: obj[key].isModerated
             })
           }
           commit('setLoadedItems', items)
@@ -88,7 +88,7 @@ export const store = new Vuex.Store({
         isWinnerWeek: payload.isWinnerWeek,
         isWinnerMonth: payload.isWinnerMonth,
         isWinnerContest: payload.isWinnerContest,
-        isHidden: payload.isHidden
+        isModerated: payload.isModerated
       }
       let imageUrl
       let key
@@ -123,7 +123,7 @@ export const store = new Vuex.Store({
       updateObj.isWinnerWeek = payload.isWinnerWeek
       updateObj.isWinnerMonth = payload.isWinnerMonth
       updateObj.isWinnerContest = payload.isWinnerContest
-      updateObj.isHidden = payload.isHidden
+      updateObj.isModerated = payload.isModerated
       firebase.database().ref('items').child(payload.id).update(updateObj)
         .then(() => {
           commit('updateTicket', payload)

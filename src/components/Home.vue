@@ -30,7 +30,7 @@
                 <v-layout wrap v-else>
                   <list-item
                     v-for="i in items"
-                    v-if="i.isHidden || currentUserId === i.creatorId || userIsAdmin"
+                    v-if="i.isModerated || currentUserId === i.creatorId || userIsAdmin"
                     :i="i"
                     :key="i.id"
                   />

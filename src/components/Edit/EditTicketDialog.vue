@@ -67,10 +67,10 @@
             <br>
             <v-switch
               color="success"
-              name="isHidden"
-              id="isHidden"
-              :label="`Модерация: ${editedIsHidden.toString()}`"
-              v-model="editedIsHidden"
+              name="isModerated"
+              id="isModerated"
+              :label="`Модерация: ${editedIsModerated.toString()}`"
+              v-model="editedIsModerated"
             />
           </v-flex>
         </v-layout>
@@ -96,7 +96,7 @@
         editedIsWinnerWeek: this.item.isWinnerWeek,
         editedIsWinnerMonth: this.item.isWinnerMonth,
         editedIsWinnerContest: this.item.isWinnerContest,
-        editedIsHidden: this.item.isHidden
+        editedIsModerated: this.item.isModerated
       }
     },
     methods: {
@@ -107,7 +107,7 @@
           isWinnerWeek: this.editedIsWinnerWeek,
           isWinnerMonth: this.editedIsWinnerMonth,
           isWinnerContest: this.editedIsWinnerContest,
-          isHidden: this.editedIsHidden
+          isModerated: this.editedIsModerated
         })
       }
     }

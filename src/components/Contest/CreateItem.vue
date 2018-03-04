@@ -17,15 +17,6 @@
 
             <form @submit.prevent="onCreateItem">
 
-              <!-- <v-text-field
-                name="imageUrl"
-                label="Ссылка на картинку"
-                id="image-url"
-                v-model="imageUrl"
-                type="url"
-                autocomplete="imageUrl"
-                required></v-text-field> -->
-
               <div>
                 <v-btn
                   @click="onPickFile"
@@ -47,15 +38,6 @@
                   class="d-block"
                   width="150">
               </div>
-
-              <!--<div>-->
-                <!--<v-text-field-->
-                  <!--name="isHidden"-->
-                  <!--id="isHidden"-->
-                  <!--label="Скрыть"-->
-                  <!--v-model="isHidden"-->
-                <!--/>-->
-              <!--</div>-->
 
               <div>
                 <v-btn
@@ -91,7 +73,7 @@
         isWinnerWeek: '',
         isWinnerMonth: '',
         isWinnerContest: '',
-        isHidden: ''
+        isModerated: ''
       }
     },
     computed: {
@@ -113,7 +95,7 @@
           isWinnerWeek: this.isWinnerWeek,
           isWinnerMonth: this.isWinnerMonth,
           isWinnerContest: this.isWinnerContest,
-          isHidden: this.isHidden
+          isModerated: this.isModerated
         }
         this.$store.dispatch('createItem', itemData)
         this.$router.push('/')

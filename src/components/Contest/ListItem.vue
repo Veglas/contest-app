@@ -80,7 +80,7 @@
 
         <div class="status-group" v-if="userIsCreator || userIsAdmin">
 
-          <div v-if="!i.isHidden">
+          <div v-if="!i.isModerated">
             <v-tooltip
               top
               color="warning white--text"

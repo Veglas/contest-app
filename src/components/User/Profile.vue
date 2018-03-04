@@ -5,17 +5,19 @@
         <v-card>
           <v-card-text>
 
-            <v-layout>
+            <v-container grid-list-md>
+              <v-layout>
 
-              <v-flex xs12 sm6>
-                <h1>Профиль</h1>
-              </v-flex>
+                <v-flex xs12 sm6>
+                  <h1>Профиль</h1>
+                </v-flex>
 
-              <v-flex xs12 sm6 class="text-sm-right">
-                <btn-create-item/>
-              </v-flex>
+                <v-flex xs12 sm6 class="text-sm-right">
+                  <btn-create-item/>
+                </v-flex>
 
-            </v-layout>
+              </v-layout>
+            </v-container>
 
             <v-progress-circular
               v-if="loading"
