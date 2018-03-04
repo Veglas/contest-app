@@ -170,7 +170,7 @@
   }
 </script>
 
-<style scoped>
+<style>
   .ticket__winners {
     position: absolute;
     top: 0;

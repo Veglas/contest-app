@@ -189,7 +189,10 @@
   }
 </script>
 
-<style scoped>
+<style>
+  .card__media__background {
+    background-position: top center !important;
+  }
   /*.list-item__winners {*/
     /*position: absolute;*/
     /*top: 0;*/
@@ -207,8 +210,4 @@
     /*left: 50%;*/
     /*transform: translateX(-50%);*/
   /*}*/
-
-  .card__media__background {
-    background-position: top center !important;
-  }
 </style>
