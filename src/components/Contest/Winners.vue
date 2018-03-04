@@ -28,9 +28,12 @@
 
                 <v-flex xs12 v-else>
 
+                  <br>
                   <h2>
-                    <v-icon left v-for="n in 3" :key="n">mdi-crown</v-icon>
-                    Победитель конкурса
+                    <v-chip small color="teal darken-1 white--text">
+                      <v-icon v-for="n in 3" :key="n">mdi-crown</v-icon>
+                    </v-chip>
+                    <span>Победитель конкурса</span>
                   </h2>
                   <v-layout wrap>
                     <list-item
@@ -41,9 +44,12 @@
                     />
                   </v-layout>
 
+                  <br>
                   <h2>
-                    <v-icon left v-for="n in 2" :key="n">mdi-crown</v-icon>
-                    Победители месяца
+                    <v-chip small color="green darken-1 white--text">
+                      <v-icon v-for="n in 2" :key="n">mdi-crown</v-icon>
+                    </v-chip>
+                    <span>Победители месяца</span>
                   </h2>
                   <v-layout wrap>
                     <list-item
@@ -54,9 +60,12 @@
                     />
                   </v-layout>
 
+                  <br>
                   <h2>
-                    <v-icon left>mdi-crown</v-icon>
-                    Победители недели
+                    <v-chip small color="light-green darken-1 white--text">
+                      <v-icon>mdi-crown</v-icon>
+                    </v-chip>
+                    <span>Победители недели</span>
                   </h2>
                   <v-layout wrap>
                     <list-item

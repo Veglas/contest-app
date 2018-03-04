@@ -21,12 +21,12 @@
 
               <v-flex xs12>
                 <br>
-                <h3>
+                <h2>
                   <v-chip small color="success white--text">
                     <v-icon>mdi-eye</v-icon>
                   </v-chip>
                   <snap>Билеты, прошедшие модерацию</snap>
-                </h3>
+                </h2>
               </v-flex>
 
               <v-flex xs12 md3>
@@ -78,12 +78,12 @@
 
               <v-flex xs12>
                 <br>
-                <h3>
+                <h2>
                   <v-chip small color="warning white--text">
                     <v-icon>mdi-eye-off</v-icon>
                   </v-chip>
                   <snap>Билеты, нуждающиеся в модерации</snap>
-                </h3>
+                </h2>
               </v-flex>
 
               <v-flex xs12 md3>
