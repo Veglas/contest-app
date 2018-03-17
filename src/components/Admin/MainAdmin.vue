@@ -27,7 +27,7 @@
                   <v-chip small color="success white--text">
                     <v-icon>mdi-eye</v-icon>
                   </v-chip>
-                  <snap>Билеты, прошедшие модерацию</snap>
+                  <span>Билеты, прошедшие модерацию</span>
                 </h2>
               </v-flex>
 
@@ -84,7 +84,7 @@
                   <v-chip small color="warning white--text">
                     <v-icon>mdi-eye-off</v-icon>
                   </v-chip>
-                  <snap>Билеты, нуждающиеся в модерации</snap>
+                  <span>Билеты, нуждающиеся в модерации</span>
                 </h2>
               </v-flex>
 
