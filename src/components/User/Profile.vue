@@ -34,10 +34,10 @@
                   <p><i>{{ $store.getters.user.id }}</i></p>
                 </v-flex>
 
-                <!--<v-flex xs12>-->
-                  <!--<h4>Ваш email</h4>-->
-                  <!--<p><i>{{ $store.getters.user.id }}</i></p>-->
-                <!--</v-flex>-->
+                <v-flex xs12>
+                  <h4>Ваш email</h4>
+                  <p><i>{{ $store.getters.user.email }}</i></p>
+                </v-flex>
 
                 <v-flex xs12>
                   <h4>Ваши билеты</h4>

@@ -155,6 +155,7 @@ export const store = new Vuex.Store({
             commit('setLoading', false)
             const newUser = {
               id: user.uid,
+              email: user.email,
               registeredItems: []
             }
             commit('setUser', newUser)
@@ -177,6 +178,7 @@ export const store = new Vuex.Store({
             commit('setLoading', false)
             const newUser = {
               id: user.uid,
+              email: user.email,
               registeredItems: []
             }
             commit('setUser', newUser)
@@ -193,6 +195,7 @@ export const store = new Vuex.Store({
     autoLogin ({commit}, payload) {
       commit('setUser', {
         id: payload.uid,
+        email: payload.email,
         registeredItems: []
       })
     },
