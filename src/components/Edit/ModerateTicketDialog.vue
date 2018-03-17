@@ -1,15 +1,38 @@
 <template>
-  <v-dialog v-model="editTicketDialog" max-width="330" @keydown.enter="onSaveChanges">
+  <v-dialog v-model="moderateTicketDialog" max-width="330" @keydown.enter="onSaveChanges">
 
-    <v-tooltip top slot="activator" color="warning" open-delay="0">
+    <v-tooltip
+      v-if="!item.isModerated"
+      top
+      slot="activator"
+      color="warning"
+      open-delay="0"
+    >
       <v-btn
         fab
-        color="warning"
         slot="activator"
+        color="warning"
+      >
+        <v-icon>mdi-eye-off</v-icon>
+      </v-btn>
+      <span >Модерация</span>
+    </v-tooltip>
+
+    <v-tooltip
+      v-else
+      top
+      slot="activator"
+      color="success"
+      open-delay="0"
+    >
+      <v-btn
+        fab
+        slot="activator"
+        color="success"
       >
         <v-icon>mdi-eye</v-icon>
       </v-btn>
-      <span>Модерировать</span>
+      <span>Модерация</span>
     </v-tooltip>
 
     <v-card>
@@ -33,7 +56,7 @@
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn @click.stop="editTicketDialog=false">Отмена</v-btn>
+        <v-btn @click.stop="moderateTicketDialog=false">Отмена</v-btn>
         <v-btn color="warning" @click="onSaveChanges">Сохранить</v-btn>
       </v-card-actions>
       </v-container>
@@ -47,15 +70,21 @@
     props: ['item'],
     data () {
       return {
-        editTicketDialog: false,
+        moderateTicketDialog: false,
+        editedIsWinnerWeek: this.item.isWinnerWeek,
+        editedIsWinnerMonth: this.item.isWinnerMonth,
+        editedIsWinnerContest: this.item.isWinnerContest,
         editedIsModerated: this.item.isModerated
       }
     },
     methods: {
       onSaveChanges () {
-        this.editTicketDialog = false
+        this.moderateTicketDialog = false
         this.$store.dispatch('updateTicketData', {
           id: this.item.id,
+          isWinnerWeek: this.editedIsWinnerWeek,
+          isWinnerMonth: this.editedIsWinnerMonth,
+          isWinnerContest: this.editedIsWinnerContest,
           isModerated: this.editedIsModerated
         })
       }

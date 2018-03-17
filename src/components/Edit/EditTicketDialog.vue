@@ -9,7 +9,7 @@
       >
         <v-icon>mdi-crown</v-icon>
       </v-btn>
-      <span>Назначить победителем</span>
+      <span>Победитель</span>
     </v-tooltip>
 
     <v-card>
@@ -82,7 +82,8 @@
         editTicketDialog: false,
         editedIsWinnerWeek: this.item.isWinnerWeek,
         editedIsWinnerMonth: this.item.isWinnerMonth,
-        editedIsWinnerContest: this.item.isWinnerContest
+        editedIsWinnerContest: this.item.isWinnerContest,
+        editedIsModerated: this.item.isModerated
       }
     },
     methods: {
@@ -92,7 +93,8 @@
           id: this.item.id,
           isWinnerWeek: this.editedIsWinnerWeek,
           isWinnerMonth: this.editedIsWinnerMonth,
-          isWinnerContest: this.editedIsWinnerContest
+          isWinnerContest: this.editedIsWinnerContest,
+          isModerated: this.editedIsModerated
         })
       }
     }
