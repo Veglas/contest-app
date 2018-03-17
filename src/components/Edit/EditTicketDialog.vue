@@ -7,9 +7,9 @@
         color="warning"
         slot="activator"
       >
-        <v-icon>mdi-security</v-icon>
+        <v-icon>mdi-crown</v-icon>
       </v-btn>
-      <span>Редактировать</span>
+      <span>Назначить победителем</span>
     </v-tooltip>
 
     <v-card>

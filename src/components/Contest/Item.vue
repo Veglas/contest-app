@@ -64,6 +64,13 @@
 
             <div class="ticket__edit text-xs-right" v-if="userIsCreator || userIsAdmin">
 
+
+              <moderate-ticket-switch
+                v-if="userIsAdmin"
+                :item="item"
+              />
+
+
               <div v-if="!item.isModerated">
                 <v-tooltip
                   top
