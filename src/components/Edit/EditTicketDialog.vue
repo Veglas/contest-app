@@ -62,19 +62,6 @@
           </v-flex>
         </v-layout>
 
-        <v-layout align-center wrap>
-          <v-flex xs12>
-            <br>
-            <v-switch
-              color="success"
-              name="isModerated"
-              id="isModerated"
-              :label="`Модерация: ${editedIsModerated.toString()}`"
-              v-model="editedIsModerated"
-            />
-          </v-flex>
-        </v-layout>
-
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
@@ -95,8 +82,7 @@
         editTicketDialog: false,
         editedIsWinnerWeek: this.item.isWinnerWeek,
         editedIsWinnerMonth: this.item.isWinnerMonth,
-        editedIsWinnerContest: this.item.isWinnerContest,
-        editedIsModerated: this.item.isModerated
+        editedIsWinnerContest: this.item.isWinnerContest
       }
     },
     methods: {
@@ -106,8 +92,7 @@
           id: this.item.id,
           isWinnerWeek: this.editedIsWinnerWeek,
           isWinnerMonth: this.editedIsWinnerMonth,
-          isWinnerContest: this.editedIsWinnerContest,
-          isModerated: this.editedIsModerated
+          isWinnerContest: this.editedIsWinnerContest
         })
       }
     }
