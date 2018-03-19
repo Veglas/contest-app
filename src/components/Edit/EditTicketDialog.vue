@@ -7,9 +7,9 @@
         color="warning"
         slot="activator"
       >
-        <v-icon>mdi-security</v-icon>
+        <v-icon>mdi-crown</v-icon>
       </v-btn>
-      <span>Редактировать</span>
+      <span>Победитель</span>
     </v-tooltip>
 
     <v-card>
@@ -58,19 +58,6 @@
               id="isWinnerContest"
               label="Победитель конкурса"
               v-model="editedIsWinnerContest"
-            />
-          </v-flex>
-        </v-layout>
-
-        <v-layout align-center wrap>
-          <v-flex xs12>
-            <br>
-            <v-switch
-              color="success"
-              name="isModerated"
-              id="isModerated"
-              :label="`Модерация: ${editedIsModerated.toString()}`"
-              v-model="editedIsModerated"
             />
           </v-flex>
         </v-layout>

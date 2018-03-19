@@ -100,6 +100,11 @@
                 </v-tooltip>
               </div>
 
+              <moderate-ticket-dialog
+                v-if="userIsAdmin"
+                :item="item"
+              />
+
               <edit-ticket-dialog
                 v-if="userIsAdmin"
                 :item="item"
