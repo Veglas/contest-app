@@ -1,5 +1,11 @@
 <template>
-  <v-alert error dismissible @input="onClose" :value="true">
+  <v-alert
+    error
+    dismissible
+    @input="onClose"
+    :value="true"
+    icon="mdi-alert"
+  >
     {{ text }}
   </v-alert>
 </template>

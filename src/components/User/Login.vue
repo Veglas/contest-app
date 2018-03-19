@@ -2,7 +2,9 @@
   <v-container>
     <v-layout>
       <v-flex xs12 sm6 offset-sm3 lg4 offset-lg4>
-        <app-alert v-if="error" @dismissed="onDismissed" :text="error.message"></app-alert>
+
+        <app-alert v-if="error" @dismissed="onDismissed" :text="error.message"/>
+
         <v-card>
           <v-card-text>
 
