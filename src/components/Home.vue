@@ -13,7 +13,7 @@
                 </v-flex>
 
                 <v-flex xs12 sm6 class="text-sm-right">
-                  <btn-create-item/>
+                  <btn-create-ticket/>
                 </v-flex>
 
                 <v-flex xs12>

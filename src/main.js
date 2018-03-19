@@ -11,7 +11,7 @@ import EditTicketDialog from './components/Edit/EditTicketDialog'
 import DeleteTicketDialog from './components/Edit/DeleteTicketDialog'
 import ModerateTicketDialog from './components/Edit/ModerateTicketDialog'
 import ListItem from './components/Contest/ListItem'
-import BtnCreateItem from './components/Shared/BtnCreateItem'
+import BtnCreateTicket from './components/Shared/BtnCreateTicket'
 
 Vue.use(Vuetify)
 Vue.config.productionTip = false
@@ -22,7 +22,7 @@ Vue.component('edit-ticket-dialog', EditTicketDialog)
 Vue.component('delete-ticket-dialog', DeleteTicketDialog)
 Vue.component('moderate-ticket-dialog', ModerateTicketDialog)
 Vue.component('list-item', ListItem)
-Vue.component('btn-create-item', BtnCreateItem)
+Vue.component('btn-create-ticket', BtnCreateTicket)
 
 /* eslint-disable no-new */
 new Vue({

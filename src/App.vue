@@ -138,6 +138,8 @@
               <div>&copy; {{ new Date().getFullYear() }} Все права защищены | 18+ | Веглас Casino Streams</div>
               <Network/>
             </v-flex>
+            <v-flex>
+            </v-flex>
           </v-layout>
         </v-container>
       </v-card-text>
@@ -160,7 +162,7 @@
         homeBtn: {title: 'Розыгрыш', icon: 'mdi-clover', url: '/'},
         profileBtn: {title: 'Профиль', icon: 'mdi-account', url: '/user/profile'},
         adminBtn: {title: 'Админ', icon: 'mdi-security', url: '/admin'},
-        contestBtn: {title: 'Победители', icon: 'mdi-crown', url: '/winners'},
+        contestBtn: {title: 'Победители', icon: 'mdi-crown', url: '/lottery/winners'},
         loginBtn: {title: 'Вход', icon: 'mdi-key', url: '/user/login'},
         registerBtn: {title: 'Регистрация', icon: 'mdi-account-plus', url: '/user/register'}
       }
@@ -185,11 +187,8 @@
 </script>
 
 <style>
-  /*.card {
-    overflow: hidden;
-  }*/
   .chip__content {
-    max-width: 180px;
+    max-width: 200px;
   }
   .chip__content span {
     overflow: hidden;
