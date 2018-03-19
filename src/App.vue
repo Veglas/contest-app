@@ -185,4 +185,14 @@
 </script>
 
 <style>
+  /*.card {
+    overflow: hidden;
+  }*/
+  .chip__content {
+    max-width: 180px;
+  }
+  .chip__content span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 </style>
