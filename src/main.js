@@ -3,6 +3,7 @@ import App from './App'
 import router from './router'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
+import VueAnalytics from 'vue-analytics'
 import { store } from './store'
 import DateFilter from './filters/date'
 import * as firebase from 'firebase'
@@ -14,6 +15,10 @@ import ListItem from './components/Contest/ListItem'
 import BtnCreateTicket from './components/Shared/BtnCreateTicket'
 
 Vue.use(Vuetify)
+Vue.use(VueAnalytics, {
+  id: 'UA-112607536-2'
+})
+
 Vue.config.productionTip = false
 
 Vue.filter('date', DateFilter)
