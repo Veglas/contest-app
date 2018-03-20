@@ -155,7 +155,7 @@
     },
     methods: {
       onLoadItem (id) {
-        this.$router.push('/contest/item/' + id)
+        this.$router.push('/lottery/ticket/' + id)
       }
     }
   }
