@@ -8,16 +8,15 @@
             <v-container grid-list-md>
               <v-layout wrap>
 
-                <v-flex xs12 sm6>
-                  <h1>Все билеты</h1>
-                </v-flex>
-
-                <v-flex xs12 sm6 class="text-sm-right">
+                <v-flex xs12 class="text-md-right">
+                  <btn-winners/>
+                  <btn-rules/>
                   <btn-create-ticket/>
                 </v-flex>
 
                 <v-flex xs12>
-                  <span>Билеты, участвующие в розыгрыше</span>
+                  <h1>Pозыгрыш «Бесплатный»</h1>
+                  <h3>Билеты, участвующие в розыгрыше</h3>
                 </v-flex>
 
                 <v-progress-circular

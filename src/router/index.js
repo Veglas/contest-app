@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home'
-import Winners from '@/components/Contest/Winners'
-import CreateTicket from '@/components/Contest/CreateTicket'
-import Item from '@/components/Contest/Item'
+import Winners from '@/components/Lottery/Winners'
+import Rules from '@/components/Lottery/Rules'
+import CreateTicket from '@/components/Lottery/CreateTicket'
+import Ticket from '@/components/Lottery/Ticket'
 import Register from '@/components/User/Register'
 import Login from '@/components/User/Login'
 import Profile from '@/components/User/Profile'
@@ -37,6 +38,11 @@ export default new Router({
       component: Winners
     },
     {
+      path: '/lottery/rules',
+      name: 'Rules',
+      component: Rules
+    },
+    {
       path: '/lottery/create-ticket',
       name: 'CreateTicket',
       component: CreateTicket,
@@ -44,8 +50,8 @@ export default new Router({
     },
     {
       path: '/lottery/ticket/:id',
-      name: 'Item',
-      component: Item,
+      name: 'Ticket',
+      component: Ticket,
       props: true
     },
     {

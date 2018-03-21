@@ -15,10 +15,12 @@
           <v-toolbar-title>{{ homeBtn.title }}</v-toolbar-title>
         </v-btn>
 
-        <v-btn flat :to="contestBtn.url">
-          <v-icon left>{{ contestBtn.icon }}</v-icon>
-          <span>{{ contestBtn.title }}</span>
+        <!--
+        <v-btn flat :to="winnersBtn.url">
+          <v-icon left>{{ winnersBtn.icon }}</v-icon>
+          <span>{{ winnersBtn.title }}</span>
         </v-btn>
+        -->
       </v-toolbar-items>
 
       <v-spacer/>
@@ -82,14 +84,16 @@
           </v-list-tile-content>
         </v-list-tile>
 
-        <v-list-tile :to="contestBtn.url">
+        <!--
+        <v-list-tile :to="winnersBtn.url">
           <v-list-tile-action>
-            <v-icon>{{ contestBtn.icon }}</v-icon>
+            <v-icon>{{ winnersBtn.icon }}</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title>{{ contestBtn.title }}</v-list-tile-title>
+            <v-list-tile-title>{{ winnersBtn.title }}</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
+        -->
 
         <v-list-tile v-if="userIsAdmin" :to="adminBtn.url">
           <v-list-tile-action>
@@ -168,10 +172,10 @@
       return {
         sideNav: null,
         veglasBtn: {title: 'Веглас', icon: 'mdi-bitcoin', url: 'https://veglas.org'},
-        homeBtn: {title: 'Розыгрыш', icon: 'mdi-clover', url: '/'},
+        homeBtn: {title: '«Бесплатный»', icon: 'mdi-clover', url: '/'},
         profileBtn: {title: 'Профиль', icon: 'mdi-account', url: '/user/profile'},
         adminBtn: {title: 'Админ', icon: 'mdi-security', url: '/admin'},
-        contestBtn: {title: 'Победители', icon: 'mdi-crown', url: '/lottery/winners'},
+        // winnersBtn: {title: 'Победители', icon: 'mdi-crown', url: '/lottery/winners'},
         loginBtn: {title: 'Вход', icon: 'mdi-key', url: '/user/login'},
         registerBtn: {title: 'Регистрация', icon: 'mdi-account-plus', url: '/user/register'}
       }

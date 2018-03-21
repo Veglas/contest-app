@@ -13,8 +13,10 @@ import AlertCmp from './components/Shared/Alert'
 import EditTicketDialog from './components/Edit/EditTicketDialog'
 import DeleteTicketDialog from './components/Edit/DeleteTicketDialog'
 import ModerateTicketDialog from './components/Edit/ModerateTicketDialog'
-import ListItem from './components/Contest/ListItem'
+import ListItem from './components/Lottery/ListItem'
 import BtnCreateTicket from './components/Shared/BtnCreateTicket'
+import BtnRules from './components/Shared/BtnRules'
+import BtnWinners from './components/Shared/BtnWinners'
 
 Vue.use(Vuetify)
 Vue.use(VueAnalytics, {
@@ -39,6 +41,8 @@ Vue.component('delete-ticket-dialog', DeleteTicketDialog)
 Vue.component('moderate-ticket-dialog', ModerateTicketDialog)
 Vue.component('list-item', ListItem)
 Vue.component('btn-create-ticket', BtnCreateTicket)
+Vue.component('btn-rules', BtnRules)
+Vue.component('btn-winners', BtnWinners)
 
 /* eslint-disable no-new */
 new Vue({
