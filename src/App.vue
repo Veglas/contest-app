@@ -137,9 +137,17 @@
             <v-flex xs12 sm6>
               <div>&copy; {{ new Date().getFullYear() }} Все права защищены | 18+ | Веглас Casino Streams</div>
               <Network/>
+
+              <!-- Yandex.Metrika informer
+              <a href="https://metrika.yandex.ru/stat/?id=48127781&amp;from=informer"
+              target="_blank" rel="nofollow"><img src="https://informer.yandex.ru/informer/48127781/1_0_99FF99FF_99FF99FF_0_pageviews"
+              style="width:80px; height:15px; border:0;" alt="яндекс.метрика" title="яндекс.метрика: данные за сегодня (просмотры)" /></a>
+              /Yandex.Metrika informer -->
+
             </v-flex>
-            <v-flex>
-            </v-flex>
+            <!-- <v-flex xs12 md6>
+
+            </v-flex> -->
           </v-layout>
         </v-container>
       </v-card-text>

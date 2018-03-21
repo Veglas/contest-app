@@ -4,6 +4,8 @@ import router from './router'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import VueAnalytics from 'vue-analytics'
+import VueYandexMetrika from 'vue-yandex-metrika'
+
 import { store } from './store'
 import DateFilter from './filters/date'
 import * as firebase from 'firebase'
@@ -16,7 +18,16 @@ import BtnCreateTicket from './components/Shared/BtnCreateTicket'
 
 Vue.use(Vuetify)
 Vue.use(VueAnalytics, {
-  id: 'UA-112607536-2'
+  id: 'UA-112607536-2',
+  router,
+  autoTracking: {
+    pageviewOnLoad: true
+  }
+})
+Vue.use(VueYandexMetrika, {
+  id: 48127781,
+  router: router,
+  env: process.env.NODE_ENV
 })
 
 Vue.config.productionTip = false
