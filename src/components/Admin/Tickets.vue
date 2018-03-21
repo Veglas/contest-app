@@ -7,9 +7,23 @@
           <v-card-text>
 
             <v-layout wrap>
-              <v-flex xs12>
-                <h1>Админ</h1>
+
+              <v-flex>
+                <v-btn flat :to="adminTicketsBtn.url" class="primary ml-0" exact>
+                  <v-icon left>{{ adminTicketsBtn.icon }}</v-icon>
+                  <span>{{ adminTicketsBtn.title }}</span>
+                </v-btn>
+
+                <v-btn flat :to="adminLotteriesBtn.url" class="primary">
+                  <v-icon left>{{ adminLotteriesBtn.icon }}</v-icon>
+                  <span>{{ adminLotteriesBtn.title }}</span>
+                </v-btn>
               </v-flex>
+
+              <v-flex xs12>
+                <h1>Билеты</h1>
+              </v-flex>
+
             </v-layout>
 
             <v-progress-circular
@@ -22,7 +36,6 @@
             <v-layout wrap v-else>
 
               <v-flex xs12 class="text-xs-center">
-                <br>
                 <h2>
                   <v-chip small color="success white--text">
                     <v-icon>mdi-eye</v-icon>
@@ -79,7 +92,6 @@
               </v-flex>
 
               <v-flex xs12 class="text-xs-center">
-                <br>
                 <h2>
                   <v-chip small color="warning white--text">
                     <v-icon>mdi-eye-off</v-icon>
@@ -145,6 +157,12 @@
 
 <script>
   export default {
+    data () {
+      return {
+        adminTicketsBtn: {title: 'Билеты', icon: 'mdi-cash-multiple', url: '/admin'},
+        adminLotteriesBtn: {title: 'Лотереи', icon: 'mdi-trophy', url: '/admin/lotteries'}
+      }
+    },
     computed: {
       loading () {
         return this.$store.getters.loading

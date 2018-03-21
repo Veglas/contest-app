@@ -7,7 +7,8 @@ import Item from '@/components/Contest/Item'
 import Register from '@/components/User/Register'
 import Login from '@/components/User/Login'
 import Profile from '@/components/User/Profile'
-import MainAdmin from '@/components/Admin/MainAdmin'
+import Tickets from '@/components/Admin/Tickets'
+import Lotteries from '@/components/Admin/Lotteries'
 import AuthGuard from './auth-guard'
 // import AdminGuard from './admin-guard'
 
@@ -65,8 +66,15 @@ export default new Router({
     },
     {
       path: '/admin',
-      name: 'MainAdmin',
-      component: MainAdmin
+      name: 'Tickets',
+      component: Tickets
+      // beforeEnter: AuthGuard
+      // beforeEnter: AdminGuard
+    },
+    {
+      path: '/admin/lotteries',
+      name: 'Lotteries',
+      component: Lotteries
       // beforeEnter: AuthGuard
       // beforeEnter: AdminGuard
     }
