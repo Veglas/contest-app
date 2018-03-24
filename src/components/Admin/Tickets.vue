@@ -58,7 +58,9 @@
 
               <v-flex xs12 md4>
                 <div><b>ID юзера</b></div>
-                <div v-for="i in items" :key="i.id" v-if="i.isModerated">{{ i.creatorId }}</div>
+                <div v-for="i in items" :key="i.id" v-if="i.isModerated">
+                  <a @click="onLoadUser(i.creatorId)">{{ i.creatorId }}</a>
+                </div>
               </v-flex>
 
               <v-flex xs12 md2>
@@ -114,7 +116,9 @@
 
               <v-flex xs12 md4>
                 <div><b>ID юзера</b></div>
-                <div v-for="i in items" :key="i.id" v-if="!i.isModerated">{{ i.creatorId }}</div>
+                <div v-for="i in items" :key="i.id" v-if="!i.isModerated">
+                  <a @click="onLoadUser(i.creatorId)">{{ i.creatorId }}</a>
+                </div>
               </v-flex>
 
               <v-flex xs12 md2>
@@ -174,6 +178,9 @@
     methods: {
       onLoadItem (id) {
         this.$router.push('/lottery/ticket/' + id)
+      },
+      onLoadUser (creatorId) {
+        this.$router.push('/user/profile/' + creatorId)
       }
     }
   }

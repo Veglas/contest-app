@@ -10,12 +10,16 @@ export const store = new Vuex.Store({
     user: null,
     loading: false,
     error: null,
-    loadedItems: []
+    loadedItems: [],
+    loadedUsers: []
   },
 
   mutations: {
     setLoadedItems (state, payload) {
       state.loadedItems = payload
+    },
+    setLoadedUsers (state, payload) {
+      state.loadedUsers = payload
     },
     setUser (state, payload) {
       state.user = payload
@@ -52,6 +56,27 @@ export const store = new Vuex.Store({
   },
 
   actions: {
+    loadUsers ({commit}) {
+      commit('setLoading', true)
+      firebase.auth().getAllUsers()
+        .then((data) => {
+          const users = []
+          const obj = data.val()
+          for (let key in obj) {
+            users.push({
+              id: key
+            })
+          }
+          commit('setLoadedUsers', users)
+          commit('setLoading', false)
+        })
+        .catch(
+          (error) => {
+            console.log(error)
+            commit('setLoading', false)
+          }
+        )
+    },
     loadItems ({commit}) {
       commit('setLoading', true)
       firebase.database().ref('items').once('value')
@@ -155,8 +180,7 @@ export const store = new Vuex.Store({
             commit('setLoading', false)
             const newUser = {
               id: user.uid,
-              email: user.email,
-              registeredItems: []
+              email: user.email
             }
             commit('setUser', newUser)
           }
@@ -178,8 +202,7 @@ export const store = new Vuex.Store({
             commit('setLoading', false)
             const newUser = {
               id: user.uid,
-              email: user.email,
-              registeredItems: []
+              email: user.email
             }
             commit('setUser', newUser)
           }
@@ -211,6 +234,9 @@ export const store = new Vuex.Store({
   getters: {
     loadedItems (state) {
       return state.loadedItems
+    },
+    loadedUsers (state) {
+      return state.loadedUsers
     },
     loadedSortedByDateItems (state, getters) {
       return getters.loadedItems.sort((itemA, itemB) => {

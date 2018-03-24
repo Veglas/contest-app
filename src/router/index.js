@@ -8,6 +8,7 @@ import Ticket from '@/components/Lottery/Ticket'
 import Register from '@/components/User/Register'
 import Login from '@/components/User/Login'
 import Profile from '@/components/User/Profile'
+import ProfileOpen from '@/components/User/ProfileOpen'
 import Tickets from '@/components/Admin/Tickets'
 import Lotteries from '@/components/Admin/Lotteries'
 import AuthGuard from './auth-guard'
@@ -55,6 +56,19 @@ export default new Router({
       props: true
     },
     {
+      path: '/user/profile/:id',
+      name: 'ProfileOpen',
+      component: ProfileOpen,
+      props: true
+      // beforeEnter: AuthGuard
+    },
+    {
+      path: '/user/profile',
+      name: 'Profile',
+      component: Profile
+      // beforeEnter: AuthGuard
+    },
+    {
       path: '/user/register',
       name: 'Register',
       component: Register
@@ -63,12 +77,6 @@ export default new Router({
       path: '/user/login',
       name: 'Login',
       component: Login
-    },
-    {
-      path: '/user/profile',
-      name: 'Profile',
-      component: Profile
-      // beforeEnter: AuthGuard
     },
     {
       path: '/admin',
