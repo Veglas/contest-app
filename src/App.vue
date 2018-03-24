@@ -10,9 +10,9 @@
       </v-toolbar-items>
 
       <v-toolbar-items class="hidden-xs-only">
-        <v-btn flat :to="homeBtn.url" exact>
-          <v-icon>{{ homeBtn.icon }}</v-icon>
-          <v-toolbar-title>{{ homeBtn.title }}</v-toolbar-title>
+        <v-btn flat :to="everyDayLotteryBtn.url" exact>
+          <v-icon left>{{ everyDayLotteryBtn.icon }}</v-icon>
+          <span>{{ everyDayLotteryBtn.title }}</span>
         </v-btn>
 
         <!--
@@ -75,12 +75,12 @@
           </v-list-tile-content>
         </v-list-tile>
 
-        <v-list-tile :to="homeBtn.url">
+        <v-list-tile :to="everyDayLotteryBtn.url">
           <v-list-tile-action>
-            <v-icon>{{ homeBtn.icon }}</v-icon>
+            <v-icon>{{ everyDayLotteryBtn.icon }}</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title>{{ homeBtn.title }}</v-list-tile-title>
+            <v-list-tile-title>{{ everyDayLotteryBtn.title }}</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
 
@@ -172,7 +172,7 @@
       return {
         sideNav: null,
         veglasBtn: {title: 'Веглас', icon: 'mdi-bitcoin', url: 'https://veglas.org'},
-        homeBtn: {title: '«Бесплатный»', icon: 'mdi-clover', url: '/'},
+        everyDayLotteryBtn: {title: 'Pозыгрыш «Ежедневный»', icon: 'mdi-clover', url: '/'},
         profileBtn: {title: 'Профиль', icon: 'mdi-account', url: '/user/profile'},
         adminBtn: {title: 'Админ', icon: 'mdi-security', url: '/admin'},
         // winnersBtn: {title: 'Победители', icon: 'mdi-crown', url: '/lottery/winners'},

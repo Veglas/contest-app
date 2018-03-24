@@ -15,7 +15,7 @@
                 </v-flex>
 
                 <v-flex xs12>
-                  <h1>Pозыгрыш «Бесплатный»</h1>
+                  <h1>Pозыгрыш «Ежедневный»</h1>
                   <h3>Билеты, участвующие в розыгрыше</h3>
                 </v-flex>
 
@@ -61,7 +61,7 @@
         return this.$store.getters.loading
       },
       items () {
-        return this.$store.getters.loadedSortedByDateItems
+        return this.$store.getters.loadedLastFewItems
       },
       userIsAuthenticated () {
         return this.$store.getters.user !== null && this.$store.getters.user !== undefined

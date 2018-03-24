@@ -9,7 +9,10 @@
               <v-layout wrap>
 
                 <v-flex xs12>
-                  <h1>Юзер</h1>
+                  <h1>
+                    <v-icon large>mdi-account-circle</v-icon>
+                    Юзер
+                  </h1>
                 </v-flex>
 
               </v-layout>
