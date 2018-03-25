@@ -29,7 +29,7 @@
                   <span>{{ i.isWinnerContest }}</span>
                 </v-chip>
               </div>
-              <span>Победитель розыгрыша</span>
+              <span>МЕГА Победитель</span>
             </v-tooltip>
           </div>
 
@@ -50,7 +50,7 @@
                   <span>{{ i.isWinnerMonth }}</span>
                 </v-chip>
               </div>
-              <span>Победитель месяца</span>
+              <span>Победитель недели</span>
             </v-tooltip>
           </div>
 
@@ -71,7 +71,7 @@
                   <span>{{ i.isWinnerWeek }}</span>
                 </v-chip>
               </div>
-              <span>Победитель недели</span>
+              <span>Победитель дня</span>
             </v-tooltip>
           </div>
 
@@ -194,7 +194,7 @@
     background-color: gainsboro;
   }
   .card__media__background {
-  background-position: top center !important;
+    background-position: top center !important;
   }
   /*.list-item__winners {*/
     /*position: absolute;*/

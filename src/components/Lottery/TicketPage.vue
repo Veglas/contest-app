@@ -23,11 +23,11 @@
               >
                 <div slot="activator">
                   <v-chip color="teal darken-1 white--text">
-                    <v-icon left v-for="n in 3" :key="n">mdi-crown</v-icon>
+                    <v-icon v-for="n in 3" :key="n">mdi-crown</v-icon>
                     <span>{{ item.isWinnerContest }}</span>
                   </v-chip>
                 </div>
-                <span>Победитель розыгрыша</span>
+                <span>МЕГА Победитель</span>
               </v-tooltip>
 
               <v-tooltip
@@ -38,11 +38,11 @@
               >
                 <div slot="activator">
                   <v-chip color="green darken-1 white--text">
-                    <v-icon left v-for="n in 2" :key="n">mdi-crown</v-icon>
+                    <v-icon v-for="n in 2" :key="n">mdi-crown</v-icon>
                     <span>{{ item.isWinnerMonth }}</span>
                   </v-chip>
                 </div>
-                <span>Победитель месяца</span>
+                <span>Победитель недели</span>
               </v-tooltip>
 
               <v-tooltip
@@ -53,11 +53,11 @@
               >
                 <div slot="activator">
                   <v-chip color="light-green darken-1 white--text">
-                    <v-icon left>mdi-crown</v-icon>
+                    <v-icon>mdi-crown</v-icon>
                     <span>{{ item.isWinnerWeek }}</span>
                   </v-chip>
                 </div>
-                <span>Победитель недели</span>
+                <span>Победитель дня</span>
               </v-tooltip>
 
             </div>

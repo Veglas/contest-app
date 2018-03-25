@@ -33,7 +33,7 @@
                     <v-chip small color="teal darken-1 white--text">
                       <v-icon v-for="n in 3" :key="n">mdi-crown</v-icon>
                     </v-chip>
-                    <span>Победитель конкурса</span>
+                    <span>МЕГА Победители</span>
                   </h2>
                   <v-layout wrap>
                     <list-item
@@ -49,7 +49,7 @@
                     <v-chip small color="green darken-1 white--text">
                       <v-icon v-for="n in 2" :key="n">mdi-crown</v-icon>
                     </v-chip>
-                    <span>Победители месяца</span>
+                    <span>Еженедельные победители</span>
                   </h2>
                   <v-layout wrap>
                     <list-item
@@ -65,7 +65,7 @@
                     <v-chip small color="light-green darken-1 white--text">
                       <v-icon>mdi-crown</v-icon>
                     </v-chip>
-                    <span>Победители недели</span>
+                    <span>Ежедневные победители</span>
                   </h2>
                   <v-layout wrap>
                     <list-item
@@ -103,4 +103,3 @@
 
 <style>
 </style>
-
