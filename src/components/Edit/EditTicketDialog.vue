@@ -26,7 +26,7 @@
               color="light-green darken-1"
               name="isWinnerWeek"
               id="isWinnerWeek"
-              label="Победитель недели"
+              label="Победитель дня"
               v-model="editedIsWinnerWeek"
             />
           </v-flex>
@@ -41,7 +41,7 @@
               color="green darken-1"
               name="isWinnerMonth"
               id="isWinnerMonth"
-              label="Победитель месяца"
+              label="Победитель недели"
               v-model="editedIsWinnerMonth"
             />
           </v-flex>
@@ -56,7 +56,7 @@
               color="teal darken-1"
               name="isWinnerContest"
               id="isWinnerContest"
-              label="Победитель конкурса"
+              label="МЕГА Победитель"
               v-model="editedIsWinnerContest"
             />
           </v-flex>
