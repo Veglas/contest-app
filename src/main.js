@@ -11,10 +11,16 @@ import DateFilter from './filters/date'
 import * as firebase from 'firebase'
 import AlertCmp from './components/Shared/Alert'
 import EditTicketDialog from './components/Edit/EditTicketDialog'
+import EditLotteryDialog from './components/Edit/EditLotteryDialog'
 import DeleteTicketDialog from './components/Edit/DeleteTicketDialog'
+import RemoveLotteryDialog from './components/Edit/RemoveLotteryDialog'
 import ModerateTicketDialog from './components/Edit/ModerateTicketDialog'
-import ListItem from './components/Contest/ListItem'
+import ListItem from './components/Lottery/ListItem'
+import TicketListBtn from './components/Lottery/TicketListBtn'
 import BtnCreateTicket from './components/Shared/BtnCreateTicket'
+import BtnCreateLottery from './components/Shared/BtnCreateLottery'
+import BtnRules from './components/Shared/BtnRules'
+import BtnWinners from './components/Shared/BtnWinners'
 
 Vue.use(Vuetify)
 Vue.use(VueAnalytics, {
@@ -35,10 +41,16 @@ Vue.config.productionTip = false
 Vue.filter('date', DateFilter)
 Vue.component('app-alert', AlertCmp)
 Vue.component('edit-ticket-dialog', EditTicketDialog)
+Vue.component('edit-lottery-dialog', EditLotteryDialog)
 Vue.component('delete-ticket-dialog', DeleteTicketDialog)
+Vue.component('remove-lottery-dialog', RemoveLotteryDialog)
 Vue.component('moderate-ticket-dialog', ModerateTicketDialog)
 Vue.component('list-item', ListItem)
+Vue.component('ticket-list-btn', TicketListBtn)
 Vue.component('btn-create-ticket', BtnCreateTicket)
+Vue.component('btn-create-lottery', BtnCreateLottery)
+Vue.component('btn-rules', BtnRules)
+Vue.component('btn-winners', BtnWinners)
 
 /* eslint-disable no-new */
 new Vue({
@@ -61,5 +73,6 @@ new Vue({
       }
     })
     this.$store.dispatch('loadItems')
+    this.$store.dispatch('loadLotteries')
   }
 })

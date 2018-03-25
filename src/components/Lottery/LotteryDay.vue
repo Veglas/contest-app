@@ -16,7 +16,7 @@
 
                 <v-flex xs12>
                   <h1>{{ lotteryDay.title }}</h1>
-                  <h3>Новые билеты, участвующие в розыгрыше</h3>
+                  <h3>Все билеты, участвующие в розыгрыше</h3>
                 </v-flex>
 
                 <v-progress-circular
@@ -34,24 +34,7 @@
                     :key="i.id"
                   />
 
-                  <ticket-list-btn
-                    :btn="lotteryDay"
-                  />
-
                 </v-layout>
-
-                <v-flex xs12>
-                  <br>
-                  <br>
-                  <h1>{{ lotteryWeek.title }}</h1>
-                  <h3>Скоро стартует</h3>
-                  <br>
-                  <br>
-                  <h1>{{ lotteryMonth.title }}</h1>
-                  <h3>Скоро стартует</h3>
-                  <br>
-                  <br>
-                </v-flex>
 
               </v-layout>
             </v-container>
@@ -76,9 +59,7 @@
   export default {
     data () {
       return {
-        lotteryDay: {title: '«Ежедневный» розыгрыш 500 руб', url: '/lottery/day'},
-        lotteryWeek: {title: '«Еженедельный» розыгрыш 5 000 руб', url: '/lottery/week'},
-        lotteryMonth: {title: '«Ежемесячный» розыгрыш 500 000 руб', url: '/lottery/month'}
+        lotteryDay: {title: '«Ежедневный» розыгрыш 500 руб', url: '/lottery/day'}
       }
     },
     computed: {
@@ -86,7 +67,7 @@
         return this.$store.getters.loading
       },
       items () {
-        return this.$store.getters.loadedLastFewItems
+        return this.$store.getters.loadedSortedByDateItems
       },
       userIsAuthenticated () {
         return this.$store.getters.user !== null && this.$store.getters.user !== undefined

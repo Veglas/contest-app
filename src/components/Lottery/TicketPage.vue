@@ -132,17 +132,9 @@
             <div style="font-size: 12px">
               ID билета: <b>{{ item.id }}</b>
               <br>
-              ID участника: <b>{{ item.creatorId }}</b>
+              ID участника: <a @click="onLoadUser(item.creatorId)"><b>{{ item.creatorId }}</b></a>
               <br>
               Время загрузки: <i>{{ item.date | date }}</i>
-              <!--<br>-->
-              <!--isWinnerWeek: <i>{{ item.isWinnerWeek }}</i>-->
-              <!--<br>-->
-              <!--isWinnerMonth: <i>{{ item.isWinnerMonth }}</i>-->
-              <!--<br>-->
-              <!--isWinnerContest: <i>{{ item.isWinnerContest }}</i>-->
-              <!--<br>-->
-              <!--isModerated: <i>{{ item.isModerated }}</i>-->
             </div>
           </v-card-text>
         </v-card>
@@ -178,6 +170,11 @@
         if (this.currentUserId === 'toxjaps6DjgDKrju6hf6Iq2e9FR2' || this.currentUserId === 'Ba1ck1rpfbUjXA6oWmdm1LreTmr1' || this.currentUserId === 'dNED1SUnJfe3ZhFiQMf9yc2mK5w2') {
           return true
         }
+      }
+    },
+    methods: {
+      onLoadUser (id) {
+        this.$router.push('/user/profile/' + this.item.creatorId)
       }
     }
   }

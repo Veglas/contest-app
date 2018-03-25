@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="deleteTicketDialog" max-width="330">
+  <v-dialog v-model="deleteLotteryDialog" max-width="330">
 
     <v-tooltip
       top
@@ -21,13 +21,13 @@
       <v-container pa-1>
 
         <v-card-text pa-1>
-          Билет будет удален безвозвратно.<br>
-          Вы уверены, что хотите удалить этот билет?
+          Лотерея будет удалена безвозвратно.<br>
+          Вы уверены, что хотите удалить эту лотерею?
         </v-card-text>
 
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn @click.stop="deleteTicketDialog=false">Отмена</v-btn>
+          <v-btn @click.stop="deleteLotteryDialog=false">Отмена</v-btn>
           <v-btn color="error" @click="onRemove">Удалить</v-btn>
         </v-card-actions>
 
@@ -39,22 +39,22 @@
 
 <script>
   export default {
-    props: ['item'],
+    props: ['lottery'],
     data () {
       return {
-        deleteTicketDialog: false
+        deleteLotteryDialog: false
       }
     },
     methods: {
       onSaveChanges () {
-        this.deleteTicketDialog = false
+        this.deleteLotteryDialog = false
       },
       onRemove () {
-        this.$store.dispatch('removeTicketData', {
-          id: this.item.id,
-          imageUrl: this.item.imageUrl
+        this.$store.dispatch('removeLotteryData', {
+          id: this.lottery.id,
+          imageUrl: this.lottery.imageUrl
         })
-        this.$router.push('/')
+        this.$router.push('/admin/lotteries')
       }
     }
   }

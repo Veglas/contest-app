@@ -18,7 +18,8 @@
                 v-model="email"
                 type="email"
                 autocomplete="email"
-                required/>
+                required
+              />
 
               <v-text-field
                 name="password"
@@ -27,7 +28,8 @@
                 v-model="password"
                 type="password"
                 autocomplete="password"
-                required/>
+                required
+              />
 
               <div>
                 <v-btn
