@@ -4,7 +4,7 @@ import Home from '@/components/Home'
 import Winners from '@/components/Lottery/Winners'
 import Rules from '@/components/Lottery/Rules'
 import CreateTicket from '@/components/Lottery/CreateTicket'
-import Ticket from '@/components/Lottery/Ticket'
+import TicketPage from '@/components/Lottery/TicketPage'
 import Register from '@/components/User/Register'
 import Login from '@/components/User/Login'
 import Profile from '@/components/User/Profile'
@@ -53,8 +53,8 @@ export default new Router({
     },
     {
       path: '/lottery/ticket/:id',
-      name: 'Ticket',
-      component: Ticket,
+      name: 'TicketPage',
+      component: TicketPage,
       props: true
     },
     {

@@ -52,12 +52,27 @@ export const store = new Vuex.Store({
       item.isWinnerContest = payload.isWinnerContest
       item.isModerated = payload.isModerated
     },
+    updateLottery (state, payload) {
+      const item = state.loadedLotteries.find(item => {
+        return item.id === payload.id
+      })
+      item.name = payload.name
+      item.rules = payload.rules
+    },
     removeTicket (state, payload) {
       const index = state.loadedItems.findIndex(item => {
         return item.id === payload
       })
       if (index !== -1) {
         state.loadedItems.splice(index, 1)
+      }
+    },
+    removeLottery (state, payload) {
+      const index = state.loadedLotteries.findIndex(lottery => {
+        return lottery.id === payload
+      })
+      if (index !== -1) {
+        state.loadedLotteries.splice(index, 1)
       }
     }
   },
@@ -152,10 +167,10 @@ export const store = new Vuex.Store({
       commit('setLoading', true)
       firebase.database().ref('lotteries').once('value')
         .then((data) => {
-          const lotteries = []
+          const items = []
           const obj = data.val()
           for (let key in obj) {
-            lotteries.push({
+            items.push({
               id: key,
               name: obj[key].name,
               rules: obj[key].rules,
@@ -163,7 +178,7 @@ export const store = new Vuex.Store({
               date: obj[key].date
             })
           }
-          commit('setLoadedLotteries', lotteries)
+          commit('setLoadedLotteries', items)
           commit('setLoading', false)
         })
         .catch(
@@ -174,14 +189,14 @@ export const store = new Vuex.Store({
         )
     },
     createLottery ({commit, getters}, payload) {
-      const lottery = {
+      const item = {
         name: payload.name,
         rules: payload.rules,
         date: payload.date.toISOString()
       }
       let imageUrl
       let key
-      firebase.database().ref('lotteries').push(lottery)
+      firebase.database().ref('lotteries').push(item)
         .then((data) => {
           key = data.key
           return key
@@ -197,7 +212,7 @@ export const store = new Vuex.Store({
         })
         .then(() => {
           commit('createLottery', {
-            ...lottery,
+            ...item,
             imageUrl: imageUrl,
             id: key
           })
@@ -223,11 +238,38 @@ export const store = new Vuex.Store({
           commit('setLoading', false)
         })
     },
+    updateLotteryData ({commit}, payload) {
+      commit('setLoading', true)
+      const updateObj = {}
+      updateObj.name = payload.name
+      updateObj.rules = payload.rules
+      firebase.database().ref('lotteries').child(payload.id).update(updateObj)
+        .then(() => {
+          commit('updateLottery', payload)
+          commit('setLoading', false)
+        })
+        .catch((error) => {
+          console.log(error)
+          commit('setLoading', false)
+        })
+    },
     removeTicketData ({commit}, payload) {
       commit('setLoading', true)
       firebase.database().ref('items').child(payload.id).remove()
         .then(() => {
           commit('removeTicket', payload.id)
+          commit('setLoading', false)
+        })
+        .catch((error) => {
+          console.log(error)
+          commit('setLoading', false)
+        })
+    },
+    removeLotteryData ({commit}, payload) {
+      commit('setLoading', true)
+      firebase.database().ref('lotteries').child(payload.id).remove()
+        .then(() => {
+          commit('removeLottery', payload.id)
           commit('setLoading', false)
         })
         .catch((error) => {
@@ -323,14 +365,14 @@ export const store = new Vuex.Store({
       return state.loadedLotteries
     },
     loadedLotteriesSortedByDate (state, getters) {
-      return getters.loadedLotteries.sort((lotteryA, lotteryB) => {
-        return new Date(lotteryA.date) - new Date(lotteryB.date)
+      return getters.loadedLotteries.sort((itemA, itemB) => {
+        return new Date(itemA.date) - new Date(itemB.date)
       }).reverse()
     },
     loadedLottery (state) {
-      return (lotteryId) => {
-        return state.loadedLotteries.find((lottery) => {
-          return lottery.id === lotteryId
+      return (itemId) => {
+        return state.loadedLotteries.find((item) => {
+          return item.id === itemId
         })
       }
     },

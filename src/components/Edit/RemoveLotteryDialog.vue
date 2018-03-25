@@ -1,0 +1,63 @@
+<template>
+  <v-dialog v-model="deleteLotteryDialog" max-width="330">
+
+    <v-tooltip
+      top
+      slot="activator"
+      color="error"
+      open-delay="0"
+    >
+      <v-btn
+        fab
+        color="error"
+        slot="activator"
+      >
+        <v-icon>mdi-delete</v-icon>
+      </v-btn>
+      <span>Удалить</span>
+    </v-tooltip>
+
+    <v-card>
+      <v-container pa-1>
+
+        <v-card-text pa-1>
+          Лотерея будет удалена безвозвратно.<br>
+          Вы уверены, что хотите удалить эту лотерею?
+        </v-card-text>
+
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn @click.stop="deleteLotteryDialog=false">Отмена</v-btn>
+          <v-btn color="error" @click="onRemove">Удалить</v-btn>
+        </v-card-actions>
+
+      </v-container>
+    </v-card>
+
+  </v-dialog>
+</template>
+
+<script>
+  export default {
+    props: ['lottery'],
+    data () {
+      return {
+        deleteLotteryDialog: false
+      }
+    },
+    methods: {
+      onSaveChanges () {
+        this.deleteLotteryDialog = false
+      },
+      onRemove () {
+        this.$store.dispatch('removeLotteryData', {
+          id: this.lottery.id
+        })
+        this.$router.push('/admin/lotteries')
+      }
+    }
+  }
+</script>
+
+<style>
+</style>
