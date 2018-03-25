@@ -9,34 +9,24 @@
 
             <form @submit.prevent="onCreateLottery">
 
-            <div>
-              <v-text-field
-                name="name"
-                label="Название"
-                id="name"
-                v-model="name"
-                type="name"
-                autocomplete="name"
-                required
-              />
-            </div>
-
-            <div>
-              <v-text-field
-                name="rules"
-                label="Правила"
-                id="rules"
-                v-model="rules"
-                type="rules"
-                autocomplete="rules"
-                required
-              />
-            </div>
+              <div>
+                <v-text-field
+                  name="name"
+                  label="Название"
+                  id="name"
+                  v-model="name"
+                  type="name"
+                  autocomplete="name"
+                  required
+                />
+              </div>
 
               <div>
+                <div>Обложка*</div>
                 <v-btn
                   @click="onPickFile"
-                  class="ml-0">
+                  class="ml-0"
+                >
                   <v-icon left>mdi-image</v-icon>
                   Выбрать
                 </v-btn>
@@ -45,14 +35,28 @@
                   style="display: none"
                   ref="fileInput"
                   accept="image/*"
-                  @change="onFilePicked">
+                  @change="onFilePicked"
+                >
               </div>
-
-              <div v-if="imageUrl">
+              <v-card v-if="imageUrl" width="150">
                 <img
                   :src="imageUrl"
-                  class="d-block"
-                  width="150">
+                  class="d-block mb-4"
+                  width="150"
+                >
+              </v-card>
+
+              <div>
+                <v-text-field
+                  name="rules"
+                  label="Правила"
+                  id="rules"
+                  v-model="rules"
+                  type="rules"
+                  autocomplete="rules"
+                  multi-line
+                  required
+                />
               </div>
 
               <div>

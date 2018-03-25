@@ -16,7 +16,8 @@
               <div>
                 <v-btn
                   @click="onPickFile"
-                  class="ml-0">
+                  class="ml-0"
+                >
                   <v-icon left>mdi-image</v-icon>
                   Выбрать
                 </v-btn>
@@ -25,15 +26,16 @@
                   style="display: none"
                   ref="fileInput"
                   accept="image/*"
-                  @change="onFilePicked">
+                  @change="onFilePicked"
+                >
               </div>
-
-              <div v-if="imageUrl">
+              <v-card v-if="imageUrl" width="150">
                 <img
                   :src="imageUrl"
-                  class="d-block"
-                  width="150">
-              </div>
+                  class="d-block mb-4"
+                  width="150"
+                >
+              </v-card>
 
               <div>
                 <v-btn
