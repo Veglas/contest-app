@@ -171,7 +171,7 @@
     data () {
       return {
         sideNav: null,
-        veglasBtn: {title: 'Веглас', icon: 'mdi-bitcoin', url: 'https://veglas.org'},
+        veglasBtn: {title: 'Казино', icon: 'mdi-bitcoin', url: 'https://veglas.org'},
         everyDayLotteryBtn: {title: 'Pозыгрыш «Ежедневный»', icon: 'mdi-clover', url: '/'},
         profileBtn: {title: 'Профиль', icon: 'mdi-account', url: '/user/profile'},
         adminBtn: {title: 'Админ', icon: 'mdi-security', url: '/admin'},
