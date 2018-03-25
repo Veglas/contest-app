@@ -1,5 +1,5 @@
 <template>
-  <v-btn large color="primary" class="mx-0" :to="createLotteryBtn.url">
+  <v-btn large color="primary" class="ml-0" :to="createLotteryBtn.url">
     <v-icon left>{{ createLotteryBtn.icon }}</v-icon>
     <v-icon left>{{ createLotteryBtn.icon2 }}</v-icon>
     {{ createLotteryBtn.title }}
