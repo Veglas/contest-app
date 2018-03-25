@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="deleteTicketDialog" max-width="330">
+  <v-dialog v-model="removeTicketDialog" max-width="448">
 
     <v-tooltip
       top
@@ -27,7 +27,7 @@
 
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn @click.stop="deleteTicketDialog=false">Отмена</v-btn>
+          <v-btn @click.stop="removeTicketDialog=false">Отмена</v-btn>
           <v-btn color="error" @click="onRemove">Удалить</v-btn>
         </v-card-actions>
 
@@ -42,12 +42,12 @@
     props: ['item'],
     data () {
       return {
-        deleteTicketDialog: false
+        removeTicketDialog: false
       }
     },
     methods: {
       onSaveChanges () {
-        this.deleteTicketDialog = false
+        this.removeTicketDialog = false
       },
       onRemove () {
         this.$store.dispatch('removeTicketData', {

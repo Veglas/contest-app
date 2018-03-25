@@ -9,13 +9,16 @@
               <v-layout wrap>
 
                 <v-flex xs12 class="text-md-right">
-                  <btn-winners/>
+                  <!-- <btn-winners/> -->
                   <btn-rules/>
                   <btn-create-ticket/>
                 </v-flex>
 
                 <v-flex xs12>
-                  <h1>{{ lotteryDay.title }}</h1>
+                  <h1>
+                    <v-icon large>mdi-trophy</v-icon>
+                    {{ lotteryDay.title }}
+                  </h1>
                   <h3>Новые билеты, участвующие в розыгрыше</h3>
                 </v-flex>
 
@@ -43,11 +46,17 @@
                 <v-flex xs12>
                   <br>
                   <br>
-                  <h1>{{ lotteryWeek.title }}</h1>
+                  <h1>
+                    <v-icon large>mdi-trophy</v-icon>
+                    {{ lotteryWeek.title }}
+                  </h1>
                   <h3>Скоро стартует</h3>
                   <br>
                   <br>
-                  <h1>{{ lotteryMonth.title }}</h1>
+                  <h1>
+                    <v-icon large>mdi-trophy</v-icon>
+                    {{ lotteryMonth.title }}
+                  </h1>
                   <h3>Скоро стартует</h3>
                   <br>
                   <br>
@@ -78,7 +87,7 @@
       return {
         lotteryDay: {title: '«Ежедневный» розыгрыш 500 руб', url: '/lottery/day'},
         lotteryWeek: {title: '«Еженедельный» розыгрыш 5 000 руб', url: '/lottery/week'},
-        lotteryMonth: {title: '«Ежемесячный» розыгрыш 500 000 руб', url: '/lottery/month'}
+        lotteryMonth: {title: '«МЕГА» розыгрыш 500 000 руб', url: '/lottery/month'}
       }
     },
     computed: {

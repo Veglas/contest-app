@@ -15,12 +15,10 @@
           <v-toolbar-title>{{ lotteriesBtn.title }}</v-toolbar-title>
         </v-btn>
 
-        <!--
         <v-btn flat :to="winnersBtn.url">
-          <v-icon left>{{ winnersBtn.icon }}</v-icon>
-          <span>{{ winnersBtn.title }}</span>
+          <v-icon>{{ winnersBtn.icon }}</v-icon>
+          <span style="margin-left: 16px;" class="hidden-sm-and-down">{{ winnersBtn.title }}</span>
         </v-btn>
-        -->
       </v-toolbar-items>
 
       <v-spacer/>
@@ -32,23 +30,23 @@
       <v-toolbar-items class="hidden-xs-only">
 
         <v-btn flat v-if="userIsAdmin" :to="adminBtn.url">
-          <v-icon left>{{ adminBtn.icon }}</v-icon>
-          <span>{{ adminBtn.title }}</span>
+          <v-icon>{{ adminBtn.icon }}</v-icon>
+          <span style="margin-left: 16px;" class="hidden-sm-and-down">{{ adminBtn.title }}</span>
         </v-btn>
 
         <v-btn flat v-if="userIsAuthenticated" :to="profileBtn.url">
-          <v-icon left>{{ profileBtn.icon }}</v-icon>
-          <span>{{ profileBtn.title }}</span>
+          <v-icon>{{ profileBtn.icon }}</v-icon>
+          <span style="margin-left: 16px;" class="hidden-sm-and-down">{{ profileBtn.title }}</span>
         </v-btn>
 
         <v-btn flat v-if="!userIsAuthenticated" :to="loginBtn.url">
-          <v-icon left>{{ loginBtn.icon }}</v-icon>
-          <span>{{ loginBtn.title }}</span>
+          <v-icon>{{ loginBtn.icon }}</v-icon>
+          <span style="margin-left: 16px;" class="hidden-sm-and-down">{{ loginBtn.title }}</span>
         </v-btn>
 
         <v-btn flat v-if="!userIsAuthenticated" :to="registerBtn.url">
-          <v-icon left>{{ registerBtn.icon }}</v-icon>
-          <span>{{ registerBtn.title }}</span>
+          <v-icon>{{ registerBtn.icon }}</v-icon>
+          <span style="margin-left: 16px;" class="hidden-sm-and-down">{{ registerBtn.title }}</span>
         </v-btn>
 
       </v-toolbar-items>
@@ -84,7 +82,6 @@
           </v-list-tile-content>
         </v-list-tile>
 
-        <!--
         <v-list-tile :to="winnersBtn.url">
           <v-list-tile-action>
             <v-icon>{{ winnersBtn.icon }}</v-icon>
@@ -93,7 +90,6 @@
             <v-list-tile-title>{{ winnersBtn.title }}</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        -->
 
         <v-list-tile v-if="userIsAdmin" :to="adminBtn.url">
           <v-list-tile-action>
@@ -175,7 +171,7 @@
         lotteriesBtn: {title: 'Pозыгрыши', icon: 'mdi-clover', url: '/'},
         profileBtn: {title: 'Профиль', icon: 'mdi-account', url: '/user/profile'},
         adminBtn: {title: 'Админ', icon: 'mdi-security', url: '/admin'},
-        // winnersBtn: {title: 'Победители', icon: 'mdi-crown', url: '/lottery/winners'},
+        winnersBtn: {title: 'Победители', icon: 'mdi-crown', url: '/lottery/winners'},
         loginBtn: {title: 'Вход', icon: 'mdi-key', url: '/user/login'},
         registerBtn: {title: 'Регистрация', icon: 'mdi-account-plus', url: '/user/register'}
       }

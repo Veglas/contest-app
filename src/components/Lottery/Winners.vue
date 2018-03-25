@@ -29,7 +29,7 @@
                 <v-flex xs12 v-else>
 
                   <br>
-                  <h2>
+                  <h2 class="mb-3">
                     <v-chip small color="teal darken-1 white--text">
                       <v-icon v-for="n in 3" :key="n">mdi-crown</v-icon>
                     </v-chip>
@@ -44,8 +44,11 @@
                     />
                   </v-layout>
 
+                  <h4>Одним из них будешь ТЫ!</h4>
+                  <p>Учавствуй каждый день ;)</p>
+
                   <br>
-                  <h2>
+                  <h2 class="mb-3">
                     <v-chip small color="green darken-1 white--text">
                       <v-icon v-for="n in 2" :key="n">mdi-crown</v-icon>
                     </v-chip>
@@ -61,7 +64,7 @@
                   </v-layout>
 
                   <br>
-                  <h2>
+                  <h2 class="mb-3">
                     <v-chip small color="light-green darken-1 white--text">
                       <v-icon>mdi-crown</v-icon>
                     </v-chip>

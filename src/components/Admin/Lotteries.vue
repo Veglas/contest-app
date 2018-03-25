@@ -14,7 +14,7 @@
                   <span>{{ adminTicketsBtn.title }}</span>
                 </v-btn>
 
-                <v-btn flat :to="adminLotteriesBtn.url" class="primary">
+                <v-btn flat :to="adminLotteriesBtn.url" class="primary ml-0">
                   <v-icon left>{{ adminLotteriesBtn.icon }}</v-icon>
                   <span>{{ adminLotteriesBtn.title }}</span>
                 </v-btn>

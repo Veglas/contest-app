@@ -13,8 +13,8 @@
     </v-tooltip>
 
     <v-card>
-      <v-container pa-1>
-        <v-card-text pa-1>
+      <v-container>
+        <v-card-text>
 
           <div>
             <v-text-field

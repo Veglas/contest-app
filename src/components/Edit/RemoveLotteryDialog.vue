@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="deleteLotteryDialog" max-width="330">
+  <v-dialog v-model="deleteLotteryDialog" max-width="448">
 
     <v-tooltip
       top
@@ -18,16 +18,18 @@
     </v-tooltip>
 
     <v-card>
-      <v-container pa-1>
+      <v-container>
 
-        <v-card-text pa-1>
+        <v-card-title class="headline">Удалить лотерею</v-card-title>
+
+        <v-card-text>
           Лотерея будет удалена безвозвратно.<br>
           Вы уверены, что хотите удалить эту лотерею?
         </v-card-text>
 
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn @click.stop="deleteLotteryDialog=false">Отмена</v-btn>
+          <v-btn flat @click.stop="deleteLotteryDialog=false">Отмена</v-btn>
           <v-btn color="error" @click="onRemove">Удалить</v-btn>
         </v-card-actions>
 

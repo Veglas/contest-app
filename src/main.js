@@ -12,7 +12,7 @@ import * as firebase from 'firebase'
 import AlertCmp from './components/Shared/Alert'
 import EditTicketDialog from './components/Edit/EditTicketDialog'
 import EditLotteryDialog from './components/Edit/EditLotteryDialog'
-import DeleteTicketDialog from './components/Edit/DeleteTicketDialog'
+import RemoveTicketDialog from './components/Edit/RemoveTicketDialog'
 import RemoveLotteryDialog from './components/Edit/RemoveLotteryDialog'
 import ModerateTicketDialog from './components/Edit/ModerateTicketDialog'
 import ListItem from './components/Lottery/ListItem'
@@ -42,7 +42,7 @@ Vue.filter('date', DateFilter)
 Vue.component('app-alert', AlertCmp)
 Vue.component('edit-ticket-dialog', EditTicketDialog)
 Vue.component('edit-lottery-dialog', EditLotteryDialog)
-Vue.component('delete-ticket-dialog', DeleteTicketDialog)
+Vue.component('remove-ticket-dialog', RemoveTicketDialog)
 Vue.component('remove-lottery-dialog', RemoveLotteryDialog)
 Vue.component('moderate-ticket-dialog', ModerateTicketDialog)
 Vue.component('list-item', ListItem)

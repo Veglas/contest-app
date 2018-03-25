@@ -110,7 +110,7 @@
                 :item="item"
               />
 
-              <delete-ticket-dialog
+              <remove-ticket-dialog
                 v-if="userIsCreator || userIsAdmin"
                 :item="item"
               />
