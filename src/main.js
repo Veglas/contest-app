@@ -15,6 +15,7 @@ import DeleteTicketDialog from './components/Edit/DeleteTicketDialog'
 import ModerateTicketDialog from './components/Edit/ModerateTicketDialog'
 import ListItem from './components/Lottery/ListItem'
 import BtnCreateTicket from './components/Shared/BtnCreateTicket'
+import BtnCreateLottery from './components/Shared/BtnCreateLottery'
 import BtnRules from './components/Shared/BtnRules'
 import BtnWinners from './components/Shared/BtnWinners'
 
@@ -41,6 +42,7 @@ Vue.component('delete-ticket-dialog', DeleteTicketDialog)
 Vue.component('moderate-ticket-dialog', ModerateTicketDialog)
 Vue.component('list-item', ListItem)
 Vue.component('btn-create-ticket', BtnCreateTicket)
+Vue.component('btn-create-lottery', BtnCreateLottery)
 Vue.component('btn-rules', BtnRules)
 Vue.component('btn-winners', BtnWinners)
 
@@ -65,5 +67,6 @@ new Vue({
       }
     })
     this.$store.dispatch('loadItems')
+    this.$store.dispatch('loadLotteries')
   }
 })

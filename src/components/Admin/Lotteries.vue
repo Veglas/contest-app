@@ -22,6 +22,7 @@
 
               <v-flex xs12>
                 <h1>Лотереи</h1>
+                <btn-create-lottery/>
               </v-flex>
 
             </v-layout>
@@ -36,7 +37,10 @@
             <v-layout wrap v-else>
 
               <v-flex xs12>
-                <h2>Work in progress . . .</h2>
+                <div><b>Название</b></div>
+                <div v-for="i in lotteries" :key="i.id">
+                  <a @click="onLoadLottery(i.id)">{{ i.name }}</a>
+                </div>
               </v-flex>
 
             </v-layout>
@@ -54,6 +58,19 @@
       return {
         adminTicketsBtn: {title: 'Билеты', icon: 'mdi-cash-multiple', url: '/admin'},
         adminLotteriesBtn: {title: 'Лотереи', icon: 'mdi-trophy', url: '/admin/lotteries'}
+      }
+    },
+    computed: {
+      loading () {
+        return this.$store.getters.loading
+      },
+      lotteries () {
+        return this.$store.getters.loadedLotteriesSortedByDate
+      }
+    },
+    methods: {
+      onLoadLottery (id) {
+        this.$router.push('/lottery/' + id)
       }
     }
   }
