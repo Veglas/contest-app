@@ -3,7 +3,7 @@
 
     <v-toolbar dark class="black">
       <v-toolbar-items>
-        <v-btn flat :href="veglasBtn.url">
+        <v-btn flat :href="veglasBtn.url" target="_blank">
           <v-icon style="color: #00b535">{{ veglasBtn.icon }}</v-icon>
           <v-toolbar-title style="color: #d89924">{{ veglasBtn.title }}</v-toolbar-title>
         </v-btn>
@@ -66,7 +66,7 @@
     >
       <v-list dense class="pt-0">
 
-        <v-list-tile :href="veglasBtn.url">
+        <v-list-tile :href="veglasBtn.url" target="_blank">
           <v-list-tile-action>
             <v-icon>{{ veglasBtn.icon }}</v-icon>
           </v-list-tile-action>
