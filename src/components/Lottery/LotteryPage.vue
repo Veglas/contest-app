@@ -36,7 +36,7 @@
             <div style="font-size: 12px">
               <b>{{ lottery.name }}</b>
               <br>
-              <b>{{ lottery.rules }}</b>
+              {{ lottery.rules }}
             </div>
           </v-card-text>
         </v-card>
