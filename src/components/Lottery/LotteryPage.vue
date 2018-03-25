@@ -34,9 +34,9 @@
             </div>
 
             <div style="font-size: 12px">
-              <b>{{ lottery.name }}</b>
+              <h1>{{ lottery.name }}</h1>
               <br>
-              {{ lottery.rules }}
+              <div v-html="lottery.rules"/>
             </div>
           </v-card-text>
         </v-card>
@@ -54,7 +54,6 @@
         return this.$store.getters.loading
       },
       lottery () {
-        console.log(this.$store.getters.loadedLottery(this.id))
         return this.$store.getters.loadedLottery(this.id)
       },
       userIsAuthenticated () {

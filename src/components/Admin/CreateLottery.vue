@@ -103,7 +103,7 @@
         }
         const itemData = {
           name: this.name,
-          rules: this.name,
+          rules: this.rules,
           image: this.image,
           date: new Date()
         }

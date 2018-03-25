@@ -51,7 +51,8 @@
       },
       onRemove () {
         this.$store.dispatch('removeLotteryData', {
-          id: this.lottery.id
+          id: this.lottery.id,
+          imageUrl: this.lottery.imageUrl
         })
         this.$router.push('/admin/lotteries')
       }
