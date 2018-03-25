@@ -63,9 +63,6 @@
       items () {
         return this.$store.getters.loadedLastFewItems
       },
-      items () {
-        return this.$store.getters.loadedLastFewItems
-      },
       userIsAuthenticated () {
         return this.$store.getters.user !== null && this.$store.getters.user !== undefined
       },
