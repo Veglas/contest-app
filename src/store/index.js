@@ -146,7 +146,7 @@ export const store = new Vuex.Store({
         .then(key => {
           const filename = payload.image.name
           const ext = filename.slice(filename.lastIndexOf('.'))
-          return firebase.storage().ref('items/' + key + '.' + ext).put(payload.image)
+          return firebase.storage().ref('items/' + key + ext).put(payload.image)
         })
         .then(fileData => {
           imageUrl = fileData.metadata.downloadURLs[0]
@@ -223,6 +223,12 @@ export const store = new Vuex.Store({
     removeTicketData ({commit}, payload) {
       commit('setLoading', true)
       firebase.database().ref('items').child(payload.id).remove()
+        .then(() => {
+          const imageUrl = payload.imageUrl
+          const extWithMeta = imageUrl.slice(imageUrl.lastIndexOf('.'))
+          const ext = extWithMeta.slice(0, extWithMeta.lastIndexOf('?'))
+          return firebase.storage().ref('items/' + payload.id + ext).delete()
+        })
         .then(() => {
           commit('removeTicket', payload.id)
           commit('setLoading', false)

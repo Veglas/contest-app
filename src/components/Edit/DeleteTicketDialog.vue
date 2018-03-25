@@ -51,7 +51,8 @@
       },
       onRemove () {
         this.$store.dispatch('removeTicketData', {
-          id: this.item.id
+          id: this.item.id,
+          imageUrl: this.item.imageUrl
         })
         this.$router.push('/')
       }
