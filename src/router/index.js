@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home'
+import LotteryDay from '@/components/Lottery/LotteryDay'
 import Winners from '@/components/Lottery/Winners'
 import Rules from '@/components/Lottery/Rules'
 import CreateTicket from '@/components/Lottery/CreateTicket'
@@ -56,6 +57,11 @@ export default new Router({
       name: 'TicketPage',
       component: TicketPage,
       props: true
+    },
+    {
+      path: '/lottery/day',
+      name: 'LotteryDay',
+      component: LotteryDay
     },
     {
       path: '/lottery/:id',

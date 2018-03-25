@@ -11,7 +11,7 @@
                 <v-flex xs12>
                   <h1>
                     <v-icon large>mdi-account-circle</v-icon>
-                    Юзер
+                    Участник
                   </h1>
                 </v-flex>
 
@@ -29,20 +29,20 @@
               <v-layout wrap>
 
                 <v-flex xs12>
-                  <h4>ID юзера</h4>
+                  <h4>ID участника</h4>
                   <p><i>{{ id }}</i></p>
                 </v-flex>
 
                 <v-flex xs12 v-if="userIsAdmin">
                   <h4>
                     <v-icon>mdi-security</v-icon>
-                    Email юзера
+                    Email участника
                   </h4>
                   <p><i>Work In Progress . . .</i></p>
                 </v-flex>
 
                 <v-flex xs12>
-                  <h4>Билеты юзера</h4>
+                  <h4>Билеты участника</h4>
                 </v-flex>
 
                 <v-layout wrap>

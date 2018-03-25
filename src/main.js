@@ -16,6 +16,7 @@ import DeleteTicketDialog from './components/Edit/DeleteTicketDialog'
 import RemoveLotteryDialog from './components/Edit/RemoveLotteryDialog'
 import ModerateTicketDialog from './components/Edit/ModerateTicketDialog'
 import ListItem from './components/Lottery/ListItem'
+import TicketListBtn from './components/Lottery/TicketListBtn'
 import BtnCreateTicket from './components/Shared/BtnCreateTicket'
 import BtnCreateLottery from './components/Shared/BtnCreateLottery'
 import BtnRules from './components/Shared/BtnRules'
@@ -45,6 +46,7 @@ Vue.component('delete-ticket-dialog', DeleteTicketDialog)
 Vue.component('remove-lottery-dialog', RemoveLotteryDialog)
 Vue.component('moderate-ticket-dialog', ModerateTicketDialog)
 Vue.component('list-item', ListItem)
+Vue.component('ticket-list-btn', TicketListBtn)
 Vue.component('btn-create-ticket', BtnCreateTicket)
 Vue.component('btn-create-lottery', BtnCreateLottery)
 Vue.component('btn-rules', BtnRules)

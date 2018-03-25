@@ -360,7 +360,7 @@ export const store = new Vuex.Store({
       }).reverse()
     },
     loadedLastFewItems (state, getters) {
-      return getters.loadedSortedByDateItems.slice(0, 8)
+      return getters.loadedSortedByDateItems.slice(0, 7)
     },
     userCreatedItems (state, getters) {
       return getters.loadedSortedByDateItems

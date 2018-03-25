@@ -92,7 +92,7 @@
 
                 </div>
               </v-flex>
-              
+
               <v-flex xs12 class="text-xs-center">
                 <h2>
                   <v-chip small color="success white--text">
@@ -164,7 +164,7 @@
     data () {
       return {
         adminTicketsBtn: {title: 'Билеты', icon: 'mdi-cash-multiple', url: '/admin'},
-        adminLotteriesBtn: {title: 'Лотереи', icon: 'mdi-trophy', url: '/admin/lotteries'}
+        adminLotteriesBtn: {title: 'Лотереи (Work In Progress)', icon: 'mdi-trophy', url: '/admin/lotteries'}
       }
     },
     computed: {
