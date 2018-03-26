@@ -1,5 +1,9 @@
 <template>
-  <v-dialog v-model="deleteLotteryDialog" max-width="448">
+  <v-dialog
+    v-model="removeLotteryDialog"
+    max-width="448"
+    @keydown.esc="removeLotteryDialog=false"
+  >
 
     <v-tooltip
       top
@@ -19,20 +23,16 @@
 
     <v-card>
       <v-container>
-
         <v-card-title class="headline">Удалить лотерею</v-card-title>
-
         <v-card-text>
           Лотерея будет удалена безвозвратно.<br>
           Вы уверены, что хотите удалить эту лотерею?
         </v-card-text>
-
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn flat @click.stop="deleteLotteryDialog=false">Отмена</v-btn>
+          <v-btn flat @click.stop="removeLotteryDialog=false">Отмена</v-btn>
           <v-btn color="error" @click="onRemove">Удалить</v-btn>
         </v-card-actions>
-
       </v-container>
     </v-card>
 
@@ -44,12 +44,12 @@
     props: ['lottery'],
     data () {
       return {
-        deleteLotteryDialog: false
+        removeLotteryDialog: false
       }
     },
     methods: {
       onSaveChanges () {
-        this.deleteLotteryDialog = false
+        this.removeLotteryDialog = false
       },
       onRemove () {
         this.$store.dispatch('removeLotteryData', {

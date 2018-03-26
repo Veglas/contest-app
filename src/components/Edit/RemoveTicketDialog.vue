@@ -1,5 +1,9 @@
 <template>
-  <v-dialog v-model="removeTicketDialog" max-width="448">
+  <v-dialog
+    v-model="removeTicketDialog"
+    max-width="448"
+    @keydown.esc="removeTicketDialog=false"
+  >
 
     <v-tooltip
       top
@@ -18,19 +22,17 @@
     </v-tooltip>
 
     <v-card>
-      <v-container pa-1>
-
-        <v-card-text pa-1>
+      <v-container>
+        <v-card-title class="headline">Удалить билет</v-card-title>
+        <v-card-text>
           Билет будет удален безвозвратно.<br>
           Вы уверены, что хотите удалить этот билет?
         </v-card-text>
-
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn @click.stop="removeTicketDialog=false">Отмена</v-btn>
+          <v-btn flat @click.stop="removeTicketDialog=false">Отмена</v-btn>
           <v-btn color="error" @click="onRemove">Удалить</v-btn>
         </v-card-actions>
-
       </v-container>
     </v-card>
 

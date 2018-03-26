@@ -1,5 +1,10 @@
 <template>
-  <v-dialog v-model="editLotteryDialog" max-width="666" @keydown.enter="onSaveChanges">
+  <v-dialog
+    v-model="editLotteryDialog"
+    max-width="666"
+    @keydown.enter="onSaveChanges"
+    @keydown.esc="editLotteryDialog=false"
+  >
 
     <v-tooltip top slot="activator" color="warning" open-delay="0">
       <v-btn
@@ -14,6 +19,7 @@
 
     <v-card>
       <v-container>
+        <v-card-title class="headline">Редактировать лотерею</v-card-title>
         <v-card-text>
 
           <div>
