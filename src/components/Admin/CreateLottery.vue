@@ -16,16 +16,25 @@
                 required
               />
               <div>Обложка*</div>
+              <img
+                src="static/img/icons/android-chrome-512x512.png"
+                class="addon"
+                style="display: none;"
+              >
               <croppa
                 v-model="croppa"
-                :width="320"
-                :height="200"
+                :width="480"
+                :height="300"
                 :canvas-color="'#ccc'"
                 :quality="3"
                 initial-size="cover"
-                :placeholder="'Выбрать'"
+                :placeholder="'Выберите или перащите картинку'"
                 :placeholder-font-size="16"
                 :placeholder-color="'rgba(0,0,0,.54)'"
+                :prevent-white-space="true"
+                :remove-button-size="30"
+                @file-type-mismatch="onFileTypeMismatch"
+                @draw="onDraw"
               />
               <v-text-field
                 name="rules"
@@ -72,11 +81,24 @@
     },
     computed: {
       formIsValid () {
-        return this.name !== '' && this.rules !== '' && this.croppa.getChosenFile()
+        return this.name !== '' && this.rules !== ''
       }
     },
     methods: {
+      onFileTypeMismatch (file) {
+        alert('Invalid file type. Please choose a jpeg or png file.')
+      },
+      onDraw: function (ctx) {
+        ctx.save()
+        ctx.globalAlpha = 0.7
+        ctx.drawImage(document.querySelector('.addon'), 970, 610, 80, 80)
+        ctx.restore()
+      },
       onCreateLottery () {
+        if (!this.croppa.hasImage()) {
+          alert('No image to upload')
+          return
+        }
         if (!this.formIsValid) {
           return
         }
@@ -100,4 +122,8 @@
 </script>
 
 <style>
+  .croppa-container canvas {
+    max-width: 100% !important;
+    height: auto !important;
+  }
 </style>
