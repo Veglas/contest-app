@@ -5,6 +5,8 @@ import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import VueAnalytics from 'vue-analytics'
 import VueYandexMetrika from 'vue-yandex-metrika'
+import Croppa from 'vue-croppa'
+import 'vue-croppa/dist/vue-croppa.css'
 
 import { store } from './store'
 import DateFilter from './filters/date'
@@ -35,6 +37,7 @@ Vue.use(VueYandexMetrika, {
   router: router,
   env: process.env.NODE_ENV
 })
+Vue.use(Croppa)
 
 Vue.config.productionTip = false
 

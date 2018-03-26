@@ -1,5 +1,10 @@
 <template>
-  <v-dialog v-model="moderateTicketDialog" max-width="330" @keydown.enter="onSaveChanges">
+  <v-dialog
+    v-model="moderateTicketDialog"
+    max-width="448"
+    @keydown.enter="onSaveChanges"
+    @keydown.esc="moderateTicketDialog=false"
+  >
 
     <v-tooltip
       v-if="!item.isModerated"
@@ -36,29 +41,27 @@
     </v-tooltip>
 
     <v-card>
-      <v-container pa-1>
-
-      <v-card-text pa-1>
-
-        <v-layout align-center wrap>
-          <v-flex xs12>
-            <br>
-            <v-switch
-              color="success"
-              name="isModerated"
-              id="isModerated"
-              :label="`Модерация: ${editedIsModerated.toString()}`"
-              v-model="editedIsModerated"
-            />
-          </v-flex>
-        </v-layout>
-
-      </v-card-text>
-      <v-card-actions>
-        <v-spacer></v-spacer>
-        <v-btn @click.stop="moderateTicketDialog=false">Отмена</v-btn>
-        <v-btn color="warning" @click="onSaveChanges">Сохранить</v-btn>
-      </v-card-actions>
+      <v-container>
+        <v-card-title class="headline">Модерация билета</v-card-title>
+        <v-card-text>
+          <v-layout align-center wrap>
+            <v-flex xs12>
+              <br>
+              <v-switch
+                color="success"
+                name="isModerated"
+                id="isModerated"
+                :label="`Модерация: ${editedIsModerated.toString()}`"
+                v-model="editedIsModerated"
+              />
+            </v-flex>
+          </v-layout>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn flat @click.stop="moderateTicketDialog=false">Отмена</v-btn>
+          <v-btn color="success" @click="onSaveChanges">Сохранить</v-btn>
+        </v-card-actions>
       </v-container>
     </v-card>
 
