@@ -35,7 +35,12 @@
 
             <v-layout wrap v-else>
 
+              <v-flex xs12>
+                <p>Всего: <b>{{ items.length }} шт.</b></p>
+              </v-flex>
+
               <v-flex xs12 class="text-xs-center">
+                <br>
                 <h2>
                   <v-chip small color="warning white--text">
                     <v-icon>mdi-eye-off</v-icon>
@@ -94,6 +99,7 @@
               </v-flex>
 
               <v-flex xs12 class="text-xs-center">
+                <br>
                 <h2>
                   <v-chip small color="success white--text">
                     <v-icon>mdi-eye</v-icon>
