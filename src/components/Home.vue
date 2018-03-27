@@ -65,15 +65,6 @@
               </v-layout>
             </v-container>
 
-            <!--<div class="text-xs-center">-->
-            <!--<v-pagination-->
-            <!--:length="15"-->
-            <!--v-model="page"-->
-            <!--:total-visible="7"-->
-            <!--color="success"-->
-            <!--/>-->
-            <!--</div>-->
-
           </v-card-text>
         </v-card>
       </v-flex>
