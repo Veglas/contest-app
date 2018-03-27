@@ -7,12 +7,17 @@ Vue.use(Vuex)
 export const store = new Vuex.Store({
 
   state: {
-    user: null,
     loading: false,
+    user: null,
+    admins: [
+      'toxjaps6DjgDKrju6hf6Iq2e9FR2',
+      'Ba1ck1rpfbUjXA6oWmdm1LreTmr1',
+      'dNED1SUnJfe3ZhFiQMf9yc2mK5w2'
+    ],
     error: null,
     loadedItems: [],
-    loadedLotteries: [],
-    loadedUsers: []
+    loadedLotteries: []
+    // loadedUsers: []
   },
 
   mutations: {
@@ -22,9 +27,9 @@ export const store = new Vuex.Store({
     setLoadedLotteries (state, payload) {
       state.loadedLotteries = payload
     },
-    setLoadedUsers (state, payload) {
-      state.loadedUsers = payload
-    },
+    // setLoadedUsers (state, payload) {
+    //   state.loadedUsers = payload
+    // },
     setUser (state, payload) {
       state.user = payload
     },
@@ -405,12 +410,29 @@ export const store = new Vuex.Store({
       }
     },
     // Юзеры
-    loadedUsers (state) {
-      return state.loadedUsers
-    },
+    // loadedUsers (state) {
+    //   return state.loadedUsers
+    // },
     // Вошедший юзер
     user (state) {
       return state.user
+    },
+    userIsAuthenticated (state, getters) {
+      return !!getters.user
+    },
+    currentUserId (state, getters) {
+      if (!getters.userIsAuthenticated) {
+        return false
+      }
+      return getters.user && getters.user.id
+    },
+    userIsAdmin (state, getters) {
+      if (state.admins.findIndex((admin) => {
+        return admin === getters.currentUserId
+      }) === -1) {
+        return false
+      }
+      return true
     },
     // Ошибки
     error (state) {
