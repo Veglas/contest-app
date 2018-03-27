@@ -28,7 +28,7 @@
                 :canvas-color="'#ccc'"
                 :quality="3"
                 initial-size="cover"
-                :placeholder="'Выберите или перащите картинку'"
+                :placeholder="'Выберите или перетащите картинку'"
                 :placeholder-font-size="16"
                 :placeholder-color="'rgba(0,0,0,.54)'"
                 :prevent-white-space="true"
