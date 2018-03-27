@@ -17,7 +17,7 @@
               />
               <div>Обложка*</div>
               <img
-                src="static/img/icons/android-chrome-512x512.png"
+                src="/static/img/logos/veglas-watermark-1300x420.png"
                 class="addon"
                 style="display: none;"
               >
@@ -32,7 +32,7 @@
                 :placeholder-font-size="16"
                 :placeholder-color="'rgba(0,0,0,.54)'"
                 :prevent-white-space="true"
-                :remove-button-size="30"
+                :remove-button-size="40"
                 @file-type-mismatch="onFileTypeMismatch"
                 @draw="onDraw"
                 @file-choose="onFilePicked"
@@ -74,11 +74,11 @@
     data () {
       return {
         name: '',
-        rules: '',
-        imageUrl: '',
+        filePicked: false,
         image: null,
         croppa: {},
-        filePicked: false
+        imageUrl: '',
+        rules: ''
       }
     },
     computed: {
@@ -96,7 +96,7 @@
       onDraw: function (ctx) {
         ctx.save()
         ctx.globalAlpha = 0.7
-        ctx.drawImage(document.querySelector('.addon'), 970, 610, 80, 80)
+        ctx.drawImage(document.querySelector('.addon'), 1100, 760, 310, 100)
         ctx.restore()
       },
       onCreateLottery () {
@@ -127,8 +127,4 @@
 </script>
 
 <style>
-  .croppa-container canvas {
-    max-width: 100% !important;
-    height: auto !important;
-  }
 </style>

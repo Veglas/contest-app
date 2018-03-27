@@ -168,6 +168,41 @@ export const store = new Vuex.Store({
           console.log(error)
         })
     },
+    updateTicketData ({commit}, payload) {
+      // commit('setLoading', true)
+      const updateObj = {}
+      updateObj.isWinnerWeek = payload.isWinnerWeek
+      updateObj.isWinnerMonth = payload.isWinnerMonth
+      updateObj.isWinnerContest = payload.isWinnerContest
+      updateObj.isModerated = payload.isModerated
+      firebase.database().ref('items').child(payload.id).update(updateObj)
+        .then(() => {
+          commit('updateTicket', payload)
+          // commit('setLoading', false)
+        })
+        .catch((error) => {
+          console.log(error)
+          // commit('setLoading', false)
+        })
+    },
+    removeTicketData ({commit}, payload) {
+      commit('setLoading', true)
+      firebase.database().ref('items').child(payload.id).remove()
+        .then(() => {
+          const imageUrl = payload.imageUrl
+          const extWithMeta = imageUrl.slice(imageUrl.lastIndexOf('.'))
+          const ext = extWithMeta.slice(0, extWithMeta.lastIndexOf('?'))
+          return firebase.storage().ref('items/' + payload.id + ext).delete()
+        })
+        .then(() => {
+          commit('removeTicket', payload.id)
+          commit('setLoading', false)
+        })
+        .catch((error) => {
+          console.log(error)
+          commit('setLoading', false)
+        })
+    },
     loadLotteries ({commit}) {
       commit('setLoading', true)
       firebase.database().ref('lotteries').once('value')
@@ -192,41 +227,6 @@ export const store = new Vuex.Store({
             commit('setLoading', false)
           }
         )
-    },
-    updateTicketData ({commit}, payload) {
-      commit('setLoading', true)
-      const updateObj = {}
-      updateObj.isWinnerWeek = payload.isWinnerWeek
-      updateObj.isWinnerMonth = payload.isWinnerMonth
-      updateObj.isWinnerContest = payload.isWinnerContest
-      updateObj.isModerated = payload.isModerated
-      firebase.database().ref('items').child(payload.id).update(updateObj)
-        .then(() => {
-          commit('updateTicket', payload)
-          commit('setLoading', false)
-        })
-        .catch((error) => {
-          console.log(error)
-          commit('setLoading', false)
-        })
-    },
-    removeTicketData ({commit}, payload) {
-      commit('setLoading', true)
-      firebase.database().ref('items').child(payload.id).remove()
-        .then(() => {
-          const imageUrl = payload.imageUrl
-          const extWithMeta = imageUrl.slice(imageUrl.lastIndexOf('.'))
-          const ext = extWithMeta.slice(0, extWithMeta.lastIndexOf('?'))
-          return firebase.storage().ref('items/' + payload.id + ext).delete()
-        })
-        .then(() => {
-          commit('removeTicket', payload.id)
-          commit('setLoading', false)
-        })
-        .catch((error) => {
-          console.log(error)
-          commit('setLoading', false)
-        })
     },
     createLottery ({commit, getters}, payload) {
       const item = {
@@ -266,6 +266,8 @@ export const store = new Vuex.Store({
       const updateObj = {}
       updateObj.name = payload.name
       updateObj.rules = payload.rules
+      let imageUrl
+      let key
       firebase.database().ref('lotteries').child(payload.id).update(updateObj)
         // .then(() => {
         //   const imageUrl = payload.imageUrl
@@ -273,8 +275,25 @@ export const store = new Vuex.Store({
         //   const ext = extWithMeta.slice(0, extWithMeta.lastIndexOf('?'))
         //   return firebase.storage().ref('lotteries/' + payload.id + ext).delete()
         // })
+        .then((data) => {
+          key = payload.id
+          return key
+        })
+        .then(key => {
+          const filename = payload.image.name
+          const ext = filename.slice(filename.lastIndexOf('.'))
+          return firebase.storage().ref('lotteries/' + key + ext).put(payload.image)
+        })
+        .then(fileData => {
+          imageUrl = fileData.metadata.downloadURLs[0]
+          return firebase.database().ref('lotteries').child(key).update({imageUrl: imageUrl})
+        })
         .then(() => {
-          commit('updateLottery', payload)
+          commit('updateLottery', {
+            ...updateObj,
+            imageUrl: imageUrl,
+            id: key
+          })
           // commit('setLoading', false)
         })
         .catch((error) => {
@@ -390,7 +409,7 @@ export const store = new Vuex.Store({
       return (itemId) => {
         return state.loadedItems.find((item) => {
           return item.id === itemId
-        }) || {}
+        })// || {}
       }
     },
     // Лотереи
@@ -406,7 +425,7 @@ export const store = new Vuex.Store({
       return (itemId) => {
         return state.loadedLotteries.find((item) => {
           return item.id === itemId
-        }) || {}
+        })// || {}
       }
     },
     // Юзеры

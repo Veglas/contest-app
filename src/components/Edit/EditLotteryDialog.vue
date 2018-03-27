@@ -21,42 +21,46 @@
       <v-container>
         <v-card-title class="headline">Редактировать лотерею</v-card-title>
         <v-card-text>
-
-          <div>
             <v-text-field
               name="name"
               id="name"
               label="Название"
               v-model="editedName"
             />
-          </div>
-
-          <div>
             <div>Обложка</div>
-            <v-btn
-              @click="onPickFile"
-              class="ml-0"
-            >
-              <v-icon left>mdi-image</v-icon>
-              Выбрать
-            </v-btn>
-            <input
-              type="file"
-              style="display: none"
-              ref="fileInput"
-              accept="image/*"
-              @change="onFilePicked"
-            >
-          </div>
-          <v-card v-if="editedImageUrl" width="150">
-            <img
-              :src="editedImageUrl"
-              class="d-block mb-4"
-              width="150"
-            >
-          </v-card>
-
-          <div>
+            <div class="edit-lottery-dialog__image-url-container">
+              <div v-if="imageUrlIsVisible">
+                <img :src="editedImageUrl">
+                <v-btn
+                  small
+                  fab
+                  class="error btn--remoove-image-url"
+                  @click="onRemoveImageUrl"
+                >
+                  <v-icon large>mdi-close</v-icon>
+                </v-btn>
+              </div>
+              <img
+                src="/static/img/logos/veglas-watermark-1300x420.png"
+                class="addon"
+                style="display: none;"
+              >
+              <croppa
+                v-model="croppa"
+                :width="480"
+                :height="300"
+                :canvas-color="'#ccc'"
+                :quality="3"
+                initial-size="cover"
+                :placeholder="'Выберите или перетащите картинку'"
+                :placeholder-font-size="16"
+                :placeholder-color="'rgba(0,0,0,.54)'"
+                :prevent-white-space="true"
+                :remove-button-size="40"
+                @file-type-mismatch="onFileTypeMismatch"
+                @draw="onDraw"
+              />
+            </div>
             <v-text-field
               name="rules"
               id="rules"
@@ -64,12 +68,10 @@
               v-model="editedRules"
               multi-line
             />
-          </div>
-
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn @click.stop="editLotteryDialog=false">Отмена</v-btn>
+          <v-btn flat @click.stop="editLotteryDialog=false">Отмена</v-btn>
           <v-btn color="warning" @click="onSaveChanges">Сохранить</v-btn>
         </v-card-actions>
       </v-container>
@@ -83,41 +85,83 @@
     props: ['lottery'],
     data () {
       return {
+        imageUrlIsVisible: true,
         editLotteryDialog: false,
-        editedImageUrl: this.lottery.imageUrl,
         editedName: this.lottery.name,
+        image: null,
+        croppa: {},
+        editedImageUrl: this.lottery.imageUrl,
         editedRules: this.lottery.rules
       }
     },
     methods: {
-      onPickFile () {
-        this.$refs.fileInput.click()
+      onRemoveImageUrl () {
+        this.imageUrlIsVisible = false
       },
-      onFilePicked (event) {
-        const files = event.target.files
-        let filename = files[0].name
-        if (filename.lastIndexOf('.') <= 0) {
-          return alert('Фаил не валидный. Пожалуйста, загрузите валидный фаил')
-        }
-        const fileReader = new FileReader()
-        fileReader.addEventListener('load', () => {
-          this.editedImageUrl = fileReader.result
-        })
-        fileReader.readAsDataURL(files[0])
-        this.image = files[0]
+      onFileTypeMismatch (file) {
+        alert('Invalid file type. Please choose a jpeg or png file.')
+      },
+      onDraw: function (ctx) {
+        ctx.save()
+        ctx.globalAlpha = 0.7
+        ctx.drawImage(document.querySelector('.addon'), 1100, 760, 310, 100)
+        ctx.restore()
       },
       onSaveChanges () {
+        if (!this.croppa.hasImage()) {
+          const itemData = {
+            id: this.lottery.id,
+            name: this.editedName,
+            rules: this.editedRules,
+            imageUrl: this.editedImageUrl,
+            image: 'name.jpeg'
+          }
+          this.$store.dispatch('updateLotteryData', itemData)
+        } else {
+          this.croppa.generateBlob((blob) => {
+            var file = new File([blob], 'name.jpeg', {
+              lastModifiedDate: new Date(),
+              type: 'image/jpeg'
+            })
+            const itemData = {
+              id: this.lottery.id,
+              name: this.editedName,
+              rules: this.editedRules,
+              imageUrl: this.editedImageUrl,
+              image: file
+              // date: new Date()
+            }
+            this.$store.dispatch('updateLotteryData', itemData)
+          }, 'image/jpeg', 0.8)
+        }
         this.editLotteryDialog = false
-        this.$store.dispatch('updateLotteryData', {
-          id: this.lottery.id,
-          imageUrl: this.editedImageUrl,
-          name: this.editedName,
-          rules: this.editedRules
-        })
+        this.$router.push('/admin/lotteries')
       }
     }
   }
 </script>
 
 <style>
+  .edit-lottery-dialog__image-url-container {
+    width: 480px;
+    position: relative;
+  }
+  .edit-lottery-dialog__image-url-container img {
+    position: absolute;
+    top: 0;
+    right: left;
+    z-index: 10;
+    max-width: 100%;
+    height: auto;
+  }
+  .btn--remoove-image-url {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 20;
+  }
+  .croppa-container canvas {
+    max-width: 100% !important;
+    height: auto !important;
+  }
 </style>

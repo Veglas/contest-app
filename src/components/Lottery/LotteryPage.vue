@@ -35,7 +35,6 @@
 
             <div style="font-size: 12px">
               <h1>{{ lottery.name }}</h1>
-              <br>
               <div v-html="lottery.rules"/>
             </div>
           </v-card-text>
