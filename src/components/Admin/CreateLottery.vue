@@ -35,6 +35,7 @@
                 :remove-button-size="30"
                 @file-type-mismatch="onFileTypeMismatch"
                 @draw="onDraw"
+                @file-choose="onFilePicked"
               />
               <v-text-field
                 name="rules"
@@ -76,15 +77,19 @@
         rules: '',
         imageUrl: '',
         image: null,
-        croppa: {}
+        croppa: {},
+        filePicked: false
       }
     },
     computed: {
       formIsValid () {
-        return this.name !== '' && this.rules !== ''
+        return this.name !== '' && this.rules !== '' && this.filePicked
       }
     },
     methods: {
+      onFilePicked () {
+        this.filePicked = true
+      },
       onFileTypeMismatch (file) {
         alert('Invalid file type. Please choose a jpeg or png file.')
       },
