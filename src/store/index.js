@@ -83,27 +83,27 @@ export const store = new Vuex.Store({
   },
 
   actions: {
-    loadUsers ({commit}) {
-      commit('setLoading', true)
-      firebase.auth().getAllUsers()
-        .then((data) => {
-          const users = []
-          const obj = data.val()
-          for (let key in obj) {
-            users.push({
-              id: key
-            })
-          }
-          commit('setLoadedUsers', users)
-          commit('setLoading', false)
-        })
-        .catch(
-          (error) => {
-            console.log(error)
-            commit('setLoading', false)
-          }
-        )
-    },
+    // loadUsers ({commit}) {
+    //   commit('setLoading', true)
+    //   firebase.auth().getAllUsers()
+    //     .then((data) => {
+    //       const users = []
+    //       const obj = data.val()
+    //       for (let key in obj) {
+    //         users.push({
+    //           id: key
+    //         })
+    //       }
+    //       commit('setLoadedUsers', users)
+    //       commit('setLoading', false)
+    //     })
+    //     .catch(
+    //       (error) => {
+    //         console.log(error)
+    //         commit('setLoading', false)
+    //       }
+    //     )
+    // },
     loadItems ({commit}) {
       commit('setLoading', true)
       firebase.database().ref('items').once('value')
@@ -386,11 +386,11 @@ export const store = new Vuex.Store({
         return item.isModerated
       })
     },
-    loadedItem (state) {
+    loadedTicket (state) {
       return (itemId) => {
         return state.loadedItems.find((item) => {
           return item.id === itemId
-        })
+        }) || {}
       }
     },
     // Лотереи
@@ -406,7 +406,7 @@ export const store = new Vuex.Store({
       return (itemId) => {
         return state.loadedLotteries.find((item) => {
           return item.id === itemId
-        })
+        }) || {}
       }
     },
     // Юзеры

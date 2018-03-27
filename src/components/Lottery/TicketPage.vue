@@ -152,7 +152,7 @@
         return this.$store.getters.loading
       },
       item () {
-        return this.$store.getters.loadedItem(this.id)
+        return this.$store.getters.loadedTicket(this.id)
       },
       userIsAuthenticated () {
         return this.$store.getters.user !== null && this.$store.getters.user !== undefined
