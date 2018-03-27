@@ -36,7 +36,7 @@
             <v-layout wrap v-else>
 
               <v-flex xs12>
-                <p>Всего: <b>{{ items.length }} шт.</b></p>
+                <p>Всего: <b>{{ itemsIsNotModerated.length + itemsIsModerated.length }} шт.</b></p>
               </v-flex>
 
               <v-flex xs12 class="text-xs-center">
@@ -46,31 +46,32 @@
                     <v-icon>mdi-eye-off</v-icon>
                   </v-chip>
                   <span>Билеты, нуждающиеся в модерации</span>
+                  <span>({{ itemsIsNotModerated.length }} шт.)</span>
                 </h2>
               </v-flex>
 
               <v-flex xs12 md3>
                 <div><b>Дата</b></div>
-                <div v-for="i in items" :key="i.id" v-if="!i.isModerated">{{ i.date | date }}</div>
+                <div v-for="i in itemsIsNotModerated" :key="i.id">{{ i.date | date }}</div>
               </v-flex>
 
               <v-flex xs12 md3>
                 <div><b>ID билета</b></div>
-                <div v-for="i in items" :key="i.id" v-if="!i.isModerated">
+                <div v-for="i in itemsIsNotModerated" :key="i.id">
                   <a @click="onLoadItem(i.id)">{{ i.id }}</a>
                 </div>
               </v-flex>
 
               <v-flex xs12 md4>
                 <div><b>ID юзера</b></div>
-                <div v-for="i in items" :key="i.id" v-if="!i.isModerated">
+                <div v-for="i in itemsIsNotModerated" :key="i.id">
                   <a @click="onLoadUser(i.creatorId)">{{ i.creatorId }}</a>
                 </div>
               </v-flex>
 
               <v-flex xs12 md2>
                 <div><b>Победитель</b></div>
-                <div v-for="i in items" :key="i.id" v-if="!i.isModerated">
+                <div v-for="i in itemsIsNotModerated" :key="i.id">
 
                   <span>
 
@@ -105,31 +106,32 @@
                     <v-icon>mdi-eye</v-icon>
                   </v-chip>
                   <span>Билеты, прошедшие модерацию</span>
+                  <span>({{ itemsIsModerated.length }} шт.)</span>
                 </h2>
               </v-flex>
 
               <v-flex xs12 md3>
                 <div><b>Дата</b></div>
-                <div v-for="i in items" :key="i.id" v-if="i.isModerated">{{ i.date | date }}</div>
+                <div v-for="i in itemsIsModerated" :key="i.id">{{ i.date | date }}</div>
               </v-flex>
 
               <v-flex xs12 md3>
                 <div><b>ID билета</b></div>
-                <div v-for="i in items" :key="i.id" v-if="i.isModerated">
+                <div v-for="i in itemsIsModerated" :key="i.id">
                   <a @click="onLoadItem(i.id)">{{ i.id }}</a>
                 </div>
               </v-flex>
 
               <v-flex xs12 md4>
                 <div><b>ID юзера</b></div>
-                <div v-for="i in items" :key="i.id" v-if="i.isModerated">
+                <div v-for="i in itemsIsModerated" :key="i.id">
                   <a @click="onLoadUser(i.creatorId)">{{ i.creatorId }}</a>
                 </div>
               </v-flex>
 
               <v-flex xs12 md2>
                 <div><b>Победитель</b></div>
-                <div v-for="i in items" :key="i.id" v-if="i.isModerated">
+                <div v-for="i in itemsIsModerated" :key="i.id">
 
                   <span>
 
@@ -177,8 +179,11 @@
       loading () {
         return this.$store.getters.loading
       },
-      items () {
-        return this.$store.getters.loadedSortedByDateItems
+      itemsIsNotModerated () {
+        return this.$store.getters.loadedIsNotModeratedItems
+      },
+      itemsIsModerated () {
+        return this.$store.getters.loadedIsModeratedItems
       }
     },
     methods: {

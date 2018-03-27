@@ -371,6 +371,16 @@ export const store = new Vuex.Store({
     userCreatedItems (state, getters) {
       return getters.loadedSortedByDateItems
     },
+    loadedIsNotModeratedItems (state, getters) {
+      return getters.loadedSortedByDateItems.filter(item => {
+        return !item.isModerated
+      })
+    },
+    loadedIsModeratedItems (state, getters) {
+      return getters.loadedSortedByDateItems.filter(item => {
+        return item.isModerated
+      })
+    },
     loadedItem (state) {
       return (itemId) => {
         return state.loadedItems.find((item) => {
