@@ -65,7 +65,7 @@
       return {
         CasinoLinks: [
           {title: 'SuperLines', url: 'http://bit.ly/2GMbqkL'},
-          {title: '1XSLOTS', url: 'http://bit.ly/2FAkU6p'},
+          {title: '1xSlots', url: 'http://bit.ly/2GhyGex'},
           {title: 'Cleopatra', url: 'http://bit.ly/2ExzdHO'}
         ]
       }
