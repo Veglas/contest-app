@@ -20,7 +20,7 @@
 
                   <v-progress-circular
                     indeterminate
-                    :size="150"
+                    :size="40"
                     color="amber"
                   />
 

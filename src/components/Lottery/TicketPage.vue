@@ -1,12 +1,12 @@
 <template>
   <v-container>
     <v-layout>
-      <v-flex xs12 sm8 offset-sm2>
+      <v-flex xs12 md10 offset-md1>
 
         <v-progress-circular
           v-if="loading"
           indeterminate
-          :size="150"
+          :size="40"
           color="amber"
         />
 
@@ -72,6 +72,7 @@
                 >
                   <div slot="activator">
                     <v-chip
+                      small
                       color="warning white--text"
                     >
                       <v-icon>mdi-eye-off</v-icon>
@@ -90,6 +91,7 @@
                 >
                   <div slot="activator">
                     <v-chip
+                      small
                       color="success white--text"
                     >
                       <v-icon>mdi-eye</v-icon>
@@ -100,17 +102,22 @@
                 </v-tooltip>
               </div>
 
-              <moderate-ticket-dialog
+              <moderate-ticket
                 v-if="userIsAdmin"
                 :item="item"
               />
 
-              <edit-ticket-dialog
+              <winner-ticket
                 v-if="userIsAdmin"
                 :item="item"
               />
 
-              <remove-ticket-dialog
+              <edit-ticket-image-dialog
+                v-if="userIsAdmin"
+                :item="item"
+              />
+
+              <remove-ticket
                 v-if="userIsCreator || userIsAdmin"
                 :item="item"
               />

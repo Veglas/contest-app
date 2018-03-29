@@ -15,6 +15,7 @@
     >
       <v-btn
         fab
+        small
         slot="activator"
         color="warning"
       >
@@ -32,6 +33,7 @@
     >
       <v-btn
         fab
+        small
         slot="activator"
         color="success"
       >
@@ -74,20 +76,14 @@
     data () {
       return {
         moderateTicketDialog: false,
-        editedIsWinnerWeek: this.item.isWinnerWeek,
-        editedIsWinnerMonth: this.item.isWinnerMonth,
-        editedIsWinnerContest: this.item.isWinnerContest,
         editedIsModerated: this.item.isModerated
       }
     },
     methods: {
       onSaveChanges () {
         this.moderateTicketDialog = false
-        this.$store.dispatch('updateTicketData', {
+        this.$store.dispatch('updateTicketModerate', {
           id: this.item.id,
-          isWinnerWeek: this.editedIsWinnerWeek,
-          isWinnerMonth: this.editedIsWinnerMonth,
-          isWinnerContest: this.editedIsWinnerContest,
           isModerated: this.editedIsModerated
         })
       }

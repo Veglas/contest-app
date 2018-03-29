@@ -21,7 +21,7 @@
             <v-progress-circular
               v-if="loading"
               indeterminate
-              :size="150"
+              :size="40"
               color="amber"
             />
 
@@ -38,7 +38,7 @@
                     <v-icon>mdi-security</v-icon>
                     Email участника
                   </h4>
-                  <p><i>Work In Progress . . .</i></p>
+                  <p>тут: <a to="https://console.firebase.google.com/u/0/project/veglas-db/authentication/users?hl=ru" target="_blank">Firebase Authentication</a></p>
                 </v-flex>
 
                 <v-flex xs12>

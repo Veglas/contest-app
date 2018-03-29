@@ -12,11 +12,13 @@ import { store } from './store'
 import DateFilter from './filters/date'
 import * as firebase from 'firebase'
 import AlertCmp from './components/Shared/Alert'
-import EditTicketDialog from './components/Edit/EditTicketDialog'
-import EditLotteryDialog from './components/Edit/EditLotteryDialog'
-import RemoveTicketDialog from './components/Edit/RemoveTicketDialog'
-import RemoveLotteryDialog from './components/Edit/RemoveLotteryDialog'
-import ModerateTicketDialog from './components/Edit/ModerateTicketDialog'
+import WinnerTicket from './components/Edit/Ticket/Winner'
+import RemoveTicket from './components/Edit/Ticket/Remove'
+import EditLotteryImageDialog from './components/Edit/EditLotteryImageDialog'
+import EditTicketImageDialog from './components/Edit/EditTicketImageDialog'
+import DataLottery from './components/Edit/Lottery/Data'
+import RemoveLottery from './components/Edit/Lottery/Remove'
+import ModerateTicket from './components/Edit/Ticket/Moderate'
 import ListItem from './components/Lottery/ListItem'
 import TicketListBtn from './components/Lottery/TicketListBtn'
 import BtnCreateTicket from './components/Shared/BtnCreateTicket'
@@ -43,11 +45,13 @@ Vue.config.productionTip = false
 
 Vue.filter('date', DateFilter)
 Vue.component('app-alert', AlertCmp)
-Vue.component('edit-ticket-dialog', EditTicketDialog)
-Vue.component('edit-lottery-dialog', EditLotteryDialog)
-Vue.component('remove-ticket-dialog', RemoveTicketDialog)
-Vue.component('remove-lottery-dialog', RemoveLotteryDialog)
-Vue.component('moderate-ticket-dialog', ModerateTicketDialog)
+Vue.component('winner-ticket', WinnerTicket)
+Vue.component('data-lottery', DataLottery)
+Vue.component('edit-lottery-image-dialog', EditLotteryImageDialog)
+Vue.component('edit-ticket-image-dialog', EditTicketImageDialog)
+Vue.component('remove-ticket', RemoveTicket)
+Vue.component('remove-lottery', RemoveLottery)
+Vue.component('moderate-ticket', ModerateTicket)
 Vue.component('list-item', ListItem)
 Vue.component('ticket-list-btn', TicketListBtn)
 Vue.component('btn-create-ticket', BtnCreateTicket)
