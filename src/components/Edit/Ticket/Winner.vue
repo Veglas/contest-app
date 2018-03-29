@@ -9,6 +9,7 @@
     <v-tooltip top slot="activator" color="warning" open-delay="0">
       <v-btn
         fab
+        small
         color="warning"
         slot="activator"
       >
@@ -38,10 +39,10 @@
           </v-layout>
 
           <v-layout align-center>
-            <v-flex xs1 mr-2>
-              <v-icon color="green darken-1">mdi-crown</v-icon>
+            <v-flex xs2 mr-2>
+              <v-icon color="green darken-1" v-for="n in 2" :key="n">mdi-crown</v-icon>
             </v-flex>
-            <v-flex xs11>
+            <v-flex xs10>
               <v-text-field
                 color="green darken-1"
                 name="isWinnerMonth"
@@ -53,10 +54,10 @@
           </v-layout>
 
           <v-layout align-center>
-            <v-flex xs1 mr-2>
-              <v-icon color="teal darken-1">mdi-crown</v-icon>
+            <v-flex xs3 mr-2>
+              <v-icon color="teal darken-1" v-for="n in 3" :key="n">mdi-crown</v-icon>
             </v-flex>
-            <v-flex xs11>
+            <v-flex xs9>
               <v-text-field
                 color="teal darken-1"
                 name="isWinnerContest"
@@ -87,19 +88,17 @@
         editTicketDialog: false,
         editedIsWinnerWeek: this.item.isWinnerWeek,
         editedIsWinnerMonth: this.item.isWinnerMonth,
-        editedIsWinnerContest: this.item.isWinnerContest,
-        editedIsModerated: this.item.isModerated
+        editedIsWinnerContest: this.item.isWinnerContest
       }
     },
     methods: {
       onSaveChanges () {
         this.editTicketDialog = false
-        this.$store.dispatch('updateTicketData', {
+        this.$store.dispatch('updateTicketWinner', {
           id: this.item.id,
           isWinnerWeek: this.editedIsWinnerWeek,
           isWinnerMonth: this.editedIsWinnerMonth,
-          isWinnerContest: this.editedIsWinnerContest,
-          isModerated: this.editedIsModerated
+          isWinnerContest: this.editedIsWinnerContest
         })
       }
     }

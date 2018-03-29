@@ -25,7 +25,7 @@
                 <v-progress-circular
                   v-if="loading"
                   indeterminate
-                  :size="150"
+                  :size="40"
                   color="amber"
                 />
 

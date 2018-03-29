@@ -13,6 +13,7 @@
     >
       <v-btn
         fab
+        small
         color="error"
         slot="activator"
       >
@@ -48,11 +49,9 @@
       }
     },
     methods: {
-      onSaveChanges () {
-        this.removeLotteryDialog = false
-      },
       onRemove () {
-        this.$store.dispatch('removeLotteryData', {
+        this.removeLotteryDialog = false
+        this.$store.dispatch('removeLottery', {
           id: this.lottery.id,
           imageUrl: this.lottery.imageUrl
         })

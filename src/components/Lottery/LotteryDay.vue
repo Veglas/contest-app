@@ -15,14 +15,18 @@
                 </v-flex>
 
                 <v-flex xs12>
-                  <h1>{{ lotteryDay.title }}</h1>
+                  <h1>
+                    <v-icon large>mdi-trophy</v-icon>
+                    {{ lotteryDay.title }}
+                  </h1>
+                  <!-- <h1>{{ lotteryDay.title }}</h1> -->
                   <h3>Все билеты, участвующие в розыгрыше</h3>
                 </v-flex>
 
                 <v-progress-circular
                   v-if="loading"
                   indeterminate
-                  :size="150"
+                  :size="40"
                   color="amber"
                 />
 

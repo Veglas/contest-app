@@ -14,7 +14,7 @@ import Tickets from '@/components/Admin/Tickets'
 import Lotteries from '@/components/Admin/Lotteries'
 import LotteryPage from '@/components/Lottery/LotteryPage'
 import CreateLottery from '@/components/Admin/CreateLottery'
-import AuthGuard from './auth-guard'
+// import AuthGuard from './auth-guard'
 // import AdminGuard from './admin-guard'
 
 Vue.use(Router)
@@ -49,8 +49,8 @@ export default new Router({
     {
       path: '/lottery/create-ticket',
       name: 'CreateTicket',
-      component: CreateTicket,
-      beforeEnter: AuthGuard
+      component: CreateTicket
+      // beforeEnter: AuthGuard
     },
     {
       path: '/lottery/ticket/:id',
@@ -74,13 +74,11 @@ export default new Router({
       name: 'ProfileOpen',
       component: ProfileOpen,
       props: true
-      // beforeEnter: AuthGuard
     },
     {
       path: '/user/profile',
       name: 'Profile',
       component: Profile
-      // beforeEnter: AuthGuard
     },
     {
       path: '/user/register',
@@ -96,22 +94,16 @@ export default new Router({
       path: '/admin',
       name: 'Tickets',
       component: Tickets
-      // beforeEnter: AuthGuard
-      // beforeEnter: AdminGuard
     },
     {
       path: '/admin/lotteries',
       name: 'Lotteries',
       component: Lotteries
-      // beforeEnter: AuthGuard
-      // beforeEnter: AdminGuard
     },
     {
       path: '/admin/create/lottery',
       name: 'CreateLottery',
       component: CreateLottery
-      // beforeEnter: AuthGuard
-      // beforeEnter: AdminGuard
     }
   ]
 })

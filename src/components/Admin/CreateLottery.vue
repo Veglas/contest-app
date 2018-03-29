@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-layout row wrap>
-      <v-flex xs12>
+      <v-flex xs12 md10 offset-md1>
         <v-card>
           <form @submit.prevent="onCreateLottery">
             <v-card-text>
@@ -16,27 +16,29 @@
                 required
               />
               <div>Обложка*</div>
-              <img
-                src="/static/img/logos/veglas-watermark-1300x420.png"
-                class="addon"
-                style="display: none;"
-              >
-              <croppa
-                v-model="croppa"
-                :width="480"
-                :height="300"
-                :canvas-color="'#ccc'"
-                :quality="3"
-                initial-size="cover"
-                :placeholder="'Выберите или перетащите картинку'"
-                :placeholder-font-size="16"
-                :placeholder-color="'rgba(0,0,0,.54)'"
-                :prevent-white-space="true"
-                :remove-button-size="40"
-                @file-type-mismatch="onFileTypeMismatch"
-                @draw="onDraw"
-                @file-choose="onFilePicked"
-              />
+              <div>
+                <img
+                  src="/static/img/logos/veglas-watermark-1300x420.png"
+                  class="addon"
+                  style="display: none;"
+                >
+                <croppa
+                  v-model="croppa"
+                  :width="480"
+                  :height="300"
+                  :canvas-color="'#ccc'"
+                  :quality="3"
+                  initial-size="cover"
+                  :placeholder="'Выберите или перетащите картинку'"
+                  :placeholder-font-size="16"
+                  :placeholder-color="'rgba(0,0,0,.54)'"
+                  :prevent-white-space="true"
+                  :remove-button-size="40"
+                  @file-type-mismatch="onFileTypeMismatch"
+                  @draw="onDraw"
+                  @file-choose="onFilePicked"
+                />
+              </div>
               <v-text-field
                 name="rules"
                 label="Правила"
@@ -47,9 +49,6 @@
                 multi-line
                 required
               />
-            </v-card-text>
-            <v-card-actions>
-              <v-spacer></v-spacer>
               <v-btn
                 class="ml-0"
                 color="success"
@@ -61,7 +60,7 @@
                 <v-icon left>mdi-trophy</v-icon>
                 Создать
               </v-btn>
-            </v-card-actions>
+            </v-card-text>
           </form>
         </v-card>
       </v-flex>

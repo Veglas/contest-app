@@ -13,6 +13,7 @@
     >
       <v-btn
         fab
+        small
         color="error"
         slot="activator"
       >
@@ -48,11 +49,9 @@
       }
     },
     methods: {
-      onSaveChanges () {
-        this.removeTicketDialog = false
-      },
       onRemove () {
-        this.$store.dispatch('removeTicketData', {
+        this.removeTicketDialog = false
+        this.$store.dispatch('removeTicket', {
           id: this.item.id,
           imageUrl: this.item.imageUrl
         })

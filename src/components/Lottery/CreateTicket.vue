@@ -1,61 +1,52 @@
 <template>
   <v-container>
-    <v-layout>
-      <v-flex xs12 sm8 offset-sm2 lg6 offset-lg3>
+    <v-layout row wrap>
+      <v-flex xs12 md10 offset-md1>
         <v-card>
-          <v-card-text>
-
-            <h1>Участвовать</h1>
-
-            <p>
-              Для того чтобы участвовать в конкурсе, необходимо загрузить скриншот.<br>
-            </p>
-
-            <form @submit.prevent="onCreateItem">
-
+          <form @submit.prevent="onCreateTicket">
+            <v-card-text>
+              <h1>Участвовать</h1>
+              <p>
+                Для того чтобы участвовать в конкурсе, необходимо загрузить скриншот.<br>
+                * Участвовать можно много раз, но один раз в день.
+              </p>
               <div>
-                <v-btn
-                  @click="onPickFile"
-                  class="ml-0"
-                >
-                  <v-icon left>mdi-image</v-icon>
-                  Выбрать
-                </v-btn>
-                <input
-                  type="file"
-                  style="display: none"
-                  ref="fileInput"
-                  accept="image/*"
-                  @change="onFilePicked"
-                >
-              </div>
-              <v-card v-if="imageUrl" width="150">
                 <img
-                  :src="imageUrl"
-                  class="d-block mb-4"
-                  width="150"
+                  src="/static/img/logos/veglas-watermark-1300x420.png"
+                  class="addon"
+                  style="display: none;"
                 >
-              </v-card>
-
+                <croppa
+                  v-model="croppa"
+                  :width="540"
+                  :height="338"
+                  :canvas-color="'#ccc'"
+                  :quality="2"
+                  initial-size="cover"
+                  :placeholder="'Выберите или перетащите скриншот'"
+                  :placeholder-font-size="16"
+                  :placeholder-color="'rgba(0,0,0,.54)'"
+                  :prevent-white-space="true"
+                  :remove-button-size="40"
+                  @file-type-mismatch="onFileTypeMismatch"
+                  @draw="onDraw"
+                  @file-choose="onFilePicked"
+                />
+              </div>
               <div>
                 <v-btn
                   class="ml-0"
                   color="success"
                   large
                   :disabled="!formIsValid"
-                  type="submit">
+                  type="submit"
+                >
                   <v-icon left>mdi-upload</v-icon>
                   Загрузить
                 </v-btn>
               </div>
-
-            </form>
-
-            <br>
-
-            <p>* Участвовать можно много раз</p>
-
-          </v-card-text>
+            </v-card-text>
+          </form>
         </v-card>
       </v-flex>
     </v-layout>
@@ -66,8 +57,10 @@
   export default {
     data () {
       return {
-        imageUrl: '',
+        filePicked: false,
         image: null,
+        croppa: {},
+        // imageUrl: ''
         isWinnerWeek: '',
         isWinnerMonth: '',
         isWinnerContest: '',
@@ -76,43 +69,46 @@
     },
     computed: {
       formIsValid () {
-        return this.imageUrl !== ''
+        return this.filePicked
       }
     },
     methods: {
-      onCreateItem () {
+      onFilePicked () {
+        this.filePicked = true
+      },
+      onFileTypeMismatch (file) {
+        alert('Фаил не валидный. Пожалуйста, загрузите валидный фаил jpg/jpeg/png.')
+      },
+      onDraw: function (ctx) {
+        ctx.save()
+        ctx.globalAlpha = 0.7
+        ctx.drawImage(document.querySelector('.addon'), 750, 556, 310, 100)
+        ctx.restore()
+      },
+      onCreateTicket () {
+        if (!this.croppa.hasImage()) {
+          alert('No image to upload')
+          return
+        }
         if (!this.formIsValid) {
           return
         }
-        if (!this.image) {
-          return
-        }
-        const itemData = {
-          image: this.image,
-          date: new Date(),
-          isWinnerWeek: this.isWinnerWeek,
-          isWinnerMonth: this.isWinnerMonth,
-          isWinnerContest: this.isWinnerContest,
-          isModerated: this.isModerated
-        }
-        this.$store.dispatch('createItem', itemData)
-        this.$router.push('/')
-      },
-      onPickFile () {
-        this.$refs.fileInput.click()
-      },
-      onFilePicked (event) {
-        const files = event.target.files
-        let filename = files[0].name
-        if (filename.lastIndexOf('.') <= 0) {
-          return alert('Фаил не валидный. Пожалуйста, загрузите валидный фаил')
-        }
-        const fileReader = new FileReader()
-        fileReader.addEventListener('load', () => {
-          this.imageUrl = fileReader.result
-        })
-        fileReader.readAsDataURL(files[0])
-        this.image = files[0]
+        this.croppa.generateBlob((blob) => {
+          var file = new File([blob], 'name.jpeg', {
+            lastModifiedDate: new Date(),
+            type: 'image/jpeg'
+          })
+          const itemData = {
+            image: file,
+            date: new Date(),
+            isWinnerWeek: this.isWinnerWeek,
+            isWinnerMonth: this.isWinnerMonth,
+            isWinnerContest: this.isWinnerContest,
+            isModerated: this.isModerated
+          }
+          this.$store.dispatch('createTicket', itemData)
+          this.$router.push('/')
+        }, 'image/jpeg', 0.8)
       }
     }
   }
