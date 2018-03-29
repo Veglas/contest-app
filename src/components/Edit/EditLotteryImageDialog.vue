@@ -42,12 +42,12 @@
             >
             <croppa
               v-model="croppa"
-              :width="480"
-              :height="300"
+              :width="540"
+              :height="338"
+              :quality="2"
               :canvas-color="'#ccc'"
-              :quality="3"
               initial-size="cover"
-              :placeholder="'Выберите или перетащите картинку'"
+              :placeholder="'Выберите или перетащите новую картинку'"
               :placeholder-font-size="16"
               :placeholder-color="'rgba(0,0,0,.54)'"
               :prevent-white-space="true"
@@ -85,12 +85,12 @@
         this.imageUrlIsVisible = false
       },
       onFileTypeMismatch (file) {
-        alert('Invalid file type. Please choose a jpeg or png file.')
+        alert('Фаил не валидный. Пожалуйста, загрузите валидный фаил jpg/jpeg/png.')
       },
       onDraw: function (ctx) {
         ctx.save()
         ctx.globalAlpha = 0.7
-        ctx.drawImage(document.querySelector('.addon'), 1100, 760, 310, 100)
+        ctx.drawImage(document.querySelector('.addon'), 750, 556, 310, 100)
         ctx.restore()
       },
       onSaveChanges () {

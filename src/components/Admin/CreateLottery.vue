@@ -24,10 +24,10 @@
                 >
                 <croppa
                   v-model="croppa"
-                  :width="480"
-                  :height="300"
+                  :width="540"
+                  :height="338"
+                  :quality="2"
                   :canvas-color="'#ccc'"
-                  :quality="3"
                   initial-size="cover"
                   :placeholder="'Выберите или перетащите картинку'"
                   :placeholder-font-size="16"
@@ -90,12 +90,12 @@
         this.filePicked = true
       },
       onFileTypeMismatch (file) {
-        alert('Invalid file type. Please choose a jpeg or png file.')
+        alert('Фаил не валидный. Пожалуйста, загрузите валидный фаил jpg/jpeg/png.')
       },
       onDraw: function (ctx) {
         ctx.save()
         ctx.globalAlpha = 0.7
-        ctx.drawImage(document.querySelector('.addon'), 1100, 760, 310, 100)
+        ctx.drawImage(document.querySelector('.addon'), 750, 556, 310, 100)
         ctx.restore()
       },
       onCreateLottery () {
