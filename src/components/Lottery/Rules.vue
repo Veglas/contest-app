@@ -44,7 +44,7 @@
 				<p>1. Зарегистрироваться в одном из казино только по ссылке ниже и сделать депозит <b>от 600 рублей.</b></p>
 				<p>  
 				  <span v-for="i in CasinoLinks">
-					<a :href="i.url">{{ i.title }}</a>,
+					<a :href="i.url" target="_blank">{{ i.title }}</a>,
 				  </span>
 				</p>
 				<p>2. Выложить на сайт (https://app.veglas.org) скрин заноса от <b>Х100</b></p>
@@ -65,7 +65,7 @@
 				<p>1. Зарегистрироваться в одном из казино только по ссылке ниже и сделать депозит <b>от 3000 рублей.</b></p>
 				<p>  
 				  <span v-for="i in CasinoLinks">
-					<a :href="i.url">{{ i.title }}</a>,
+					<a :href="i.url" target="_blank">{{ i.title }}</a>,
 				  </span>
 				</p>
 				<p>2. Выложить на сайт (https://app.veglas.org) скрин заноса от <b>Х200</b></p>
