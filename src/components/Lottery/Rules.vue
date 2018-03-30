@@ -44,7 +44,9 @@
 				<p>1. Зарегистрироваться в одном из казино только по ссылке ниже и сделать депозит <b>от 600 рублей.</b></p>
 				<p>  
 				  <span v-for="i in CasinoLinks">
-					<a :href="i.url" target="_blank">{{ i.title }}</a>,
+				    <img :src="i.src" width="206px" height="116px">
+					<a :href="i.url" target="_blank">{{ i.title }}</a>
+					<br>
 				  </span>
 				</p>
 				<p>2. Выложить на сайт (https://app.veglas.org) скрин заноса от <b>Х100</b></p>
@@ -65,7 +67,9 @@
 				<p>1. Зарегистрироваться в одном из казино только по ссылке ниже и сделать депозит <b>от 3000 рублей.</b></p>
 				<p>  
 				  <span v-for="i in CasinoLinks">
-					<a :href="i.url" target="_blank">{{ i.title }}</a>,
+				    <img :src="i.src" width="206px" height="116px">
+					<a :href="i.url" target="_blank">{{ i.title }}</a>
+					<br>
 				  </span>
 				</p>
 				<p>2. Выложить на сайт (https://app.veglas.org) скрин заноса от <b>Х200</b></p>
@@ -91,9 +95,9 @@
     data () {
       return {
         CasinoLinks: [
-          {title: 'SuperLines', url: 'http://bit.ly/2GMbqkL'},
-          {title: '1xSlots', url: 'http://bit.ly/2GYOb8c'},
-          {title: 'Cleopatra', url: 'http://bit.ly/2ExzdHO'}
+          {title: 'SuperLines', url: 'http://bit.ly/2GMbqkL', src: 'https://veglas.org/img/img_sm_11.jpg'},
+          {title: '1xSlots', url: 'http://bit.ly/2GYOb8c', src: 'https://veglas.org/img/img_sm_12.jpg'},
+          {title: 'Cleopatra', url: 'http://bit.ly/2ExzdHO', src: 'https://veglas.org/img/img_sm_7.jpg'}
         ]
       }
     }
