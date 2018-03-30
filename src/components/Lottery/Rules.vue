@@ -24,7 +24,7 @@
 				<p>В 21:00 каждый день.</p> 
 				<p>Розыгрыш проходит:</p>
 				<p> - По четным дням на канале <b>«Веглас»</b> ( <a href="https://www.youtube.com/channel/UCmqPixbgM29Ufvn5d5AdfsQ" target="_blank" title="Веглас. Streams Casino">Перейти на канал "Веглас"</a> )</p>
-				<p> - По четным дням на канале <b>«Игральный»</b> ( <a href="https://www.youtube.com/channel/UCFtnLwgThKANF5WQmLZ8dzA" target="_blank" title="Игральный. Стрим Казино Онлайн">Перейти на канал  "Игральный"</a> )</p>
+				<p> - По нечетным дням на канале <b>«Игральный»</b> ( <a href="https://www.youtube.com/channel/UCFtnLwgThKANF5WQmLZ8dzA" target="_blank" title="Игральный. Стрим Казино Онлайн">Перейти на канал  "Игральный"</a> )</p>
 				
 				<h4><u>Условия: </u></h4>
 				<p>Выложить на сайт (https://app.veglas.org) любой скрин на тематику КАЗИНО из любого онлайн казино с заносом от <b>Х50</b></p>
@@ -38,7 +38,7 @@
 				<p>В 21:00 каждое воскресенье.</p> 
 				<p>Розыгрыш проходит:</p>
 				<p> - По четным дням на канале <b>«Веглас»</b> ( <a href="https://www.youtube.com/channel/UCmqPixbgM29Ufvn5d5AdfsQ" target="_blank" title="Веглас. Streams Casino">Перейти на канал "Веглас"</a> )</p>
-				<p> - По четным дням на канале <b>«Игральный»</b> ( <a href="https://www.youtube.com/channel/UCFtnLwgThKANF5WQmLZ8dzA" target="_blank" title="Игральный. Стрим Казино Онлайн">Перейти на канал  "Игральный"</a> )</p>
+				<p> - По нечетным дням на канале <b>«Игральный»</b> ( <a href="https://www.youtube.com/channel/UCFtnLwgThKANF5WQmLZ8dzA" target="_blank" title="Игральный. Стрим Казино Онлайн">Перейти на канал  "Игральный"</a> )</p>
 			
 				<h4><u>Условия: </u></h4>
 				<p>1. Зарегистрироваться в одном из казино только по ссылке ниже и сделать депозит <b>от 600 рублей.</b></p>
@@ -59,7 +59,7 @@
 				<p>В 21:00 каждый последний день месяца.</p> 
 				<p>Розыгрыш проходит:</p>
 				<p> - По четным дням на канале <b>«Веглас»</b> ( <a href="https://www.youtube.com/channel/UCmqPixbgM29Ufvn5d5AdfsQ" target="_blank" title="Веглас. Streams Casino">Перейти на канал "Веглас"</a> )</p>
-				<p> - По четным дням на канале <b>«Игральный»</b> ( <a href="https://www.youtube.com/channel/UCFtnLwgThKANF5WQmLZ8dzA" target="_blank" title="Игральный. Стрим Казино Онлайн">Перейти на канал  "Игральный"</a> )</p>
+				<p> - По нечетным дням на канале <b>«Игральный»</b> ( <a href="https://www.youtube.com/channel/UCFtnLwgThKANF5WQmLZ8dzA" target="_blank" title="Игральный. Стрим Казино Онлайн">Перейти на канал  "Игральный"</a> )</p>
 				
 				<h4><u>Условия: </u></h4>
 				<p>1. Зарегистрироваться в одном из казино только по ссылке ниже и сделать депозит <b>от 3000 рублей.</b></p>
