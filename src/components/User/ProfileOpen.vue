@@ -38,7 +38,14 @@
                     <v-icon>mdi-security</v-icon>
                     Email участника
                   </h4>
-                  <p>тут: <a to="https://console.firebase.google.com/u/0/project/veglas-db/authentication/users?hl=ru" target="_blank">Firebase Authentication</a></p>
+                  <p>
+                    тут:
+                    <a to="https://console.firebase.google.com/u/0/project/veglas-db/authentication/users?hl=ru"
+                      target="_blank"
+                    >
+                      Firebase Authentication
+                    </a>
+                  </p>
                 </v-flex>
 
                 <v-flex xs12>
