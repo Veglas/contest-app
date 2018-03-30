@@ -17,7 +17,8 @@
             <!-- <p>как правильно сделать скрины</p> -->
 
             <br>
-
+			
+			<img src="https://veglas.org/img/day_konkurs.jpg">
             <h3>ЕЖЕДНЕВНЫЙ розыгрыш 500 рублей (1 победитель)</h3>
             
 				<h4><u>Время проведения розыгрыша: </u></h4>
@@ -44,7 +45,7 @@
 				<p>1. Зарегистрироваться в одном из казино только по ссылке ниже и сделать депозит <b>от 600 рублей.</b></p>
 				<p>  
 				  <span v-for="i in CasinoLinks">
-				    <a :href="i.url" target="_blank"><img :src="i.src" width="206px" height="116px"></a>&nbsp;&nbsp;
+				    <a :href="i.url" target="_blank"><img :src="i.src"></a>&nbsp;&nbsp;
 				  </span>
 				</p>
 				<p>2. Выложить на сайт (https://app.veglas.org) скрин заноса от <b>Х100</b></p>
@@ -65,7 +66,7 @@
 				<p>1. Зарегистрироваться в одном из казино только по ссылке ниже и сделать депозит <b>от 3000 рублей.</b></p>
 				<p>  
 				  <span v-for="i in CasinoLinks">
-				    <a :href="i.url" target="_blank"><img :src="i.src" width="206px" height="116px"></a>&nbsp;&nbsp;
+				    <a :href="i.url" target="_blank"><img :src="i.src"></a>&nbsp;&nbsp;
 				  </span>
 				</p>
 				<p>2. Выложить на сайт (https://app.veglas.org) скрин заноса от <b>Х200</b></p>
@@ -74,6 +75,7 @@
 				<p><b>ВНИМАНИЕ:</b> В случае сомнения в правдоподобности скрина и того что он сделан с вашего акаунта, мы можем попросить расшарить экран в скайпе. Это делается для борьбы с фейками. Все фэйки будут удаляться и банится по IP.</p>
             <br>
 
+			<img src="https://veglas.org/img/mega_konkurs.jpg">
             <h3>МЕГА РОЗЫГРЫШ 500 000 рублей</h3>
 				<p><b>25 июня</b></p>
 				<p><b>Информация и условия можно получить только по почте!</b></p>
@@ -91,9 +93,9 @@
     data () {
       return {
         CasinoLinks: [
-          {title: 'SuperLines', url: 'http://bit.ly/2GMbqkL', src: 'https://veglas.org/img/img_sm_11.jpg'},
-          {title: '1xSlots', url: 'http://bit.ly/2GYOb8c', src: 'https://veglas.org/img/img_sm_12.jpg'},
-          {title: 'Cleopatra', url: 'http://bit.ly/2ExzdHO', src: 'https://veglas.org/img/img_sm_7.jpg'}
+          {title: 'SuperLines', url: 'http://bit.ly/2GMbqkL', src: 'https://veglas.org/img/superlines.jpg'},
+          {title: '1xSlots', url: 'http://bit.ly/2GYOb8c', src: 'https://veglas.org/img/1xslots.jpg'},
+          {title: 'Cleopatra', url: 'http://bit.ly/2ExzdHO', src: 'https://veglas.org/img/cleopatra.jpg'}
         ]
       }
     }
