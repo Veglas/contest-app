@@ -29,6 +29,11 @@
             <v-container grid-list-md v-else>
               <v-layout wrap>
 
+                <!-- <v-flex xs12>
+                  <h4>Ваш Никнейм</h4>
+                  <p><i>{{ users.nickname }}</i></p>
+                </v-flex> -->
+
                 <v-flex xs12>
                   <h4>Ваш ID</h4>
                   <p><i>{{ $store.getters.user.id }}</i></p>
@@ -73,7 +78,11 @@
   export default {
     data () {
       return {
-        logoutBtn: {title: 'Выйти', icon: 'mdi-exit-to-app'}
+        logoutBtn: {title: 'Выйти', icon: 'mdi-exit-to-app'},
+        users: {
+          id: '1XXX',
+          nickname: '2XXX'
+        }
       }
     },
     computed: {
