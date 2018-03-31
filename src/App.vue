@@ -30,7 +30,7 @@
         <v-icon>mdi-menu</v-icon>
       </v-toolbar-side-icon>
 
-      <v-toolbar-items class="hidden-xs-only">
+      <v-toolbar-items class="main-menu hidden-xs-only">
 
         <v-btn flat v-if="userIsAdmin" :to="adminBtn.url">
           <v-icon>{{ adminBtn.icon }}</v-icon>
