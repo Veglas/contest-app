@@ -11,25 +11,25 @@
                 * Участвовать можно много раз, но один раз в день.
               </p>
               <div>
-                <img
+                <!-- <img
                   src="/static/img/logos/veglas-watermark-1300x420.png"
                   class="addon"
                   style="display: none;"
-                >
+                > -->
                 <croppa
                   v-model="croppa"
                   :width="540"
                   :height="338"
                   :quality="2"
+                  :accept="'image/*'"
                   :canvas-color="'#ccc'"
-                  initial-size="cover"
+                  initial-size="contain"
+                  :zoom-speed="1"
                   :placeholder="'Выберите или перетащите скриншот'"
                   :placeholder-font-size="16"
                   :placeholder-color="'rgba(0,0,0,.54)'"
-                  :prevent-white-space="true"
                   :remove-button-size="40"
                   @file-type-mismatch="onFileTypeMismatch"
-                  @draw="onDraw"
                   @file-choose="onFilePicked"
                 />
               </div>
@@ -79,12 +79,12 @@
       onFileTypeMismatch (file) {
         alert('Фаил не валидный. Пожалуйста, загрузите валидный фаил jpg/jpeg/png.')
       },
-      onDraw: function (ctx) {
-        ctx.save()
-        ctx.globalAlpha = 0.7
-        ctx.drawImage(document.querySelector('.addon'), 750, 556, 310, 100)
-        ctx.restore()
-      },
+      // onDraw: function (ctx) {
+      //   ctx.save()
+      //   ctx.globalAlpha = 0.7
+      //   ctx.drawImage(document.querySelector('.addon'), 750, 556, 310, 100)
+      //   ctx.restore()
+      // },
       onCreateTicket () {
         if (!this.croppa.hasImage()) {
           alert('No image to upload')
