@@ -40,7 +40,7 @@
                   </h4>
                   <p>
                     тут:
-                    <a to="https://console.firebase.google.com/u/0/project/veglas-db/authentication/users?hl=ru"
+                    <a href="https://console.firebase.google.com/u/0/project/veglas-db/authentication/users?hl=ru"
                       target="_blank"
                     >
                       Firebase Authentication
