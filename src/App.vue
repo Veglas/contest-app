@@ -2,22 +2,25 @@
   <v-app>
 
     <v-toolbar dark class="black">
-      <v-toolbar-items>
+      <v-toolbar-items class="main-menu">
         <v-btn flat :href="veglasBtn.url" target="_blank">
           <v-icon style="color: #00b535">{{ veglasBtn.icon }}</v-icon>
-          <v-toolbar-title style="color: #d89924">{{ veglasBtn.title }}</v-toolbar-title>
+          <v-toolbar-title style="color: #d89924" class="hidden-sm-and-down">{{ veglasBtn.title }}</v-toolbar-title>
         </v-btn>
-      </v-toolbar-items>
 
-      <v-toolbar-items class="hidden-xs-only">
         <v-btn flat :to="lotteriesBtn.url" exact>
           <v-icon>{{ lotteriesBtn.icon }}</v-icon>
-          <v-toolbar-title>{{ lotteriesBtn.title }}</v-toolbar-title>
+          <v-toolbar-title class="hidden-xs-only">{{ lotteriesBtn.title }}</v-toolbar-title>
         </v-btn>
 
         <v-btn flat :to="winnersBtn.url">
           <v-icon>{{ winnersBtn.icon }}</v-icon>
           <span style="margin-left: 16px;" class="hidden-sm-and-down">{{ winnersBtn.title }}</span>
+        </v-btn>
+
+        <v-btn flat :to="rulesBtn.url">
+          <v-icon>{{ rulesBtn.icon }}</v-icon>
+          <span style="margin-left: 16px;" class="hidden-sm-and-down">{{ rulesBtn.title }}</span>
         </v-btn>
       </v-toolbar-items>
 
@@ -64,14 +67,14 @@
     >
       <v-list dense class="pt-0">
 
-        <v-list-tile :href="veglasBtn.url" target="_blank">
+        <!-- <v-list-tile :href="veglasBtn.url" target="_blank">
           <v-list-tile-action>
             <v-icon>{{ veglasBtn.icon }}</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
             <v-list-tile-title>{{ veglasBtn.title }}</v-list-tile-title>
           </v-list-tile-content>
-        </v-list-tile>
+        </v-list-tile> -->
 
         <v-list-tile :to="lotteriesBtn.url">
           <v-list-tile-action>
@@ -88,6 +91,15 @@
           </v-list-tile-action>
           <v-list-tile-content>
             <v-list-tile-title>{{ winnersBtn.title }}</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+
+        <v-list-tile :to="rulesBtn.url">
+          <v-list-tile-action>
+            <v-icon>{{ rulesBtn.icon }}</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>{{ rulesBtn.title }}</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
 
@@ -169,9 +181,10 @@
         sideNav: null,
         veglasBtn: {title: 'Казино', icon: 'mdi-bitcoin', url: 'https://veglas.org'},
         lotteriesBtn: {title: 'Pозыгрыши', icon: 'mdi-clover', url: '/'},
+        winnersBtn: {title: 'Победители', icon: 'mdi-crown', url: '/lottery/winners'},
+        rulesBtn: {title: 'Правила', icon: 'mdi-file-document-box', url: '/lottery/rules'},
         profileBtn: {title: 'Профиль', icon: 'mdi-account', url: '/user/profile'},
         adminBtn: {title: 'Админ', icon: 'mdi-security', url: '/admin'},
-        winnersBtn: {title: 'Победители', icon: 'mdi-crown', url: '/lottery/winners'},
         loginBtn: {title: 'Вход', icon: 'mdi-key', url: '/user/login'},
         registerBtn: {title: 'Регистрация', icon: 'mdi-account-plus', url: '/user/register'}
       }
@@ -202,5 +215,13 @@
   .chip__content span {
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+  .main-menu .btn {
+    min-width: 56px;
+  }
+  @media only screen and (max-width: 599px) {
+    .main-menu.toolbar__items {
+      margin-left: 8px !important;
+    }
   }
 </style>

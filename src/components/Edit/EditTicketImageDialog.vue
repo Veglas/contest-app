@@ -123,7 +123,7 @@
 
 <style>
   .edit-item-dialog__image-url-container {
-    width: 480px;
+    width: 100%;
     position: relative;
   }
   .edit-item-dialog__image-url-container img {

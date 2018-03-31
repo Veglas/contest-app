@@ -122,7 +122,7 @@
 
 <style>
   .edit-lottery-dialog__image-url-container {
-    width: 480px;
+    width: 100%;
     position: relative;
   }
   .edit-lottery-dialog__image-url-container img {
