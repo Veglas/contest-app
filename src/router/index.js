@@ -64,6 +64,12 @@ export default new Router({
       component: LotteryDay
     },
     {
+      path: '/lottery/day/:page',
+      props: true,
+      name: 'LotteryDayPaginated',
+      component: LotteryDay
+    },
+    {
       path: '/lottery/:id',
       name: 'LotteryPage',
       component: LotteryPage,

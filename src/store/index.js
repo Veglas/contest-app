@@ -459,7 +459,7 @@ export const store = new Vuex.Store({
     loadedSortedByDateItems (state, getters) {
       return getters.loadedItems.sort((itemA, itemB) => {
         return new Date(itemA.date) - new Date(itemB.date)
-      }).reverse()
+      }).reverse()// || {}
     },
     loadedLastFewItems (state, getters) {
       return getters.loadedSortedByDateItems.slice(0, 7)
