@@ -160,6 +160,26 @@
                 />
               </div>
 
+              <!-- HotLog -->
+              <!--
+              <span id="hotlog_counter"></span>
+              <span id="hotlog_dyn"></span>
+              <script type="text/javascript">
+                var hot_s = document.createElement('script')
+                hot_s.type = 'text/javascript'
+                hot_s.async = true
+                hot_s.src = 'http://js.hotlog.ru/dcounter/2567771.js'
+                hot_d = document.getElementById('hotlog_dyn')
+                hot_d.appendChild(hot_s)
+              </script>
+              <noscript>
+              -->
+              <a href="http://click.hotlog.ru/?2567771" target="_blank">
+                <img src="http://hit20.hotlog.ru/cgi-bin/hotlog/count?s=2567771&im=457" border="0" title="HotLog" alt="HotLog">
+              </a>
+              <!-- </noscript> -->
+              <!-- /HotLog -->
+
             </v-flex>
           </v-layout>
         </v-container>
