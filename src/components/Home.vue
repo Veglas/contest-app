@@ -88,9 +88,6 @@
       items () {
         return this.$store.getters.loadedLastFewItems
       },
-      userIsAuthenticated () {
-        return this.$store.getters.userIsAuthenticated
-      },
       currentUserId () {
         return this.$store.getters.currentUserId
       },

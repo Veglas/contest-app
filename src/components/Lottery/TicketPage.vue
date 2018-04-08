@@ -161,22 +161,11 @@
       item () {
         return this.$store.getters.loadedTicket(this.id)
       },
-      userIsAuthenticated () {
-        return this.$store.getters.user !== null && this.$store.getters.user !== undefined
-      },
-      currentUserId () {
-        if (!this.userIsAuthenticated) {
-          return false
-        }
-        return this.$store.getters.user.id
-      },
       userIsCreator () {
-        return this.currentUserId === this.item.creatorId
+        return this.$store.getters.currentUserId === this.item.creatorId
       },
       userIsAdmin () {
-        if (this.currentUserId === 'toxjaps6DjgDKrju6hf6Iq2e9FR2' || this.currentUserId === 'Ba1ck1rpfbUjXA6oWmdm1LreTmr1' || this.currentUserId === 'dNED1SUnJfe3ZhFiQMf9yc2mK5w2') {
-          return true
-        }
+        return this.$store.getters.userIsAdmin
       }
     },
     methods: {

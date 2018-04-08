@@ -20,7 +20,7 @@
                     {{ lotteryDay.title }}
                   </h1>
                   <!-- <h1>{{ lotteryDay.title }}</h1> -->
-                  <h3>Все билеты, участвующие в розыгрыше</h3>
+                  <h3>Билеты, участвующие в розыгрыше</h3>
                 </v-flex>
 
                 <v-progress-circular
@@ -91,19 +91,11 @@
           return index > (this.currentPage - 1) * this.perPage && index <= this.currentPage * this.perPage
         })
       },
-      userIsAuthenticated () {
-        return this.$store.getters.user !== null && this.$store.getters.user !== undefined
-      },
       currentUserId () {
-        if (!this.userIsAuthenticated) {
-          return false
-        }
-        return this.$store.getters.user.id
+        return this.$store.getters.currentUserId
       },
       userIsAdmin () {
-        if (this.currentUserId === 'toxjaps6DjgDKrju6hf6Iq2e9FR2' || this.currentUserId === 'Ba1ck1rpfbUjXA6oWmdm1LreTmr1' || this.currentUserId === 'dNED1SUnJfe3ZhFiQMf9yc2mK5w2') {
-          return true
-        }
+        return this.$store.getters.userIsAdmin
       }
     },
     watch: {
