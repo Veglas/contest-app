@@ -65,7 +65,7 @@
         return this.$store.getters.loading
       },
       lotteries () {
-        return this.$store.getters.loadedLotteriesSortedByDate
+        return this.$store.getters.loadedLotteriesSortedByDate.reverse()
       }
     },
     methods: {

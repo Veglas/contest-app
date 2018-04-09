@@ -47,7 +47,7 @@ export default new Router({
       component: Rules
     },
     {
-      path: '/lottery/create-ticket',
+      path: '/create/ticket',
       name: 'CreateTicket',
       component: CreateTicket
       // beforeEnter: AuthGuard

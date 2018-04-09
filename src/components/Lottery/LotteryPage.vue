@@ -1,8 +1,8 @@
 <template>
   <div class="lottery-page">
-    <v-container>
-      <v-layout>
-        <v-flex xs12 md10 offset-md1>
+    <v-container grid-list-md>
+      <v-layout wrap>
+        <v-flex xs12>
 
           <v-progress-circular
             v-if="loading"
@@ -12,32 +12,22 @@
           />
 
           <v-card v-else>
-            <!-- <v-card-media :src="'/static/img/logos/veglas-watermark-1300x420.png'">
+            <!-- <v-card-title class="headline">
+            </v-card-title> -->
+            <v-card-media :src="lottery.imageUrl" height="250">
               <v-spacer/>
+              <data-lottery :lottery="lottery" v-if="userIsAdmin"/>
+              <edit-lottery-image-dialog :lottery="lottery" v-if="userIsAdmin"/>
+              <remove-lottery :lottery="lottery" v-if="userIsAdmin"/>
+            </v-card-media>
+            <v-card-text>
 
-              <data-lottery
-                :lottery="lottery"
-              />
+              <!-- <div class="text-xs-right" v-if="userIsAdmin">
 
-              <remove-lottery
-                :lottery="lottery"
-              />
-            </v-card-media> -->
-            <v-card-text class="pt-0">
-
-              <div class="ticket__edit text-xs-right" v-if="userIsAdmin">
-
-                <data-lottery
-                  :lottery="lottery"
-                />
-
-                <edit-lottery-image-dialog
-                  :lottery="lottery"
-                />
-
-                <remove-lottery
-                  :lottery="lottery"
-                />
+                <data-lottery :lottery="lottery"/>
+                <edit-lottery-image-dialog :lottery="lottery"/>
+                <remove-lottery :lottery="lottery"/>
+                <create-ticket-dialog :lottery="lottery"/>
 
               </div>
 
@@ -47,12 +37,38 @@
                   v-if="lottery.imageUrl"
                   :src="lottery.imageUrl"
                 />
-              </div>
+              </div> -->
 
-              <div style="font-size: 12px">
-                <h1>{{ lottery.name }}</h1>
-                <div v-html="lottery.rules"/>
-              </div>
+                <v-layout wrap row>
+                  <v-flex xs12 sm9>
+                    <h1>
+                      <!-- <v-icon large>mdi-trophy</v-icon> -->
+                      {{ lottery.name }}
+                    </h1>
+                  </v-flex>
+                  <v-flex xs12 sm3>
+                    <create-ticket-dialog :lottery="lottery"/>
+                  </v-flex>
+                  <v-flex xs12 sm9>
+                    <div>Билеты, участвующие в розыгрыше:</div>
+                    <v-layout wrap>
+                      <list-item
+                        v-for="i in items"
+                        v-if="i.lotteryId === lottery.id && i.isModerated || i.lotteryId === lottery.id && currentUserId === i.creatorId || i.lotteryId === lottery.id && userIsAdmin"
+                        :i="i"
+                        :key="i.id"
+                      />
+                    </v-layout>
+                  </v-flex>
+                  <v-flex xs12 sm3>
+                    <h3>
+                      <v-icon small>mdi-file-document-box</v-icon>
+                      Правила
+                    </h3>
+                    <div v-html="lottery.rules"/>
+                  </v-flex>
+                  </v-layout>
+
             </v-card-text>
           </v-card>
 
@@ -69,8 +85,14 @@
       loading () {
         return this.$store.getters.loading
       },
+      items () {
+        return this.$store.getters.loadedSortedByDateItems
+      },
       lottery () {
         return this.$store.getters.loadedLottery(this.id)
+      },
+      currentUserId () {
+        return this.$store.getters.currentUserId
       },
       userIsAdmin () {
         return this.$store.getters.userIsAdmin

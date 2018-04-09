@@ -60,7 +60,6 @@
         filePicked: false,
         image: null,
         croppa: {},
-        // imageUrl: ''
         isWinnerWeek: '',
         isWinnerMonth: '',
         isWinnerContest: '',

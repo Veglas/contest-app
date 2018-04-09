@@ -17,6 +17,28 @@
                 <v-flex xs12>
                   <h1>
                     <v-icon large>mdi-trophy</v-icon>
+                    Розыгрыши:
+                  </h1>
+                </v-flex>
+
+                <v-progress-circular
+                  v-if="loading"
+                  indeterminate
+                  :size="40"
+                  color="amber"
+                />
+
+                <v-layout wrap v-else>
+                  <lottery-list-item
+                    v-for="lottery in lotteries"
+                    :lottery="lottery"
+                    :key="lottery.id"
+                  />
+                </v-layout>
+
+                <v-flex xs12>
+                  <h1>
+                    <v-icon large>mdi-trophy</v-icon>
                     {{ lotteryDay.title }}
                   </h1>
                   <h3>Новые билеты, участвующие в розыгрыше</h3>
@@ -36,11 +58,9 @@
                     :i="i"
                     :key="i.id"
                   />
-
                   <ticket-list-btn
                     :btn="lotteryDay"
                   />
-
                 </v-layout>
 
                 <v-flex xs12>
@@ -87,6 +107,9 @@
       },
       items () {
         return this.$store.getters.loadedLastFewItems
+      },
+      lotteries () {
+        return this.$store.getters.loadedLotteriesSortedByDate.reverse()
       },
       currentUserId () {
         return this.$store.getters.currentUserId

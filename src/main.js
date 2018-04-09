@@ -20,8 +20,10 @@ import DataLottery from './components/Edit/Lottery/Data'
 import RemoveLottery from './components/Edit/Lottery/Remove'
 import ModerateTicket from './components/Edit/Ticket/Moderate'
 import ListItem from './components/Lottery/ListItem'
+import LotteryListItem from './components/Lottery/LotteryListItem'
 import TicketListBtn from './components/Lottery/TicketListBtn'
 import BtnCreateTicket from './components/Shared/BtnCreateTicket'
+import CreateTicketDialog from './components/Edit/CreateTicketDialog'
 import BtnCreateLottery from './components/Shared/BtnCreateLottery'
 import BtnRules from './components/Shared/BtnRules'
 import BtnWinners from './components/Shared/BtnWinners'
@@ -53,8 +55,10 @@ Vue.component('remove-ticket', RemoveTicket)
 Vue.component('remove-lottery', RemoveLottery)
 Vue.component('moderate-ticket', ModerateTicket)
 Vue.component('list-item', ListItem)
+Vue.component('lottery-list-item', LotteryListItem)
 Vue.component('ticket-list-btn', TicketListBtn)
 Vue.component('btn-create-ticket', BtnCreateTicket)
+Vue.component('create-ticket-dialog', CreateTicketDialog)
 Vue.component('btn-create-lottery', BtnCreateLottery)
 Vue.component('btn-rules', BtnRules)
 Vue.component('btn-winners', BtnWinners)

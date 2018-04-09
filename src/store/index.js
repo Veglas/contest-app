@@ -48,6 +48,9 @@ export const store = new Vuex.Store({
     createLottery (state, payload) {
       state.loadedLotteries.push(payload)
     },
+    // addTicketIdToLottery (state, payload) {
+    //   state.loadedLotteryTickets.push(payload)
+    // },
     updateTicketWinner (state, payload) {
       const item = state.loadedItems.find(item => {
         return item.id === payload.id
@@ -133,6 +136,7 @@ export const store = new Vuex.Store({
               creatorId: obj[key].creatorId,
               imageUrl: obj[key].imageUrl,
               date: obj[key].date,
+              lotteryId: obj[key].lotteryId,
               isWinnerWeek: obj[key].isWinnerWeek,
               isWinnerMonth: obj[key].isWinnerMonth,
               isWinnerContest: obj[key].isWinnerContest,
@@ -153,6 +157,7 @@ export const store = new Vuex.Store({
       const item = {
         creatorId: getters.user.id,
         date: payload.date.toISOString(),
+        lotteryId: payload.lotteryId,
         isWinnerWeek: payload.isWinnerWeek,
         isWinnerMonth: payload.isWinnerMonth,
         isWinnerContest: payload.isWinnerContest,
