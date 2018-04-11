@@ -11,7 +11,7 @@
                 <v-flex xs12 class="text-md-right">
                   <!-- <btn-winners/> -->
                   <!-- <btn-rules/> -->
-                  <btn-create-ticket/>
+                  <!-- <btn-create-ticket/> -->
                 </v-flex>
 
                 <v-flex xs12>

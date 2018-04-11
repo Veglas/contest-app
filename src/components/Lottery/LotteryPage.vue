@@ -14,7 +14,7 @@
           <v-card v-else>
             <!-- <v-card-title class="headline">
             </v-card-title> -->
-            <v-card-media :src="lottery.imageUrl" height="250">
+            <v-card-media :src="lottery.imageUrl" height="350">
               <v-spacer/>
               <data-lottery :lottery="lottery" v-if="userIsAdmin"/>
               <edit-lottery-image-dialog :lottery="lottery" v-if="userIsAdmin"/>
@@ -61,11 +61,15 @@
                     </v-layout>
                   </v-flex>
                   <v-flex xs12 sm3>
-                    <h3>
+                    <h3 class="mt-2 mb-4">
                       <v-icon small>mdi-file-document-box</v-icon>
                       Правила
                     </h3>
                     <div v-html="lottery.rules"/>
+                    <p>
+                      <b>ВНИМАНИЕ:</b><br>
+                      В случае сомнения в правдоподобности скрина и того что он сделан с вашего акаунта, мы можем попросить расшарить экран в скайпе. Это делается для борьбы с фейками. Все фэйки будут удаляться и банится по IP.
+                    </p>
                   </v-flex>
                   </v-layout>
 
@@ -107,8 +111,9 @@
     margin: 0 auto 8px;
     display: block;
   }
-  /* .lottery-page .card__media__background {
-    background-position-y: -10px !important;
-    background-size: 80% !important;
-  } */
+  .lottery-page .card__media__background {
+    background-position: center !important;
+    /* background-position-y: -10px !important;
+    background-size: 80% !important; */
+  }
 </style>

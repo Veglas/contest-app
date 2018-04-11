@@ -1,5 +1,5 @@
 <template>
-  <v-flex xs12 sm6 md3>
+  <v-flex xs12 sm6 md6>
     <v-card tile>
       <v-card-media
         height="200"
