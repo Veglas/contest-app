@@ -36,7 +36,7 @@
                   />
                 </v-layout>
 
-                <v-flex xs12>
+                <!-- <v-flex xs12>
                   <h1>
                     <v-icon large>mdi-trophy</v-icon>
                     {{ lotteryDay.title }}
@@ -80,7 +80,7 @@
                   <h3>Скоро стартует</h3>
                   <br>
                   <br>
-                </v-flex>
+                </v-flex> -->
 
               </v-layout>
             </v-container>
