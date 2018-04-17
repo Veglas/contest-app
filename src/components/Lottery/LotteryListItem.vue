@@ -37,9 +37,9 @@
   .card__media {
     background-color: gainsboro;
   }
-  .card__media__background {
+  /* .card__media__background {
     background-position: top center !important;
-  }
+  } */
   /*.list-item__winners {*/
     /*position: absolute;*/
     /*top: 0;*/
