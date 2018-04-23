@@ -8,7 +8,6 @@
 
     <v-tooltip top slot="activator" color="success" open-delay="0">
       <v-btn
-        large
         color="success"
         class="mx-0"
         slot="activator"

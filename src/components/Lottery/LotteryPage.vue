@@ -48,6 +48,15 @@
                   </v-flex>
                   <v-flex xs12 sm3>
                     <create-ticket-dialog :lottery="lottery"/>
+
+                    <v-btn
+                      color="warning"
+                      class="mx-0"
+                    >
+                      <v-icon left>mdi-crown</v-icon>
+                      Победители
+                    </v-btn>
+
                   </v-flex>
                   <v-flex xs12 sm9>
                     <div>Билеты, участвующие в розыгрыше:</div>
@@ -112,7 +121,7 @@
     display: block;
   }
   .lottery-page .card__media__background {
-    background-position: center !important;
+    /* background-position: center !important; */
     /* background-position-y: -10px !important;
     background-size: 80% !important; */
   }
