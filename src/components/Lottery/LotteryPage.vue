@@ -52,6 +52,7 @@
                     <v-btn
                       color="warning"
                       class="mx-0"
+                      :to="lottery.id + '/winners'"
                     >
                       <v-icon left>mdi-crown</v-icon>
                       Победители

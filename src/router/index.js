@@ -76,6 +76,12 @@ export default new Router({
       props: true
     },
     {
+      path: '/lottery/:id/winners',
+      name: 'Winners',
+      component: Winners,
+      props: true
+    },
+    {
       path: '/user/profile/:id',
       name: 'ProfileOpen',
       component: ProfileOpen,
