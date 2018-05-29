@@ -102,8 +102,8 @@
     data () {
       return {
         CasinoLinks: [
+		  {title: 'SuperSlots', url: 'http://bit.ly/2HQmbDv', src: 'https://veglas.org/img/superslots.jpg'},
           {title: 'SuperLines', url: 'http://bit.ly/2GMbqkL', src: 'https://veglas.org/img/superlines.jpg'},
-          {title: 'SuperSlots', url: 'http://bit.ly/2HQmbDv', src: 'https://veglas.org/img/superslots.jpg'},
           {title: 'Cleopatra', url: 'http://bit.ly/2ExzdHO', src: 'https://veglas.org/img/cleopatra.jpg'}
         ]
       }
