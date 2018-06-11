@@ -24,8 +24,7 @@
 				<h4><u>Время проведения розыгрыша: </u></h4>
 				<p>В 21:00 каждый день.</br> 
 				       Розыгрыш проходит:</br>
-				- По четным дням на канале <b>«Веглас. Casino Streams 3.0»</b> ( <a href="https://www.youtube.com/channel/UCratryukikrxQpXzhVXREVA" target="_blank" title="Веглас. Casino Streams 3.0">Перейти на канал "Веглас"</a> )<br>
-				- По нечетным дням на канале <b>«Игральный»</b> ( <a href="https://www.youtube.com/channel/UCFtnLwgThKANF5WQmLZ8dzA" target="_blank" title="Игральный. Стрим Казино Онлайн">Перейти на канал  "Игральный"</a> )
+				На канале <b>«Веглас. Casino Streams 3.0»</b> ( <a href="https://www.youtube.com/channel/UCratryukikrxQpXzhVXREVA" target="_blank" title="Веглас. Casino Streams 3.0">Перейти на канал "Веглас"</a> )<br>
 				</p>
 				
 				<h4><u>Условия: </u></h4>
@@ -40,8 +39,7 @@
 			<h4><u>Время проведения розыгрыша: </u></h4>
 				<p>В 21:00 каждое воскресенье.</br> 
 				       Розыгрыш проходит:</br>
-				- По четным дням на канале <b>«Веглас. Casino Streams 3.0»</b> ( <a href="https://www.youtube.com/channel/UCratryukikrxQpXzhVXREVA" target="_blank" title="Веглас. Casino Streams 3.0">Перейти на канал "Веглас"</a> )<br>
-				- По нечетным дням на канале <b>«Игральный»</b> ( <a href="https://www.youtube.com/channel/UCFtnLwgThKANF5WQmLZ8dzA" target="_blank" title="Игральный. Стрим Казино Онлайн">Перейти на канал  "Игральный"</a> )
+				На канале <b>«Веглас. Casino Streams 3.0»</b> ( <a href="https://www.youtube.com/channel/UCratryukikrxQpXzhVXREVA" target="_blank" title="Веглас. Casino Streams 3.0">Перейти на канал "Веглас"</a> )<br>
 				</p>
 			
 				<h4><u>Условия: </u></h4>
@@ -66,8 +64,7 @@
 				<h4><u>Время проведения розыгрыша: </u></h4>
 				<p>В 21:00 каждый последний день месяца.</br> 
 				       Розыгрыш проходит:</br>
-				- По четным дням на канале <b>«Веглас. Casino Streams 3.0»</b> ( <a href="https://www.youtube.com/channel/UCratryukikrxQpXzhVXREVA" target="_blank" title="Веглас. Casino Streams 3.0">Перейти на канал "Веглас"</a> )<br>
-				- По нечетным дням на канале <b>«Игральный»</b> ( <a href="https://www.youtube.com/channel/UCFtnLwgThKANF5WQmLZ8dzA" target="_blank" title="Игральный. Стрим Казино Онлайн">Перейти на канал  "Игральный"</a> )
+				На канале <b>«Веглас. Casino Streams 3.0»</b> ( <a href="https://www.youtube.com/channel/UCratryukikrxQpXzhVXREVA" target="_blank" title="Веглас. Casino Streams 3.0">Перейти на канал "Веглас"</a> )<br>
 				</p>
 				
 				<h4><u>Условия: </u></h4>
@@ -105,8 +102,8 @@
     data () {
       return {
         CasinoLinks: [
+		  {title: 'SuperSlots', url: 'http://bit.ly/2HQmbDv', src: 'https://veglas.org/img/superslots.jpg'},
           {title: 'SuperLines', url: 'http://bit.ly/2GMbqkL', src: 'https://veglas.org/img/superlines.jpg'},
-          {title: 'SuperSlots', url: 'http://bit.ly/2HQmbDv', src: 'https://veglas.org/img/superslots.jpg'},
           {title: 'Cleopatra', url: 'http://bit.ly/2ExzdHO', src: 'https://veglas.org/img/cleopatra.jpg'}
         ]
       }
