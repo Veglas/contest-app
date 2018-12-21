@@ -447,7 +447,7 @@ export const store = new Vuex.Store({
         registeredItems: []
       })
     },
-    logout ({commit}) {
+    logOut ({commit}) {
       firebase.auth().signOut()
       commit('setUser', null)
     },

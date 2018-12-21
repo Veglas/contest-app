@@ -98,7 +98,7 @@
     },
     methods: {
       onLogout () {
-        this.$store.dispatch('logout')
+        this.$store.dispatch('logOut')
         this.$router.push('/')
       }
     }
