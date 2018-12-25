@@ -9,7 +9,7 @@
   export default {
     data () {
       return {
-        rulesBtn: {title: 'Правила', icon: 'mdi-file-document-box', url: '/lottery/rules'}
+        rulesBtn: { title: 'Правила', icon: 'mdi-file-document-box', url: '/lottery/rules' }
       }
     }
   }

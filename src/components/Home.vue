@@ -96,9 +96,9 @@
   export default {
     data () {
       return {
-        lotteryDay: {title: '«Ежедневный» розыгрыш 500 руб', url: '/lottery/day'},
-        lotteryWeek: {title: '«Еженедельный» розыгрыш 5 000 руб', url: '/lottery/week'},
-        lotteryMonth: {title: '«МЕГА» розыгрыш 500 000 руб', url: '/lottery/month'}
+        lotteryDay: { title: '«Ежедневный» розыгрыш 500 руб', url: '/lottery/day' },
+        lotteryWeek: { title: '«Еженедельный» розыгрыш 5 000 руб', url: '/lottery/week' },
+        lotteryMonth: { title: '«МЕГА» розыгрыш 500 000 руб', url: '/lottery/month' }
       }
     },
     computed: {

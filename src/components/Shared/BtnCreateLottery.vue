@@ -10,7 +10,7 @@
   export default {
     data () {
       return {
-        createLotteryBtn: {title: 'Создать лотерею', icon: 'mdi-plus', icon2: 'mdi-trophy', url: '/admin/create/lottery'}
+        createLotteryBtn: { title: 'Создать лотерею', icon: 'mdi-plus', icon2: 'mdi-trophy', url: '/admin/create/lottery' }
       }
     }
   }

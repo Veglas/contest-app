@@ -83,8 +83,8 @@
       onSignin () {
         this.$store.dispatch('signUserIn', {
           email: this.email,
-          password: this.password}
-        )
+          password: this.password
+        })
       },
       onDismissed () {
         this.$store.dispatch('clearError')

@@ -68,7 +68,7 @@
     props: ['lottery'],
     data () {
       return {
-        createTicketBtn: {title: 'Участвовать', icon: 'mdi-upload'},
+        createTicketBtn: { title: 'Участвовать', icon: 'mdi-upload' },
         createTicketDialog: false,
         filePicked: false,
         image: null,
