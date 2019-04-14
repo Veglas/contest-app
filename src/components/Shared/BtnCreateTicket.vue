@@ -9,7 +9,7 @@
   export default {
     data () {
       return {
-        createTicketBtn: {title: 'Участвовать', icon: 'mdi-upload', url: '/lottery/create-ticket'}
+        createTicketBtn: { title: 'Участвовать', icon: 'mdi-upload', url: '/create/ticket' }
       }
     }
   }

@@ -28,7 +28,6 @@
             label="Название"
             v-model="editedName"
           />
-          <div>Обложка</div>
           <v-text-field
             name="rules"
             id="rules"

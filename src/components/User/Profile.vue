@@ -78,7 +78,7 @@
   export default {
     data () {
       return {
-        logoutBtn: {title: 'Выйти', icon: 'mdi-exit-to-app'},
+        logoutBtn: { title: 'Выйти', icon: 'mdi-exit-to-app' },
         users: {
           id: '1XXX',
           nickname: '2XXX'
@@ -98,7 +98,7 @@
     },
     methods: {
       onLogout () {
-        this.$store.dispatch('logout')
+        this.$store.dispatch('logOut')
         this.$router.push('/')
       }
     }

@@ -56,8 +56,8 @@
   export default {
     data () {
       return {
-        adminTicketsBtn: {title: 'Билеты', icon: 'mdi-cash-multiple', url: '/admin'},
-        adminLotteriesBtn: {title: 'Лотереи', icon: 'mdi-trophy', url: '/admin/lotteries'}
+        adminTicketsBtn: { title: 'Билеты', icon: 'mdi-cash-multiple', url: '/admin' },
+        adminLotteriesBtn: { title: 'Лотереи', icon: 'mdi-trophy', url: '/admin/lotteries' }
       }
     },
     computed: {
@@ -65,7 +65,7 @@
         return this.$store.getters.loading
       },
       lotteries () {
-        return this.$store.getters.loadedLotteriesSortedByDate
+        return this.$store.getters.loadedLotteriesSortedByDate.reverse()
       }
     },
     methods: {

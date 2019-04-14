@@ -199,14 +199,14 @@
     data () {
       return {
         sideNav: null,
-        veglasBtn: {title: 'Казино', icon: 'mdi-bitcoin', url: 'https://veglas.org'},
-        lotteriesBtn: {title: 'Pозыгрыши', icon: 'mdi-clover', url: '/'},
-        winnersBtn: {title: 'Победители', icon: 'mdi-crown', url: '/lottery/winners'},
-        rulesBtn: {title: 'Правила', icon: 'mdi-file-document-box', url: '/lottery/rules'},
-        profileBtn: {title: 'Профиль', icon: 'mdi-account', url: '/user/profile'},
-        adminBtn: {title: 'Админ', icon: 'mdi-security', url: '/admin'},
-        loginBtn: {title: 'Вход', icon: 'mdi-key', url: '/user/login'},
-        registerBtn: {title: 'Регистрация', icon: 'mdi-account-plus', url: '/user/register'}
+        veglasBtn: { title: 'Казино', icon: 'mdi-bitcoin', url: 'https://veglas.org' },
+        lotteriesBtn: { title: 'Pозыгрыши', icon: 'mdi-clover', url: '/' },
+        winnersBtn: { title: 'Победители', icon: 'mdi-crown', url: '/lottery/winners' },
+        rulesBtn: { title: 'Правила', icon: 'mdi-file-document-box', url: '/lottery/rules' },
+        profileBtn: { title: 'Профиль', icon: 'mdi-account', url: '/user/profile' },
+        adminBtn: { title: 'Админ', icon: 'mdi-security', url: '/admin' },
+        loginBtn: { title: 'Вход', icon: 'mdi-key', url: '/user/login' },
+        registerBtn: { title: 'Регистрация', icon: 'mdi-account-plus', url: '/user/register' }
       }
     },
     computed: {

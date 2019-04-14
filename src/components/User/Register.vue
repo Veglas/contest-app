@@ -9,6 +9,10 @@
           <v-card-text>
 
             <h1>Регистрация</h1>
+            <p>
+              Правильно указывайте почту!!<br/>
+              Связь и призы получаете уведомлением по почте.
+            </p>
 
             <form @submit.prevent="onSignup">
               <v-text-field
@@ -95,7 +99,10 @@
     },
     methods: {
       onSignup () {
-        this.$store.dispatch('signUserUp', {email: this.email, password: this.password})
+        this.$store.dispatch('signUserUp', {
+          email: this.email,
+          password: this.password
+        })
       },
       onDismissed () {
         this.$store.dispatch('clearError')

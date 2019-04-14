@@ -12,21 +12,22 @@
 
             <p><u>Правильно указывайте почту!!</u></p>
             <p><u>Связь и призы получаете уведомлением по почте.</u></p>
-			<p><b>ВНИМАНИЕ! ВЕГЛАС НА НОВОМ КАНАЛЕ. <a href="https://www.youtube.com/channel/UCratryukikrxQpXzhVXREVA" target="_blank" title="Веглас. Casino Streams 3.0">ССЫЛКА НА КАНАЛ</a>. ПОДПИСЫВАЙТЕСЬ!</b></p>
+            <p><b>ВНИМАНИЕ! ВЕГЛАС НА НОВОМ КАНАЛЕ. <a href="https://www.youtube.com/channel/UCratryukikrxQpXzhVXREVA" target="_blank" title="Веглас. Casino Streams 3.0">ССЫЛКА НА КАНАЛ</a>. ПОДПИСЫВАЙТЕСЬ!</b></p>
 
             <!-- <h4>пример</h4> -->
             <!-- <p>как правильно сделать скрины</p> -->
 
             <br>
-			
-			<img src="https://veglas.org/img/day_konkurs.jpg">
+
+            <img src="https://veglas.org/img/day_konkurs.jpg">
             <h3>ЕЖЕДНЕВНЫЙ РОЗЫГРЫШ: 500 рублей (1 победитель)</h3>
-				<h4><u>Время проведения розыгрыша: </u></h4>
-				<p>В 21:00 каждый день.</br> 
-				       Розыгрыш проходит:</br>
-				На канале <b>«Веглас. Casino Streams 3.0»</b> ( <a href="https://www.youtube.com/channel/UCratryukikrxQpXzhVXREVA" target="_blank" title="Веглас. Casino Streams 3.0">Перейти на канал "Веглас"</a> )<br>
-				</p>
-				
+		        <h4><u>Время проведения розыгрыша: </u></h4>
+            <p>
+              В 21:00 каждый день.</br>
+			        Розыгрыш проходит:</br>
+		          На канале <b>«Веглас. Casino Streams 3.0»</b> ( <a href="https://www.youtube.com/channel/UCratryukikrxQpXzhVXREVA" target="_blank" title="Веглас. Casino Streams 3.0">Перейти на канал "Веглас"</a> )<br>
+		        </p>
+
 				<h4><u>Условия: </u></h4>
 				<p>1. Выложить на сайт (<a href="https://app.veglas.org" target="_blank">https://app.veglas.org</a>) любой скрин на тематику КАЗИНО из любого онлайн казино с заносом от <b>Х50</b></br>
 				2. В день можно выкладывать только один скрин.</p>
@@ -37,14 +38,14 @@
 
             <h3>ЕЖЕНЕДЕЛЬНЫЙ РОЗЫГРЫШ: 5 000 рублей (5 победителей) | 5 человек по 1000 рублей</h3>
 			<h4><u>Время проведения розыгрыша: </u></h4>
-				<p>В 21:00 каждое воскресенье.</br> 
+				<p>В 21:00 каждое воскресенье.</br>
 				       Розыгрыш проходит:</br>
 				На канале <b>«Веглас. Casino Streams 3.0»</b> ( <a href="https://www.youtube.com/channel/UCratryukikrxQpXzhVXREVA" target="_blank" title="Веглас. Casino Streams 3.0">Перейти на канал "Веглас"</a> )<br>
 				</p>
-			
+
 				<h4><u>Условия: </u></h4>
 				<p>1. Зарегистрироваться в одном из казино только по ссылке ниже и сделать депозит <b>от 600 рублей.</b></p>
-				<p>  
+				<p>
 				  <span v-for="i in CasinoLinks">
 				    <a :href="i.url" target="_blank"><img :src="i.src"></a>&nbsp;&nbsp;
 				  </span>
@@ -58,18 +59,18 @@
             <br>
 			<hr>
 			<br>
-			
+
 			<h3>ЕЖЕМЕСЯЧНЫЙ РОЗЫГРЫШ: Телефон Galaxy S9</h3>
-            
+
 				<h4><u>Время проведения розыгрыша: </u></h4>
-				<p>В 21:00 каждый последний день месяца.</br> 
+				<p>В 21:00 каждый последний день месяца.</br>
 				       Розыгрыш проходит:</br>
 				На канале <b>«Веглас. Casino Streams 3.0»</b> ( <a href="https://www.youtube.com/channel/UCratryukikrxQpXzhVXREVA" target="_blank" title="Веглас. Casino Streams 3.0">Перейти на канал "Веглас"</a> )<br>
 				</p>
-				
+
 				<h4><u>Условия: </u></h4>
 				<p>1. Зарегистрироваться в одном из казино только по ссылке ниже и сделать депозит <b>от 3000 рублей.</b></p>
-				<p>  
+				<p>
 				  <span v-for="i in CasinoLinks">
 				    <a :href="i.url" target="_blank"><img :src="i.src"></a>&nbsp;&nbsp;
 				  </span>
@@ -83,7 +84,7 @@
             <br>
 			<hr>
 			<br>
-			
+
 			<img src="https://veglas.org/img/mega_konkurs.jpg">
             <h3>МЕГА РОЗЫГРЫШ: 500 000 рублей</h3>
 				<p><b>25 июня</b></p>
@@ -102,9 +103,21 @@
     data () {
       return {
         CasinoLinks: [
-		  {title: 'SuperSlots', url: 'http://bit.ly/2HQmbDv', src: 'https://veglas.org/img/superslots.jpg'},
-          {title: 'SuperLines', url: 'http://bit.ly/2GMbqkL', src: 'https://veglas.org/img/superlines.jpg'},
-          {title: 'Cleopatra', url: 'http://bit.ly/2ExzdHO', src: 'https://veglas.org/img/cleopatra.jpg'}
+          {
+            title: 'SuperSlots',
+            url: 'http://bit.ly/2HQmbDv',
+            src: 'https://veglas.org/img/superslots.jpg'
+          },
+          {
+            title: 'SuperLines',
+            url: 'http://bit.ly/2GMbqkL',
+            src: 'https://veglas.org/img/superlines.jpg'
+          },
+          {
+            title: 'Cleopatra',
+            url: 'http://bit.ly/2ExzdHO',
+            src: 'https://veglas.org/img/cleopatra.jpg'
+          }
         ]
       }
     }

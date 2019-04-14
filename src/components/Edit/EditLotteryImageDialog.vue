@@ -35,27 +35,29 @@
                 <v-icon large>mdi-close</v-icon>
               </v-btn>
             </div>
-            <!-- <img
-              src="/static/img/logos/veglas-watermark-1300x420.png"
-              class="addon"
-              style="display: none;"
-            > -->
-            <croppa
-              v-model="croppa"
-              :width="540"
-              :height="338"
-              :quality="2"
-              :accept="'image/*'"
-              :canvas-color="'#ccc'"
-              initial-size="contain"
-              :zoom-speed="1"
-              :placeholder="'Выберите или перетащите новую картинку'"
-              :placeholder-font-size="16"
-              :placeholder-color="'rgba(0,0,0,.54)'"
-              :prevent-white-space="true"
-              :remove-button-size="40"
-              @file-type-mismatch="onFileTypeMismatch"
-            />
+            <div>
+              <!-- <img
+                src="/static/img/logos/veglas-watermark-1300x420.png"
+                class="addon"
+                style="display: none;"
+              > -->
+              <croppa
+                v-model="croppa"
+                :width="540"
+                :height="338"
+                :quality="2"
+                :accept="'image/*'"
+                :canvas-color="'#ccc'"
+                initial-size="contain"
+                :zoom-speed="1"
+                :placeholder="'Выберите или перетащите новую картинку'"
+                :placeholder-font-size="16"
+                :placeholder-color="'rgba(0,0,0,.54)'"
+                :prevent-white-space="true"
+                :remove-button-size="40"
+                @file-type-mismatch="onFileTypeMismatch"
+              />
+            </div>
           </div>
         </v-card-text>
         <v-card-actions>

@@ -11,10 +11,32 @@
                 <v-flex xs12 class="text-md-right">
                   <!-- <btn-winners/> -->
                   <!-- <btn-rules/> -->
-                  <btn-create-ticket/>
+                  <!-- <btn-create-ticket/> -->
                 </v-flex>
 
                 <v-flex xs12>
+                  <h1>
+                    <v-icon large>mdi-trophy</v-icon>
+                    Розыгрыши:
+                  </h1>
+                </v-flex>
+
+                <v-progress-circular
+                  v-if="loading"
+                  indeterminate
+                  :size="40"
+                  color="amber"
+                />
+
+                <v-layout wrap v-else>
+                  <lottery-list-item
+                    v-for="lottery in lotteries"
+                    :lottery="lottery"
+                    :key="lottery.id"
+                  />
+                </v-layout>
+
+                <!-- <v-flex xs12>
                   <h1>
                     <v-icon large>mdi-trophy</v-icon>
                     {{ lotteryDay.title }}
@@ -36,11 +58,9 @@
                     :i="i"
                     :key="i.id"
                   />
-
                   <ticket-list-btn
                     :btn="lotteryDay"
                   />
-
                 </v-layout>
 
                 <v-flex xs12>
@@ -60,7 +80,7 @@
                   <h3>Скоро стартует</h3>
                   <br>
                   <br>
-                </v-flex>
+                </v-flex> -->
 
               </v-layout>
             </v-container>
@@ -76,9 +96,9 @@
   export default {
     data () {
       return {
-        lotteryDay: {title: '«Ежедневный» розыгрыш 500 руб', url: '/lottery/day'},
-        lotteryWeek: {title: '«Еженедельный» розыгрыш 5 000 руб', url: '/lottery/week'},
-        lotteryMonth: {title: '«МЕГА» розыгрыш 500 000 руб', url: '/lottery/month'}
+        lotteryDay: { title: '«Ежедневный» розыгрыш 500 руб', url: '/lottery/day' },
+        lotteryWeek: { title: '«Еженедельный» розыгрыш 5 000 руб', url: '/lottery/week' },
+        lotteryMonth: { title: '«МЕГА» розыгрыш 500 000 руб', url: '/lottery/month' }
       }
     },
     computed: {
@@ -87,6 +107,9 @@
       },
       items () {
         return this.$store.getters.loadedLastFewItems
+      },
+      lotteries () {
+        return this.$store.getters.loadedLotteriesSortedByDate.reverse()
       },
       currentUserId () {
         return this.$store.getters.currentUserId

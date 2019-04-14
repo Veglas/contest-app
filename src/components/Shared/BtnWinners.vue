@@ -9,7 +9,7 @@
   export default {
     data () {
       return {
-        winnersBtn: {title: 'Победители', icon: 'mdi-crown', url: '/lottery/winners'}
+        winnersBtn: { title: 'Победители', icon: 'mdi-crown', url: '/lottery/winners' }
       }
     }
   }

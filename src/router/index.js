@@ -47,7 +47,7 @@ export default new Router({
       component: Rules
     },
     {
-      path: '/lottery/create-ticket',
+      path: '/create/ticket',
       name: 'CreateTicket',
       component: CreateTicket
       // beforeEnter: AuthGuard
@@ -73,6 +73,12 @@ export default new Router({
       path: '/lottery/:id',
       name: 'LotteryPage',
       component: LotteryPage,
+      props: true
+    },
+    {
+      path: '/lottery/:id/winners',
+      name: 'Winners',
+      component: Winners,
       props: true
     },
     {

@@ -70,7 +70,7 @@
         totalTickets: 0,
         perPage: 12,
         currentPage: 1,
-        lotteryDay: {title: '«Ежедневный» розыгрыш 500 руб', url: '/lottery/day'}
+        lotteryDay: { title: '«Ежедневный» розыгрыш 500 руб', url: '/lottery/day' }
       }
     },
     created () {
@@ -101,9 +101,9 @@
     watch: {
       currentPage: function (newValue, oldValue) {
         if (newValue === 1) {
-          this.$router.push({name: 'LotteryDay'})
+          this.$router.push({ name: 'LotteryDay' })
         } else {
-          this.$router.push({name: 'LotteryDayPaginated', params: { page: newValue }})
+          this.$router.push({ name: 'LotteryDayPaginated', params: { page: newValue } })
         }
       }
     }
